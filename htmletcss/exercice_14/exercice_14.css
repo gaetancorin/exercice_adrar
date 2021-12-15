@@ -1,0 +1,28 @@
+p{
+    background-color: #808080;
+    border:  solid green 5px;
+}
+
+body{
+    margin: 0px;
+    background-color: purple;
+}
+
+p:first-of-type{
+    height: 100px;
+    padding: 20px;
+    margin: 0px;
+}
+
+p:nth-child(2){
+    width: 50%;
+    padding: 1.2em;
+    margin: 20px 5px;
+}
+
+p:last-child{
+    width: 200px;
+    height: 200px;
+    padding: -30px;
+    margin: auto;
+}

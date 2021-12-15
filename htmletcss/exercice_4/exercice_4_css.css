@@ -1,0 +1,16 @@
+h1{
+    color:red;
+}
+
+div a{
+    color:yellowgreen;
+}
+
+#div_1{
+    background-color: lightgreen;
+}
+
+.div_2{    
+    text-align: right;
+    font-size: 2em;
+}

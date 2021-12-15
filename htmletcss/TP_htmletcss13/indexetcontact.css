@@ -1,0 +1,94 @@
+/*BANNIERE*/
+
+.img_banniere{
+    height: 200px;
+    width: 800px;
+}
+
+.image_index{
+    height: 100px;
+    width: 200px;
+}
+
+/* HEADER*/
+header{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+    text-align: center;
+}
+
+h1{
+    color: #EF233C;
+    font-size: 40px;
+    font-weight:bold;
+    font-family: Impact, sans-serif;
+    
+}
+
+
+/*BACKGROUND*/
+body{
+    background-image: radial-gradient(#CCDAE0,#EDF2F4)
+}
+
+
+
+/*ARTICLE*/
+
+article{
+    border:solid;
+    border-width: 1px;
+    border-color: black;
+
+}
+
+h3{
+    color: #2B2D42;
+    font-size: 26px;
+    font-weight: bold;
+    text-decoration: underline dotted;
+
+}
+
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid;
+    border-width: 2px;
+    border-color: #8D99AE;
+}
+/* FORMULAIRE*/
+
+ul{
+    list-style: none;
+}
+
+span{
+    color:red;
+}
+
+
+/* FOOTER*/
+
+footer{
+    display: block;
+    margin-left: auto;
+    text-align: right;
+}
+
+/* AUTRE */
+a{
+    color: #D90429;
+}
+
+a:visited{
+    color: #2B2D42;
+}
+
+a:hover{
+    color: #2B2D42;
+}
+

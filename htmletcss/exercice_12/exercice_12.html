@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>exercice_12</title>
+        <!--<style type="text/css">
+       label{
+            display: inline-block;
+            width: 80px;
+       }  
+        </style>-->
+    </head>
+    <body>
+        <form method="post">
+        <fieldset>
+            <legend>Info personnelles</legend>
+            <div>
+                <!--Prénom-->
+                <label for="prenom">Prénom:</label>
+                <input placeholder="Ex François" maxlength="20" minlength="2" type="text" name="prenom" id="prenom">
+            </div>
+                <!--Nom-->
+            <div>
+                <label for="nom">Nom:</label>
+                <input placeholder="Ex Hollande"maxlength="20" minlength="2" type="text" name="nom" id="nom">
+            </div>
+                <!--Email-->
+            <div>
+                <label for="e-mail">E-mail:</label>
+                <input placeholder="Ex FrançoisHollande@surleinternet.com" size="30" type="text" name="e-mail" id="e-mail">
+            </div>
+                    <!--Numéro-->
+            <div>
+                <label for="numero">Numéro:</label>
+                <input  placeholder="Ex 01 23 45 67 89"type="text" name="numero" id="numero">
+            </div>
+                <!--Mot de passe-->
+            <div>
+                <label for="password">Mot de passe:</label>
+                <input  placeholder="Ex bl@bl@bl@" maxlength="3" minlength="8"type="password" name="password" id="password">
+            </div>
+                <!--Age-->
+            <div>
+                <label for="age">Age:</label>
+                <input  placeholder="Ex 15"type="number"name="age" id="age">
+            </div>
+                <!-- Textarea gros commentaire-->
+            <div>
+                <label for="commentaire">Laisser un commentaire:</label>
+                <br/>
+                <textarea placeholder="J'adore ce que vous faites !" rows="2" cols="70"></textarea>
+            </div>
+
+            <div><input min="1980-12-23" max="1980-12-25" type="date" /></div>
+            <div><input type="time" /></div>
+            <div><input type="datetime" /></div>
+            <div><input type="datetime-local" /></div>
+            <div><input type="month" /></div>
+            <div><input type="week" /></div>
+            <br/>
+            <div><input type="file" multiple accept=".pnj .jpg .txt" /></div>
+                <!--Checkbox-->
+            <fieldset>
+                    <legend>Quel case cocher?</legend>
+
+                    <input type="checkbox" id="checkbox"/><label for="checkbox">Je suis une case à cocher</label>
+                    <br/>
+                    <input checked type="checkbox" id="checkbox2"/><label for="checkbox2">Je suis une checkbox</label>
+                    <br/>
+                    <input type="checkbox" id="checkbox3"/><label for="checkbox3">Je ne suis pas une checkbox</label>
+                    <br/>
+                    <input type="checkbox" id="checkbox4"/><label for="checkbox4">Je suis orange</label>
+                </fieldset>
+                <!-- date commentaire-->
+                <label for="date_comm">Date du commentaire:</label>
+                <input type="date" id="date_comm" name="date_comm1"/>
+                <br/>
+                <!--envois image .png et .jpeg-->
+                <label for="envoi_image">Envois des images:</label>
+                <input type="file" id="envoi_image" name="envoi_image" accept=".png, .jpeg"/>
+                <!--4 boutons radio-->
+                <fieldset>
+                    <legend>Vous vous levez:</legend>
+
+                    <input checked type="radio" id="lematin" value="matin" name="lever">
+                    <label for="lematin">Le matin</label>
+                    <br/>
+                    <input type="radio" id="lemidi" value="midi" name="lever">
+                    <label for="lemidi">Le midi</label>
+                    <br/>
+                    <input type="radio" id="laprem" value="aprem" name="lever">
+                    <label for="laprem">l'après-midi</label>
+                    <br/>
+                    <input type="radio" id="lesoir" value="soir" name="lever">
+                    <label for="lesoir">Le soir</label>
+                </fieldset>
+                <!--Choisir une couleur-->
+                <fieldset>
+                    <legend>Le formulaire avec 2 groupes</legend>
+                    <label for="couleur">Choisir une couleur :</label>
+                    <select id="couleur" name="couleur">
+                        <optgroup label="clair">
+                            <option value="blue">Bleu</option>
+                            <option value="green">Vert</option>
+                        </optgroup>
+                        <optgroup label="foncé">
+                            <option selected value="brown">Marron</option>
+                            <option value="black">Noir</option>
+                        </optgroup>
+                    </select>
+                <br/>
+                <br/>
+                <input type="submit" value="envoyer le formulaire">
+                <input type="reset" value="reset le formulaire">
+
+
+                
+                </fieldset>
+            </fieldset>    
+        </form>
+    </body>
+</html>

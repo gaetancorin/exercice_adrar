@@ -1,0 +1,40 @@
+h1{
+    color: red;
+    font-size: 50px;
+
+}
+
+article{
+    color: blue;
+    font-size: 1.5em;
+}
+
+article  p{
+    background-color: grey;
+}
+
+/*p [strong]{
+    background-color: gray;
+}*/
+
+strong{
+    font-weight: normal;
+    color: yellowgreen;   
+}
+
+em{
+    font-style: normal;
+    text-decoration: underline;
+    color: orange;
+    font-size: 30px;
+}
+
+#article3{
+    background-color: pink;
+}
+
+#titre_article_2{
+    color: rgb(0, 255,0);
+    text-align: right;
+    text-decoration: underline;
+}
