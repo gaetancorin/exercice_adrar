@@ -1,0 +1,18 @@
+Discord = discuter avec d'autres personnes
+Gimp = logiciel photomontage
+
+Visual studio Code = logiciel de codage
+Processing = faire fonctionner des trucs en python
+Staruml = créer des diagramme UML (diagramme use_case, activité, sequence)
+GanttProjectt = calendrier pour organiser son travail(cahierdescharges,peprod,prod,deployement,etc)
+pencil = Comment figma en moins bien
+looping = Faire le MCD ET MLD des BDD
+xampp = créer une BDD local
+mysql workbench = logiciel pour écrire son mysql
+Git = télécharger pour créer des dépot git
+Github Desktop = Aide a gérer les git sans passer par le tableau de commande
+
+site sans téléchargement:
+Gloomaps = créer des arborescence
+Figma = créer des maquettes(zoning, wireframe,mockups)
+Github = pour lier les git a github
