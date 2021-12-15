@@ -3,9 +3,9 @@ Gimp = logiciel photomontage
 
 Visual studio Code = logiciel de codage
 Processing = faire fonctionner des trucs en python
-Staruml = créer des diagramme UML (diagramme use_case, activité, sequence)
 GanttProjectt = calendrier pour organiser son travail(cahierdescharges,peprod,prod,deployement,etc)
 pencil = Comment figma en moins bien
+Staruml = créer des diagramme UML (diagramme use_case, activité, sequence)
 looping = Faire le MCD ET MLD des BDD
 xampp = créer une BDD local
 mysql workbench = logiciel pour écrire son mysql
