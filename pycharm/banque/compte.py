@@ -6,7 +6,7 @@ class Compte:
         self.date_creation = str(datetime.date.today())
         self.solde = 0
         self.proprietaire = proprio
-        self.banque = "Corin Corp"
+        self.banque = "BankCorin"
 
     def Crediter(self, montant):
         self.solde += montant
@@ -14,7 +14,7 @@ class Compte:
         self.Afficher()
 
     def Debiter(self, montant):
-        if self.solde > montant:
+        if self.solde >= montant:
             self.solde -= montant
             print("Votre compte a bien été débité de {}€".format(montant))
             self.Afficher()

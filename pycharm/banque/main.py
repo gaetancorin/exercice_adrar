@@ -1,7 +1,8 @@
 from prenium import Prenium
 from user_banque import User
+from banque import Banque
 
-compte_client = []
+BankCorin = Banque()
 
 while True:
     nouveau = input("Vous êtes nouveau? Oui(o) / Non(n)\n")
@@ -25,29 +26,30 @@ while True:
 
             if utilisateur == "1" or utilisateur == "2":
                 enregistrement.afficherInformations()
-                print("Nous allons a présent vous créer un compte bancaire")
+                print("Nous allons a présent vous créer un compte bancaire chez BankCorin")
                 bouleen = 0
                 while bouleen == 0:
                     try:
-                        somme = int(input("Indiquer la somme que vous souhaiter sur votre compte en premier créit\n"))
+                        somme = int(input("Indiquer la somme que vous souhaiter sur votre compte en premier crédit\n"))
                     except ValueError:
                         print("indiquez la somme en chiffre")
                     else:
                         bouleen = 1
                 enregistrement.CreerCompte(somme)
 
-                compte_client.append(enregistrement)
+                BankCorin.Ajoutclientetcompte(enregistrement)
                 break
 
     elif nouveau == "n":
         while True:
-            for i in compte_client:
+            print("//////////")
+            for i in BankCorin.liste_compteclient:
                 print(i.Nom)
             nomdecompte = input("Ecrire votre nom de compte parmis ceux ci-dessus / écrire q pour quitter\n")
             if nomdecompte == "q":
                 break
             bouleen = 0
-            for i in compte_client:
+            for i in BankCorin.liste_compteclient:
                 if i.Nom == nomdecompte:
                     bouleen += 1
                     motdepasse = input("Ecrire votre mot de passe\n")
@@ -99,7 +101,7 @@ while True:
                                         print("indiquez la somme en chiffre")
                                     else:
                                         bouleen = 1
-                                        i.Emprunter(emprunt)
+                                        BankCorin.Emprunter(i, emprunt)
 
                             elif choix == "Quitter":
                                 break
@@ -109,7 +111,6 @@ while True:
 
             if bouleen == 0:
                 print("Aucun compte existant à ce nom")
-                #ok
 
 
 
