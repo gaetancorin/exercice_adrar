@@ -1,6 +1,7 @@
 from prenium import Prenium
 from user_banque import User
 
+
 class Banque:
 
     def __init__(self):
@@ -8,12 +9,12 @@ class Banque:
         self.pecule = 1000000
         self.liste_compteclient = []
 
-    def Ajoutclientetcompte(self, compte):
-        self.liste_compteclient.append(compte)
-        if isinstance(compte, Prenium):
-            print("Le compte Prenium et compte en banque de Mr", compte.Nom, "a bien était enregistré à la banque", self.Nom)
-        if isinstance(compte, User) and not isinstance(compte, Prenium):
-            print("Le compte User et compte en banque de Mr", compte.Nom, "a bien était enregistré à la banque", self.Nom)
+    def Ajoutclientetcompte(self, compteclient):
+        self.liste_compteclient.append(compteclient)
+        if isinstance(compteclient, Prenium):
+            print("Votre profil PRENIUM et compte en banque de Mr", compteclient.Nom, "a bien était enregistré à la banque", self.Nom)
+        if isinstance(compteclient, User) and not isinstance(compteclient, Prenium):
+            print("Votre profil USER et compte en banque de Mr", compteclient.Nom, "a bien était enregistré à la banque", self.Nom)
 
     def Emprunter(self, compteclient, somme):
         if somme >= self.pecule:
@@ -24,4 +25,3 @@ class Banque:
             for i in self.liste_compteclient:
                 if i == compteclient:
                     i.Dette(somme)
-
