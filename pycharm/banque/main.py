@@ -59,10 +59,10 @@ while True:
                         print("Mot de passe correct")
                         while True:
                             if isinstance(i, Prenium):
-                                choix = input("Vous souhaiter : Afficher , Debiter, Crediter, AfficherInformation, Emprunter, Quitter")
-                            if isinstance(i, User) and not isinstance(i, Prenium):
+                                choix = input("Vous souhaiter : Afficher , Debiter, Crediter, Afficher Information, Emprunter, Quitter")
+                            else:
                                 choix = input(
-                                    "Vous souhaiter : Afficher , Debiter, Crediter, AfficherInformation, Quitter")
+                                    "Vous souhaiter : Afficher , Debiter, Crediter, Afficher Information, Quitter")
 
                             if choix == "Afficher":
                                 i.CompteBancaire.Afficher()
@@ -89,7 +89,7 @@ while True:
                                         bouleen = 1
                                         i.CompteBancaire.Crediter(crediter)
 
-                            elif choix == "AfficherInformation":
+                            elif choix == "Afficher Information":
                                 i.afficherInformations()
 
                             elif choix == "Emprunter" and isinstance(i, Prenium):
@@ -102,6 +102,8 @@ while True:
                                     else:
                                         bouleen = 1
                                         BankCorin.Emprunter(i, emprunt)
+                                        for i in BankCorin.liste_compteclient:
+                                            i.CompteBancaire.Afficher()
 
                             elif choix == "Quitter":
                                 break

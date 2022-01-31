@@ -13,7 +13,7 @@ class Banque:
         self.liste_compteclient.append(compteclient)
         if isinstance(compteclient, Prenium):
             print("Votre profil PRENIUM et compte en banque de Mr", compteclient.Nom, "a bien était enregistré à la banque", self.Nom)
-        if isinstance(compteclient, User) and not isinstance(compteclient, Prenium):
+        else:
             print("Votre profil USER et compte en banque de Mr", compteclient.Nom, "a bien était enregistré à la banque", self.Nom)
 
     def Emprunter(self, compteclient, somme):
@@ -22,6 +22,4 @@ class Banque:
         else:
             self.pecule -= somme
             print("Il reste", self.pecule, "€ à la BankCorin")
-            for i in self.liste_compteclient:
-                if i == compteclient:
-                    i.Dette(somme)
+            compteclient.Dette(somme)
