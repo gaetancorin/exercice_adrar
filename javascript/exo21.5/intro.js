@@ -1,15 +1,3 @@
-// let email = document.body.querySelector("input");
-// console.log(email.value)
-
-// document.addEventListener("keyup", myFunction);
-
-// function myFunction() {
-//     console.log(email.value);
-// }
-// MARCHE PAS
-
-
-
 const login = document.querySelector("#login");
 const password = document.querySelector("#password");
 const resultatPassword = document.querySelector("#resultatPassword");
@@ -32,5 +20,39 @@ login.addEventListener("keyup", function(){
     }
     else{
         login.style.backgroundColor = "green";
+    }
+});
+
+password.addEventListener("keyup", function(){
+    // console.log(password.value)
+    let messageErreur = "<h2>MDP :</h2>";
+    
+    if(password.value.length < 6){
+        // console.log("tropcourt");
+        messageErreur +="<li>Le mot de passe est trop court</li>";
+    }
+    if(password.value.length > 8){
+        // console.log("troplong");
+        messageErreur +="<li>Le mot de passe est trop long</li>";
+    }
+    if(!password.value.match(/[!#$%&?*"]/)){
+        // console.log("pasdecaractere speciaux");
+        messageErreur +="<li>Doit contenir un caractère spécial</li>";
+    }
+    if(!password.value.match(/\d/)){
+        console.log("pasdecaractere decimal");
+        messageErreur +="<li>Doit contenir un caractère décimal</li>";
+    }
+
+
+
+    if (messageErreur == "<h2>MDP :</h2>"){
+        messageErreur +="<p>Password valide, toute mes félicitation !</p>"
+        resultatPassword.innerHTML = messageErreur;
+        resultatPassword.style.border = "solid 2px green"
+    }
+    else{
+        resultatPassword.style.border = "solid 2px red"
+        resultatPassword.innerHTML = messageErreur;
     }
 });
