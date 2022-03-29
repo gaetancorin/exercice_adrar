@@ -10,6 +10,13 @@
 </head>
 <body>
 {% block contenue %}
+{% if not request.user.is_authenticated %}
+    <a href="{% url 'sondage:login' %}">connexion</a>
+    <a href="{% url 'sondage:register' %}">inscription</a>
+{% else %}
+    <a href="{% url 'sondage:logout' %}">déconnexion</a>
+    <a href="{% url 'sondage:profil' %}">profil</a>
+{% endif %}
     {%if question_list %}
         <ul>
         {% for question in question_list %}
@@ -19,7 +26,7 @@
         {% endfor %}
         </ul>
     {% else %}
-        <p>Pas de sondage disponible</p>
+        <p>Pas de sondage disponible.</p>
     {% endif %}
 {% endblock %}
 </body>

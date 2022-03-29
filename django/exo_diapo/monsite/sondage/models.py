@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 import datetime
 
 # Create your models here.
@@ -11,7 +12,10 @@ class Question(models.Model):
         return self.question_text
 
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        # return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
+
 
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
@@ -20,3 +24,7 @@ class Choice(models.Model):
 
     def __str__(self):
         return self.choice_text
+
+class Citizen(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    electeur = models.BooleanField(default=False)
