@@ -1,0 +1,6 @@
+composer dump-autoload 
+ou
+composer dump-autoload -ou
+
+
+php vendor/bin/phpunit tests/UserTest.php --colors

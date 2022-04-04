@@ -1,0 +1,24 @@
+p {
+    color: grey;
+}
+
+h4 {
+    color: blue;
+}
+
+h5 {
+    color: greenyellow
+}
+
+#regBt{
+    display:block;
+}
+#logBt{
+    display:block;
+}
+#reg{
+    display:none;
+}
+#log{
+    display:none;
+}

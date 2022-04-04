@@ -1,0 +1,1 @@
+leTitre = document.body.querySelector("h1");
