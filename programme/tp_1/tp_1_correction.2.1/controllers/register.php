@@ -1,7 +1,8 @@
 <?php
 require('../models/bdd.php');
+require('../models/user.php');
 include('../views/vue.php');
-
+// je vérifie que mes champs ne sont pas vides
 if (
     !empty($_POST['name'])
     && !empty($_POST['first_name'])
@@ -17,52 +18,18 @@ if (
     $role = $_POST['role'];
 
     try {
-        //
-        $req = $bdd->prepare(
-            "INSERT INTO 
-                    users 
-                SET 
-                    name = :name,
-                    first_name = :first_name,
-                    mail = :mail,
-                    password = :password,
-                    id_role = :role"
-        );
 
-        // pour la partie 2 je stocke le résultat de l'enregistrement dans une variable
-        $resultat = $req->execute(
-            array(
-                ':name' => $name,
-                ':first_name' => $first_name,
-                ':mail' => $mail,
-                ':password' => $password,
-                ':role' => $role
-            )
-        );
-        /**
-         *  partie 2 
-         */
-        // si resultat ok je fais ma connexion auto après l'enregistrement
+        $myUser = new User();
+        $myUser->name = $name;
+        $myUser->first_name = $first_name;
+        $myUser->mail = $mail;
+        $myUser->password = $password;
+        $myUser->id_role = $role;
+        $resultat = $myUser->createUser();
         if ($resultat) {
             //ajout session
             session_start();
-            $req = $bdd->prepare(
-                'SELECT
-                    *
-                FROM 
-                    users
-                JOIN
-                    roles
-                ON
-                    users.id_role = roles.id_role
-                WHERE 
-                    mail = :mail'
-            );
-            $req->execute(
-                array(
-                    ':mail' => $mail
-                )
-            );
+            $req = $myUser->getSingleUser();
             while ($donnees = $req->fetch()) {
                 // stockage des donnees dans super globale $_session
                 $_SESSION['name'] = $donnees['name'];
@@ -79,4 +46,3 @@ if (
         die('Erreur : ' . $e->getMessage());
     }
 }
-?>
