@@ -77,12 +77,18 @@ class QuestionIndexviewTests(TestCase):
         self.assertQuerysetEqual(response.context['question_list'], [])
 
     def test_futur_and_past_question(self):
+        """
+        Test de notre vue index si une question a une date futur et une autre question une date passé
+        """
         question = create_question("Question passé", -2)
         create_question("Future question", 15)
         response = self.client.get(reverse('sondage:index'))
         self.assertQuerysetEqual(response.context['question_list'], [question])
 
     def test_multiple_past_questions(self):
+        """
+        Test de notre vue index si 2 questions ont une date passé
+        """
         question1 = create_question("Première question passé", -5)
         question2 = create_question("Deuxième question passé", -6)
         response = self.client.get(reverse('sondage:index'))
@@ -90,12 +96,18 @@ class QuestionIndexviewTests(TestCase):
 
 class QuestionDetailViewTests(TestCase):
     def test_futur_question(self):
+        """
+        Test de notre vue detail si une question a une date futur
+        """
         futur_question = create_question("Futur question", 8)
         url = reverse('sondage:detail', args=(futur_question.id,))
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
 
     def test_past_question(self):
+        """
+        Test de notre vue detail si une question a une date passé
+        """
         question = create_question("Question passé", -3)
         url = reverse('sondage:detail', args=(question.id,))
 
