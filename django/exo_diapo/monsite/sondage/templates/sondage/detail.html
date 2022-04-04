@@ -1,6 +1,8 @@
 {% extends "sondage/index.html" %}
 {% load static %}
 {% block contenue %}
+{% if request.user.is_authenticated %}
+    {% if request.user.citizen.electeur %}
     <form action="{% url 'sondage:vote' question.id %}" method="post">
     {% csrf_token %}
     <fieldset>
@@ -13,4 +15,10 @@
     </fieldset>
     <input type="submit" value="Vote">
     </form>
+    {% else %}
+    <i>Seul les électeurs peuvent voter</i>
+    {% endif %}
+{% else %}
+    <a href="{% url 'sondage:login' %}"><i>Vous devez être connecté pour pouvoir voter</i></a>
+{% endif %}
 {% endblock %}
