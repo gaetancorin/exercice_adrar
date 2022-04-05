@@ -1,1 +1,0 @@
-{"version":1,"defects":{"AssertionsExemple::stringIdentiques":3,"AssertionsExemple::intIdentiques":3,"UserTest::testConcatenation":4,"UserTest::changeConcate":4},"times":{"AssertionsExemple::stringIdentiques":0.003,"AssertionsExemple::intIdentiques":0,"UserTest::testConcatenation":0.003,"UserTest::changeConcate":0}}
