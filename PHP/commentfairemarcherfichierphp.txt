@@ -1,4 +1,4 @@
 mettre fichier dans C: / xampp/ htdoc.
 ouvrir serveur xampp, activer apache pour avoir un serveur local
 aller chercher son dossier sur serveur local dans
-google chrome et http://localhost/programme/programme/
+google chrome et http://localhost/exercice_adrar/php
