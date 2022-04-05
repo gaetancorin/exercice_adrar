@@ -10,18 +10,15 @@
 </head>
 <body>
 
-<form action="logOut.php" method="get">
+<form action="../logOut.php" method="get">
     <input type="submit" value="se déconnecter">
 </form>
 <br>
-<form action="showAllUsers.php" method="get">
+<form action="../showAllUsers.php" method="get">
     <input type="submit" value="Voir les utilisateurs">
 </form>
 
 <h1>Liste des membres :</h1>
-<form action="../logOut.php" method="get">
-    <input type="submit" value="se déconnecter">
-</form>
 
 <script type='text/javascript' src="main.js"></script>
 </body>

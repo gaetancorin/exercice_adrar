@@ -2,10 +2,10 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le : mer. 09 mars 2022 à 08:16
--- Version du serveur : 5.7.36
--- Version de PHP : 7.4.26
+-- Hôte : 127.0.0.1
+-- Généré le : mar. 05 avr. 2022 à 14:08
+-- Version du serveur : 10.4.21-MariaDB
+-- Version de PHP : 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `animaux`
 --
-CREATE DATABASE IF NOT EXISTS `animaux` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `animaux`;
 
 -- --------------------------------------------------------
 
@@ -29,15 +27,21 @@ USE `animaux`;
 -- Structure de la table `animaux`
 --
 
-DROP TABLE IF EXISTS `animaux`;
-CREATE TABLE IF NOT EXISTS `animaux` (
-  `id_animal` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `animaux` (
+  `id_animal` bigint(20) NOT NULL,
   `nom` varchar(50) NOT NULL,
-  `couleur` varchar(50) NOT NULL,
-  `id_race` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_animal`),
-  KEY `id_race` (`id_race`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `couleur` varchar(25) NOT NULL,
+  `id_race` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `animaux`
+--
+
+INSERT INTO `animaux` (`id_animal`, `nom`, `couleur`, `id_race`) VALUES
+(3, 'chien', 'bleu', 2),
+(5, 'oiseau', 'violet', 2),
+(6, 'oiseau', 'jaune', 3);
 
 -- --------------------------------------------------------
 
@@ -45,22 +49,52 @@ CREATE TABLE IF NOT EXISTS `animaux` (
 -- Structure de la table `races`
 --
 
-DROP TABLE IF EXISTS `races`;
-CREATE TABLE IF NOT EXISTS `races` (
-  `id_race` int(11) NOT NULL AUTO_INCREMENT,
-  `nom_race` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_race`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE `races` (
+  `id_race` bigint(20) NOT NULL,
+  `nom_race` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Contraintes pour les tables déchargées
+-- Déchargement des données de la table `races`
+--
+
+INSERT INTO `races` (`id_race`, `nom_race`) VALUES
+(1, 'chien'),
+(2, 'amphibien'),
+(3, 'insecte'),
+(4, 'molusque');
+
+--
+-- Index pour les tables déchargées
 --
 
 --
--- Contraintes pour la table `animaux`
+-- Index pour la table `animaux`
 --
 ALTER TABLE `animaux`
-  ADD CONSTRAINT `animaux_ibfk_1` FOREIGN KEY (`id_race`) REFERENCES `races` (`id_race`);
+  ADD PRIMARY KEY (`id_animal`);
+
+--
+-- Index pour la table `races`
+--
+ALTER TABLE `races`
+  ADD PRIMARY KEY (`id_race`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `animaux`
+--
+ALTER TABLE `animaux`
+  MODIFY `id_animal` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT pour la table `races`
+--
+ALTER TABLE `races`
+  MODIFY `id_race` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

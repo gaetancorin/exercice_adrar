@@ -30,8 +30,8 @@ class Animaux
         return $this->idRace;
     }
 
-    public function setidAnimal($id_animal){
-        $this->idAnimal = $nom;
+    public function setidAnimal($idAnimal){
+        $this->idAnimal = $idAnimal;
     }
     public function setNom($nom){
         $this->nom = $nom;

@@ -5,8 +5,9 @@ include("../models/bdd.php");
 // enregistrement de la donnee "nom grace a la methode POST
 $nom = $_POST['nom'];
 
-// faire defiler tout les animaux de la base de donnes
+// on instancie la classe Animaux dans une variable
 $animaux = new Animaux();
+// faire defiler tout les animaux de la base de donnes
 $allAnimaux = $animaux->readAll();
 while($donnees = $allAnimaux->fetch()){
     // Si la donné enregistrer = le nom de l animal qui defile
