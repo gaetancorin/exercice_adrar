@@ -1,64 +1,11 @@
-drop database exercice_ticket;
-create database exercice_ticket;
 use exercice_ticket;
 
-create table article (
-id_article bigint(20) primary key auto_increment,
-nom_article varchar(50) not null,
-prix_article decimal(9,2) not null
-);
-
-create table vendeur (
-id_vendeur bigint(20) primary key auto_increment,
-nom_vendeur varchar(50) not null,
-prenom_vendeur varchar(50) not null
-);
-
-create table ticket (
-id_ticket bigint(20) primary key auto_increment,
-date_ticket date not null
-);
-
-create table associer (
-id_ticket bigint(20) not null,
-id_article bigint(20) not null,
-quantite_article decimal(9,2) not null,
-primary key (id_article, id_ticket),
-foreign key (id_article)
-references article (id_article),
-foreign key (id_ticket)
-references ticket (id_ticket)
-);
-
-alter table ticket
-add column id_vendeur bigint(20) not null,
-add constraint foreign key (id_vendeur) references vendeur (id_vendeur);
-
-insert into vendeur (nom_vendeur, prenom_vendeur) values
-("corin","gaetan"),
-("dietriche","valentin"),
-("cannappin","gogulavasan"),
-("richard","pierre"),
-("valero","johan");
-
-insert into ticket (date_ticket, id_vendeur) values
-("2021-8-04", 1),
-("2021-7-27",4),
-("2021-11-05",5),
-("1775-05-17",3),
-("2458-02-05",3);
-
-insert into article (nom_article, prix_article) values
-("caviar",1),
-("homard",1),
-("truffe",1),
-("safran_kg",5),
-("bigmac",1);
-
-insert into associer (id_ticket, id_article, quantite_article) values
-(1,1,1),
-(2,2,2),
-(3,3,3),
-(4,4,4),
-(5,5,4000);
-
+select * from ticket;
+select ticket.id_ticket, prix_article*quantite_article from ticket inner join associer on ticket.id_ticket = associer.id_ticket 
+inner join article on associer.id_article = article.id_article;
+select nom_article, prix_article from ticket inner join associer on ticket.id_ticket = associer.id_ticket 
+inner join article on associer.id_article = article.id_article where id_vendeur = 3;
+select nom_vendeur, nom_article, prix_article, quantite_article, date_ticket from article inner join associer on article.id_article = associer.id_ticket inner join ticket on associer.id_ticket =ticket.id_ticket inner join vendeur on ticket.id_vendeur = vendeur.id_vendeur;
+select nom_article from article inner join associer on article.id_article = associer.id_article inner join ticket on associer.id_ticket = ticket.id_ticket inner join vendeur on ticket.id_vendeur = vendeur.id_vendeur where date_ticket between "2021-06-01" and "2021-11-01" and vendeur.id_vendeur = 1 order by nom_article desc ;
+#select nom_article from article inner join associer on article.id_article = associer.id_article inner join ticket on associer.id_ticket = ticket.id_ticket inner join vendeur on ticket.id_vendeur = vendeur.id_vendeur where vendeur.id_vendeur = 1 and date_ticket between "2021-06-01" and "2021-11-01" order by nom_article desc ;
+select id_article, prix_article, avg(prix_article) as "prix_moyen" from article;

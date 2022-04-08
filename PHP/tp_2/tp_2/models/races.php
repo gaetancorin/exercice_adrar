@@ -4,7 +4,7 @@ class Races
 {
     public $id_races;
     public $nom_races;
-}
+
 
 // attribut de stockage info de connexion BDD
 public $connect;
@@ -81,10 +81,5 @@ public function deleteOne(){
 }
 }
 
-
-
-
-
-}
 
 ?>
