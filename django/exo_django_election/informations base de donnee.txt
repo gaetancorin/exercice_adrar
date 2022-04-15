@@ -1,0 +1,12 @@
+ q = Marque(titre_marque ="Evian", 
+lien_photo_marque="https://upload.wikimedia.org/wikipedia/fr/thumb/d/df/Logo_Evian.svg/1200px-Logo_Evian.svg.png",
+description_marque ="L’eau minérale naturelle evian vous parvient telle que la nature nous l’offre")
+
+
+ q = Marque(titre_marque ="Coca Cola Company", 
+lien_photo_marque="https://www.webstickersmuraux.com/fr/img/asfs127-jpg/folder/products-listado-merchant/autocollants-coca-cola.jpg",
+description_marque ="The Coca-Cola Company est le leader dans le domaine de la fabrication et la vente de boissons sans alcool. La firme effectue trois types d’activités différentes. La vente de boissons représente 81,4% du chiffre d’affaires. The Coca-Cola Company propose plusieurs types de boissons tels que les sodas, les jus de fruits, les sirops et les boissons à base de thé. Ces produits sont commercialisés sous différentes marques comme Coca-Cola, Nestea, Minute-Maid et Sprite.")
+
+ q = Marque(titre_marque ="Suntory", 
+lien_photo_marque="https://dondon.media/wp-content/uploads/2021/06/produits-histoire-suntory-1024x640.png",
+description_marque ="L’eau minérale naturelle evian vous parvient telle que la nature nous l’offre")

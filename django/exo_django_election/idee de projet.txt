@@ -1,0 +1,51 @@
+"ACCUEIL"
+Titre voter pour votre meilleur boisson
+Classement des 3 meilleurs boissons(si pas possible photos de toutes les boissons)
+Classement des 3 meilleurs marques de boissons(si pas possible photos de toutes les boissons)
+bouton decouvrir les boissons
+bouton découvrir les marques de boissons
+
+
+
+"DECOUVRIR LES BOISSONS"
+liste de liens de toutes les boissons ranger par le nombre de vote
+bouton retour a l'accueil
+
+"DECOUVRIR LES MARQUES DE BOISSONS"
+liste de liens de toutes les boissons ranger par le nombre de vote
+bouton retour a l'accueil
+
+
+
+"PAGE BOISSONS"
+titre de la boisson
+photo de la boisson
+descriptif de la boisson
+nombre de vote
+bouton voter pour cette boisson
+bouton decouvrir la marque de cette boisson
+bouton decouvrir d'autres boissons
+bouton retour a l accueil 
+
+
+"PAGE MARQUES DE BOISSONS"
+titre de la marque
+photo de la marque
+descriptif de la marque
+nombre de votes
+bouton voter pour cette marque
+affichage des boissons de cette marque
+bouton decouvrir d autres marques
+bouton retour a l accueil
+
+Boisson
+titre_boisson
+lien_photo_boisson
+description_boisson
+nombre_votes_boisson
+
+Marque
+titre_marque
+lien_photo_marque
+description_marque
+nombre_vote_marque
