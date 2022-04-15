@@ -1,0 +1,62 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+<div class="container">
+    <div class="row">
+        <center><h1>{{evenement.nom}}</h1></center>
+    </div>
+</div>
+<img style="width: 100%; height: 200px; object-fit: cover;" src="../../../../static/{{img}}"/>
+<div class="container">
+    <div class="row">
+        <div class="col-5">
+        </div>
+        <div class="col-2">
+            {%if validite%} <p>Date de l'évenement : de <span class="info">{{ evenement.date_debut }}</span> à <span class="info">{{ evenement.date_fin }}</span>.</p>
+            {%else%} <p>L'évenement est <span class="info">terminé.</span></p>{%endif%}
+        </div>
+        <div class="col-5">
+        </div>
+    </div> 
+    <div class="row infoBox col-10">
+        <div class="col-5">
+            {%if validite%}
+            <p>Se déroulera dans la salle : <span class="info">{{evenement.reservation.salle.nom}}</span></p>
+            <p>Place(s) restante(s) : <span class="info">{{evenement.place_restante}}</span></p>
+            <p>Type d'évenement : <span class="info">{{evenement.type_evenement.nom}}</span></p>
+            <p>Réservation au nom de :<span class="info">{{evenement.reservation.utilisateur.username}}</span></p>
+            <br><br>
+            {% if request.user.is_authenticated and user.organisateur.organisateur == False and evenement.place_restante > 0 %}
+            <div class="row mb-4">
+                <a href="{% url 'AppGestion:reservationBillet' evenement.id%}">
+                    <button class="btn btn-success">Réservation de billet</button>
+                </a>
+            </div>
+            {% endif %}
+            <h3>Informations complémentaires :</h3>
+            <p>{{evenement.info |linebreaks}}</p>
+            {%else%}
+            <p>Type d'évenement : <span class="info">{{evenement.type_evenement.nom}}</span></p>
+            <p>Réservation au nom de : <span class="info">{{evenement.reservation.utilisateur.username}}</span></p>
+            <p>Place(s) vendue(s) : <span class="info">{{ventes}}</span></p>
+            <br><br>
+            <h3>Informations complémentaires :</h3>
+            <p>{{evenement.info |linebreaks}}</p>
+            {%endif%}
+        </div>
+        <div class="col-3">
+            <p>Liste des Intervenants :</p>
+        </div>
+        <div class="col-3">
+            {% for intervenants in evenement.intervenant.all %}
+                <p>{{intervenants}}</p>
+            {% endfor %}
+        </div>
+        </div>
+
+
+
+
+
+    </div>
+</div>
+{% endblock %}

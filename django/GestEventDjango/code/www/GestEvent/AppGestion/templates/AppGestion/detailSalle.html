@@ -1,0 +1,87 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+<div class="container">
+    <div class="row">
+        <center><h1>Salle {{salle.nom}}</h1></center>
+    </div>
+    <div class="row col-4">
+        <h3>Informations complémentaires :</h3>
+        <br>
+        <br><br>
+
+        <div class="  col-6">
+            <p>Places assises :</p>
+        </div>
+        <div class=" col-6">
+            <p class="h6">{{salle.jauge_max_assise}} places</p>
+        </div>
+
+        <div class="  col-6">
+            <p>Places debouts :</p>
+        </div>
+        <div class=" col-6">
+            <p class="h6">{{salle.jauge_max_debout}} places</p>
+        </div>
+
+        <div class="  col-6">
+            <p>Equipements audio :</p>
+        </div>
+        {% if salle.equipement_audio %}
+        <div class=" col-6">
+            <p class="h6">Présent dans la salle</p>
+        </div>
+        {% else %}
+        <div class=" col-6">
+            <p class="h6">Indisponible dans la salle</p>
+        </div>
+        {% endif %}
+
+        <div class="  col-6">
+            <p>Equipements lumière :</p>
+        </div>
+        {% if salle.equipement_lumière %}
+        <div class=" col-6">
+            <p class="h6">Présent dans la salle</p>
+        </div>
+        {% else %}
+        <div class=" col-6">
+            <p class="h6">Indisponible dans la salle</p>
+        </div>
+        {% endif %}
+
+        <div class="  col-6">
+            <p>Rideaux de scène :</p>
+        </div>
+        {% if salle.equipement_rideau %}
+        <div class=" col-6">
+            <p class="h6">Présent dans la salle</p>
+        </div>
+        {% else %}
+        <div class=" col-6">
+            <p class="h6">Indisponible dans la salle</p>
+        </div>
+        {% endif %}
+
+        <div class="  col-6">
+        <p>Equipements stand de vente a emporté :</p>
+        </div>
+        {% if salle.equipement_stand %}
+        <div class=" col-6">
+            <p class="h6">Présent dans la salle</p>
+        </div>
+        {% else %}
+        <div class=" col-6">
+            <p class="h6">Indisponible dans la salle</p>
+        </div>
+        {% endif %}
+
+    </div>
+</div>
+<!--<h1>{{salle.nom}}</h1>-->
+<!--<p>{{salle.jauge_max_assise}}</p>-->
+<!--<p>{{salle.jauge_max_debout}}</p>-->
+<!--<p>{{salle.equipement_audio}}</p>-->
+<!--<p>{{salle.equipement_lumiere}}</p>-->
+<!--<p>{{salle.equipement_stand}}</p>-->
+<!--<p>{{salle.equipement_rideau}}</p>-->
+{% endblock %}

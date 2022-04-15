@@ -1,0 +1,38 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+    <nav2>
+        {% if user.organisateur.organisateur == False %}
+            <a href="{% url 'AppGestion:become' %}">Devenir organisateur</a>
+        {% else %}
+            <a href="{% url 'AppGestion:makeReservationSalle' %}">Réserver une salle</a>
+        {% endif %}
+        <a href="{% url 'AppGestion:modifierProfil' %}">Modifier profil</a>
+    </nav2>
+    
+    <div>
+        {% if user.organisateur.organisateur == False %}
+        <div>
+            {% if ticket in list_ticket %}
+                <h2>Mes tickets</h2>
+                {% for ticket in list_ticket %}
+                    <a href="{% url 'AppGestion:detailTicket' ticket.id %}">{{ ticket.evenement.nom }} - {{ ticket.evenement.date_debut }}</a>
+                {% endfor %}
+            {% endif %}
+        </div>
+        {% else %}
+        <div>
+            {% if reservation in list_reservation %}
+                <h2>Réservation Salle</h2>
+                <ul>
+                {% for reservation in list_reservation %}
+                <li>
+                    <a href="{% url 'AppGestion:detailReservation' reservation.id %}">{{ reservation.nom }}</a>
+                </li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+        {% endif %}
+
+    </div>
+{% endblock %}

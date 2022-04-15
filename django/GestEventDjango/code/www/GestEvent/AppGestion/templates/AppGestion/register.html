@@ -1,0 +1,33 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+<div class="container">
+    <br>
+    <div class="row">
+    <form id="register" method="post" action="{% url 'AppGestion:registered' %}">
+    {% csrf_token %}
+
+      <div class="mb-3  col-7 col-sm-5 col-xl-3 ">
+        <label for="user_name" class="form-label">Nom </label>
+        <input type="text" class="form-control" id="user_name" name="user_name" aria-describedby="emailHelp">
+      </div>
+
+      <div class="mb-3  col-7 col-sm-5 col-xl-3 ">
+        <label for="user_firstname" class="form-label">Prénom </label>
+        <input type="text" class="form-control" id="user_firstname" name="user_firstname" aria-describedby="emailHelp">
+      </div>
+
+      <div class="mb-3  col-7 col-sm-5 col-xl-3 ">
+        <label for="user_email" class="form-label">Email </label>
+        <input type="email" class="form-control" id="user_email" name="user_email" aria-describedby="emailHelp">
+        <div id="emailHelp" class="form-text">Merci d'inscrire une adresse email valide</div>
+      </div>
+
+      <div class="mb-3  col-7 col-sm-5 col-xl-3">
+        <label for="user_pwd" class="form-label">Mot de passe</label>
+        <input type="password"  class="form-control" id="user_pwd" name="user_pwd">
+      </div>
+      <button type="submit" value="Enregistrer" class="btn btn-success">S'enregistrer</button>
+    </form>
+    </div>
+</div>
+{% endblock %}

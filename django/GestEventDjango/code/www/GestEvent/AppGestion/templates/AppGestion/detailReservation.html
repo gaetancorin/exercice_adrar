@@ -1,0 +1,14 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+<h1>{{reservation.nom}}</h1>
+<h2>Info réservation</h2>
+<p>{{ reservation.date_debut }}</p>
+<p>{{ reservation.date_fin }}</p>
+<h2>Info salle</h2>
+<p>{{reservation.salle.nom}}</p>
+<p>{{reservation.salle.jauge_max_assise}}</p>
+<p>{{reservation.salle.jauge_max_debout}}</p>
+<p>{{reservation.salle.equipement_audio}}</p>
+<p>{{reservation.salle.equipement_lumiere}}</p>
+<p>{{reservation.salle.equipement_stand}}</p>
+{% endblock %}

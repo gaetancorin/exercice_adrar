@@ -1,0 +1,13 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+<div class="container">
+    <div class="row col-5">
+        <h3 class="mt-4">Bienvenue sur Adrave-Party</h3>
+        <p class="mt-4 h5">{{ user.first_name }} {{ user.last_name }}</p>
+        <p>Dernière connection le {{ user.last_login }}</p>
+        <a class="mt-3" href="{% url 'AppGestion:index' %}">
+            <button class="btn btn-success">Continuer</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

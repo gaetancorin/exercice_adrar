@@ -1,0 +1,12 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+<h1>{{ticket.evenement.nom}}</h1>
+<p>{{ticket.evenement.date_fin}}</p>
+<p>{{ticket.evenement.reservation.salle.nom}}</p>
+<p>{{ticket.evenement.type_evenement.nom}}</p>
+<p>{{ticket.evenement.reservation.utilisateur.username}}</p>
+<p>{{ticket.evenement.info}}</p>
+<p>{{ticket.evenement.place_restante}}</p>
+<p>{{ticket.evenement.illustration}}</p>
+<img src="{{ticket.evenement.illustration}}" alt="pas d'image">
+{% endblock %}

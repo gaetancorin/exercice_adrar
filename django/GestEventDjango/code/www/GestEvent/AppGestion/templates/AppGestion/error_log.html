@@ -1,0 +1,11 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+<div class="container">
+    <div class="row">
+        <h4 class="mt-4 mb-5">Identifiant ou mot de passe incorrecte</h4>
+        <a href="{% url 'AppGestion:login' %}">
+            <button class="btn btn-success">Se connecter à nouveau</button>
+        </a>
+    </div>
+</div>
+{% endblock %}

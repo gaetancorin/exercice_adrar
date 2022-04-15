@@ -1,0 +1,35 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+    {% if salle_list %}
+        <ul>
+            {% for salle in salle_list %}
+            <br>
+            <div class="media">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-5 element-event">
+                            <a href="{% url 'AppGestion:detailSalle' salle.id%}">
+                                <br>
+                                <div class="row justify-content-end">
+                                    <div class="col-1"></div>
+                                    <div class="col-11">
+                                        <div class="">
+                                            <h5 class="">Salle {{ salle.nom }}</h5>
+                                             <p class="text_event">Cette salle contient :<br>{{ salle.jauge_max_assise }} places assises et {{ salle.jauge_max_debout }} places debout</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br>
+                            </a>
+                        </div>
+                        <div class="col-6"></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Toutes les salles sont fermés</p>
+    {% endif %}
+{% endblock %}

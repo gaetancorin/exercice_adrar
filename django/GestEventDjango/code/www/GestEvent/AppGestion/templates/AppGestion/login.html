@@ -1,0 +1,22 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+
+<div class="container">
+    <br>
+    <div class="row">
+        <form id="login" method="post" action="{% url 'AppGestion:welcome' %}">
+            {% csrf_token %}
+          <div class="mb-3  col-7 col-sm-5 col-xl-3 ">
+            <label for="username" class="form-label">Nom de compte </label>
+            <input type="text" class="form-control" id="username" name="username" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">Merci d'inscrire le nom de compte donné lors de votre inscription</div>
+          </div>
+          <div class="mb-3  col-7 col-sm-5 col-xl-3">
+            <label for="password" class="form-label">Mot de passe</label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <button type="submit" value="Connexion" class="btn btn-success">Se connecter</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+Noms de variables :
+
+    Le PascalCase (La première lettre de chaque mot sera en majuscule) est utilisé pour les classe
+    Le camelCase (La première lettre de chaque mot sera en majuscule sauf le premier mot qui sera lui en minuscule) est utilisé pour les fonctions, méthodes
+    Le snakecase (Les mots seront en minuscule et séparés par un underscore) pour les variables
+    le ALL_CAPS (Les mots seront en majuscule séparé par un underscore) pour les constantes
+    l'underscore + snakecase pour les attributs privés d'une classe
+
+
+    Dans le fichier MaClass
+
+        class LaClass :
+
+           MA_CONSTANTE = 0.25
+
+           def __init__(self, ma_variable):
+            self._mon_attribut = ma_variable
+
+           def maFonction(self, mon_param, mon_param2):
+            return True
+
+
+description des méthodes et des fonctions :
+
+"""
+    params :
+    retour :
+    description :
+"""

@@ -1,0 +1,21 @@
+{% extends "AppGestion/index.html" %}
+{% block contenue %}
+<div class="container">
+    <br>
+    <div class="row">
+        <form id="acheter" method="post" action="{% url 'AppGestion:reservationBilletValide' event.id %}">
+            {% csrf_token %}
+            <div class="mb-3  col-7 col-sm-5 col-xl-3 ">
+                <label for="nb_place_assise" class="form-label">Nombre de place assise </label>
+                <input type="number" class="form-control" id="nb_place_assise" name="nb_place_assise" aria-describedby="emailHelp">
+            </div>
+            <div class="mb-3  col-7 col-sm-5 col-xl-3 ">
+                <label for="nb_place_debout" class="form-label">Nombre de place debout </label>
+                <input type="number" class="form-control" id="nb_place_debout" name="nb_place_debout" aria-describedby="emailHelp">
+            </div>
+            <button type="submit" value="Valider" class="btn btn-success">Valider achat(s) billet(s) </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
