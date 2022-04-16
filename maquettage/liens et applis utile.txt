@@ -1,0 +1,17 @@
+Applis et liens pour le maquettage:
+
+Applis =
+Figma = Permet de faire Zoning,Wireframe,Mockup
+Balsamiques Wireframes = Comme Figma en moins bien
+Pencil = Comme Figma en moins bien/ possèdes des template de bouton et barre interessant
+mockflow = pas essayer
+
+Liens =
+https://fr.lipsum.com/ = créer du texte facilement
+https://picsum.photos/ = choper des images libres de droit facilement
+https://www.gloomaps.com/ = arborescence facile
+https://coolors.co/ = palettes de couleurs
+https://paletton.com/ = pareil moins bien
+https://color.adobe.com/ = tester couleur font et background
+
+https://123timestamp.fr/ = convertisseur timestamp en jour/mois/annee
