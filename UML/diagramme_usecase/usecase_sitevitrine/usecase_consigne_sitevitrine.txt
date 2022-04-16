@@ -1,0 +1,7 @@
+Une entreprise de distribution de bouteilles d'eau, elle souhaite un site vitrine pour présenter son activité avec les fonctionnalités suivantes :
+-rechercher un produit :
+-gestion de présentation de l'entreprise : 
+-Noter les produits
+-Commenter un produit, 
+-gestion faq,
+plusieurs acteurs (visiteur, utilisateur, admin)

@@ -1,0 +1,6 @@
+notre entreprise souhaite créer un  site blog qui  va contenir :
+-gestion des articles,
+-gestion des commentaires des articles,
+-gestion des comptes.
+Les acteurs :visiteur, utilisateur, admin.
+Générer le diagramme de cas d'utilisation ( ajouter la généralisation)

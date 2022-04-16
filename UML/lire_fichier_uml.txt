@@ -1,0 +1,3 @@
+Il faut installer l'application "StarUml" pour lire les fichiers UML.
+
+Staruml = créer des diagramme UML (diagramme use_case, activité, séquence)
