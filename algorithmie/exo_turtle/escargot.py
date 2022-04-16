@@ -1,8 +1,6 @@
 from turtle import *
 speed(0)
 
-# FIG1
-
 # Coquille
 color('green')
 width(5)
@@ -27,7 +25,7 @@ for _ in range(6):
     fd(4)
     seth(90)
     fd(4)
-# Eyes
+# Eyes1
 seth(180)
 circle(-10,160)
 circle(-10,160)

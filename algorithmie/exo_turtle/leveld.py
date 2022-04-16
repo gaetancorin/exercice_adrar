@@ -2,13 +2,13 @@ from turtle import *
 
 
 #D10
-# color('yellow')
-# width(5)
-# longueur = 50
-# for _ in range(10):
-#     fd(longueur)
-#     right(90)
-#     longueur = longueur + 25
+color('yellow')
+width(5)
+longueur = 50
+for _ in range(10):
+    fd(longueur)
+    right(90)
+    longueur = longueur + 25
 
 #D11
 # color('grey')

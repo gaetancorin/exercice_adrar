@@ -103,10 +103,6 @@
 #     a += 1
 #     if a == 4:
 #         a = 0
-    
-        
-
-
 
 
 # Exercice 7 : écrire dans la console :
@@ -186,15 +182,7 @@
 #     for a in range(1,7):
 #         print(a, i)
 
-
-
-
-
 # Exercice 11 : adapter l'exercice précédent pour enlever les doublons (on ne veut pas afficher 1 2 et 2 1, mais seulement l'un des deux).
-
-# for a in range(1,7):
-#     for b in range(a,7):
-#         print( a, b)
 
 # for a in range(1,7):
 #     for b in range(1,7):
@@ -257,11 +245,9 @@
 # 9x8 = 72
 # 9x9 = 81
 
-a = 1
-b= 1
-for a in range(10):
-    print(a,'x',b,'=',a*b)
-
+# for a in range(10):
+#     for b in range(10):
+#         print(a,'x',b,'=',a*b)
 
 
 # Exercice 16 : calculer 1+2+3+4+...+99+100. (Vous devriez trouver 5050)

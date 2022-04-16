@@ -1,0 +1,5 @@
+*Ouvrir qcm_py.html sur un navigateur
+*Ouvrir mystery.py sur Vscode
+
+*Essayer de deviner sur Vscode ce que chaque fonction va faire
+ et inscrire le résultat sur le navigateur. 

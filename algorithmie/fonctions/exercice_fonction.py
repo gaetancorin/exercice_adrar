@@ -1,7 +1,8 @@
 # #### Écrire une fonction f1 qui ne prend rien en entrée, et qui affiche 17 dans la console.
 
-# def f1():
-#     print(17)
+def f1():
+    print(17)
+f1()
 
 # #### Écrire une fonction f2 qui ne prend rien en entrée, et qui retourne 17.
 
@@ -149,14 +150,14 @@
 
 # Fonction qui prend en entrée un tableau et qui retourne le maximum de ce tableau.
 
-def tableau1(l):
-    a = l[0]
-    for i in range(len(l)):
-        if a < l[i]:
-            a = l[i]
-        else:
-            pass
-    return a
+# def tableau1(l):
+#     a = l[0]
+#     for i in range(len(l)):
+#         if a < l[i]:
+#             a = l[i]
+#         else:
+#             pass
+#     return a
 
 
 # ++ Fonction qui prend en entrée un tableau de nombres positifs et qui retourne la deuxième plus grande valeur du tableau.

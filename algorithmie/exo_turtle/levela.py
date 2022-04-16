@@ -1,12 +1,12 @@
 from turtle import *
 
 # A1
-# color('red')
-# width(5)
-# setheading(270)
-# forward(100)
-# setheading(0)
-# forward(50)
+color('red')
+width(5)
+setheading(270)
+forward(100)
+setheading(0)
+forward(50)
 
 # A2
 # color('yellow')
@@ -134,21 +134,21 @@ from turtle import *
 # circle(-100,180)
 
 # A12
-color('green')
-width(5)
-seth(90)
-circle(-50,180)
-fd(100)
-circle(50,180)
-up()
-seth(0)
-fd(50)
-down()
-color('orange')
-seth(270)
-circle(50,180)
-fd(100)
-circle(-50,180)
+# color('green')
+# width(5)
+# seth(90)
+# circle(-50,180)
+# fd(100)
+# circle(50,180)
+# up()
+# seth(0)
+# fd(50)
+# down()
+# color('orange')
+# seth(270)
+# circle(50,180)
+# fd(100)
+# circle(-50,180)
 
 
 input()
