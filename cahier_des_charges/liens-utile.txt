@@ -1,0 +1,2 @@
+gantproject= (calendrier pour organiser son travail)
+https://www.hubspot.fr/make-my-persona = créer un persona avec google

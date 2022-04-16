@@ -1,6 +1,6 @@
-*Ouvrir le dossier exo_turtle sur Vscode.
+*Ouvrir le dossier boucle_variable sur Vscode.
 *Ouvrir terminal de commande
 *faire chemin jusqu'au fichier
 *exécuter le fichier(écrire "python [nomdufichier]")
 
-(il faut avoir installer l'extension python)
+(il faut avoir installer l'extension python sur Vscode)

@@ -1,0 +1,5 @@
+*installer le logiciel Processing
+*Ouvrir l'appli processing, puis ouvrir le fichier .pyde
+*lecture dans processing
+
+(virtualisation_2D consiste a créer des objets en 2D avec python)

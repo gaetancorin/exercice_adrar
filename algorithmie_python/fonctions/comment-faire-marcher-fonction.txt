@@ -1,0 +1,6 @@
+*Ouvrir le dossier exo_turtle sur Vscode.
+*Ouvrir terminal de commande
+*faire chemin jusqu'au fichier
+*exécuter le fichier(écrire "python [nomdufichier]")
+
+(il faut avoir installer l'extension python sur Vscode)
