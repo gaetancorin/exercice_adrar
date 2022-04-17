@@ -1,12 +1,13 @@
-Comment installer une BDD avec mysql, Xampp, workbench:
+Comment installer une BDD avec Xampp, mysql workbench:
 
 1 - Télécharger Xampp (serveur local comme wampp, fait apache et mysql)=
 	https://www.apachefriends.org/fr/index.html
+(si wamp: voir diapo telecharger wamp)
 
 2 - Télécharger Mysql workbench sur le PC pour pouvoir gerer sa BDD=
 	(choisir Mysql workbench sur le site officiel Mysql)
 	https://dev.mysql.com/downloads/
 
-Attention ! installer Mysql workbench 8.0.23 ! 
+Attention ! installer Mysql workbench 8.0.23 ou avant! 
 Car au dessus de cette version, workbench oblige de mettre un SSL, et xampp n'en a pas.
 	

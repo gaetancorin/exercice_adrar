@@ -1,0 +1,8 @@
+installer git:
+https://git-scm.com/
+
+installer github desktop:
+https://desktop.github.com/
+
+aide ordre github sur gitbash=
+http://ndpsoftware.com/git-cheatsheet.html

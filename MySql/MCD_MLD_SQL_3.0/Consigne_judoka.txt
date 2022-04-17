@@ -1,0 +1,6 @@
+Créer une base de données depuis le cahier des charges non structuré ci-dessous :
+Un club de judo à besoin de stocker les informations de ces adhérents  :
+judoka (nom, prénom, age, sexe)
+les judokas ils vont posséder une ceinture (couleur_ceinture)
+les judokas pourront participer à  des compétitions ( nom de compétion ,date_debut, date_fin).
+Réaliser le MCD et MLD correspondant.

@@ -3,10 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="3d699ea4-86fd-42f1-bfda-50725627bf4d" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithmie/algoblocs/exercices_boucles.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithmie/algoblocs/fichierlibre.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/algorithmie/algoblocs/levelb.py" beforeDir="false" afterPath="$PROJECT_DIR$/algorithmie/algoblocs/levelb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logiciel a installer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/logiciel a installer.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCD_MLD/Looping/MCD_location_voiture/exercice_location_voiture.loo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCD_MLD/Looping/MCD_parc_informatique_correction/MCD_TP_parcinformatique_correction.loo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCD_MLD/Looping/MCD_parc_informatique_correction/MCD_TP_parcinformatique_noncorriger.loo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCD_MLD/Looping/MCD_site_ecommerce/exercice_site_ecommerce.loo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCD_MLD/Looping/MCD_ticket/exercice_ticket.loo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MCD_MLD/Looping/MCD_usineproduction/exercice_usine_production.loo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MySql/installer sa BDD mysql/Comment installer une BDD mysql,.txt" beforeDir="false" afterPath="$PROJECT_DIR$/MySql/installer sa BDD mysql/Comment installer une BDD mysql,.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/git/TP01_GIT_MM.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/wordpress/aidewordpress.txt" beforeDir="false" afterPath="$PROJECT_DIR$/wordpress/aidewordpress.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +39,9 @@
       <module name="EXERCICE_ADRAR" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="C:\Users\gaeta\Documents\EXERCICE_ADRAR\pycharm\venv\Scripts\python.exe" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
