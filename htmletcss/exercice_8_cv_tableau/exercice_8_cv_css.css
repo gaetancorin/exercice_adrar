@@ -1,0 +1,69 @@
+body{
+    margin: 5px;
+    min-width: 300px;
+    
+}
+#border_body{
+    max-width: 800px;
+    min-width: 250px;
+    border: solid 2px black;
+    padding: 20px;
+    background-image: linear-gradient(50deg, rgba(178,227,248,0.5), rgba(255,255,255,1));
+}
+
+
+h1{
+    text-align: center;
+    margin-top: 0px;
+    margin-left: 42%;
+    font-size: 40px;
+    display: inline-block;
+}
+
+#image1{
+    width: 25%;
+    min-width: 70px;
+    float: right;
+}
+
+p{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+
+#div_data_personnel{
+    width: 50%;
+    border-left: solid rgb(173, 1, 1) 3px;
+}
+#poste_recherche{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: rgb(173, 1, 1);
+}
+
+ul{
+    border-left: solid rgb(173, 1, 1) 3px;
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+caption{
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+table{
+    border-collapse: collapse;
+}
+
+td, th{
+    border: rgb(173, 1, 1) 2px solid;
+    text-align: center;
+    padding:3px
+}
+
+th{
+    background-color: rgb(218, 218, 218);
+}

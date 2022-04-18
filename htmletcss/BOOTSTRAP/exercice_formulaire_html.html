@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>exercice_formulaire_html</title>
+        <meta charset="utf-8"/>
+        <link href="" rel="stylesheet"/>
+    </head>
+    <body>
+        <h1>Exercice de formulaire</h1>
+        <br/>
+    <fieldset>
+    <legend>Exercice de ouf mon frère</legend>
+        <form method="POST">
+            <!-- Bouton radio-->
+            <label for="radio1">radio1</label>
+            <input type="radio" id="radio1" name="radio" value="radio1" checked/>
+            <label for="radio2">radio2</label>
+            <input type="radio" name="radio" value="radio2" id="radio2"/>
+            <label for="radio3">radio3</label>
+            <input type="radio" name="radio" id="radio3" value="radio3"/>
+            <br/>
+            <br/>
+        <div>
+            <!-- Liste a option-->
+            <label for="liste">Quel dieu je suis?</label>
+            <select name="nom_de_dieu" id="liste">
+                <option value="Jesus">Jésus</option>
+                <option value="Zeus">Zeus</option>
+                <option value="Hercule">Hercule</option>
+            </select>
+        </div>
+            </br>
+            <br/>
+        <div>
+            <!--Liste a option et groupe ! Wow trop fort !-->
+            <label for="niveau">Quel skill de dieu j'ai?</label>
+            <select name="niveau" id="niveau">
+                <optgroup label="fort">
+                    <option value="tres_fort">Le meilleur</option>
+                    <option value="fort">Le deuxième meilleur</option>
+                </optgroup>
+                <optgroup label="nul">
+                    <option value="nul">Pas bon</option>
+                    <option value="zero">Le zéro des héros !</option>
+                </optgroup>
+            </select>
+        </div>
+        <br/>
+        <br/>
+        <!--Bouton envoyer-->
+        <input type="submit" value="envoyer"/>
+        <input type="reset" value="reset"/>
+        <input type="button" value="bouton_nul"/>
+        <input type="image" src="pasdeimagetantpis" value="wtf_une_image?"/>
+
+
+        </form>
+    </fieldset>
+    </body>
+</html>

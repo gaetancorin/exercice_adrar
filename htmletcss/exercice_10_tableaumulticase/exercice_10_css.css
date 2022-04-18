@@ -1,0 +1,23 @@
+#tableau1 > caption{
+    color:purple;
+    font-weight: 800;
+    font-size: 35px;
+}
+
+td, th{
+    border: solid black 2px;
+    text-align: center;
+    width: 30%;
+}
+
+table{
+    border-collapse: collapse;
+    border: solid purple 5px;
+    width: 90vw;
+    height: 40vh;
+    
+}
+th{
+    background-color: rgba(255, 255, 0, 0.5);
+}
+

@@ -1,0 +1,10 @@
+Exercice:
+A partir d'un template bootstrap, se servir d'une bibliothèque pour mettre un effet hover sur des images.
+
+bibliothèque: 
+http://www.imagehover.io/
+fichier a installer en css pour bon fonctionnement:
+imagehover.css
+(ou imagehover.min.css)
+
+<figcaption>= balise html= permet de mettre un texte dans une image

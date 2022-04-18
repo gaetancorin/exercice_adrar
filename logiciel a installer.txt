@@ -2,11 +2,11 @@ Discord = discuter avec d'autres personnes
 Gimp = logiciel photomontage
 
 Visual studio Code = logiciel de codage
-Processing = faire fonctionner des trucs en python
+Processing = faire fonctionner des trucs 2D en python
 GanttProjectt = calendrier pour organiser son travail(cahierdescharges,peprod,prod,deployement,etc)
 Staruml = créer des diagramme UML (diagramme use_case, activité, sequence)
 looping = Faire le MCD ET MLD des BDD
-xampp = créer une BDD local
+xampp = créer une serveur pour BDD local
 mysql workbench = logiciel pour écrire son mysql
 Git = télécharger pour créer des dépot git
 Github Desktop = Aide a gérer les git sans passer par le tableau de commande

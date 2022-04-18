@@ -1,0 +1,12 @@
+font    = https://fonts.google.com/
+palettes de couleurs     = https://coolors.co/
+tester couleur font et background     = https://color.adobe.com/
+créer du texte facilement     = https://fr.lipsum.com/
+choper des images libres de droit facilement     = https://picsum.photos/
+
+
+jeu s'entrainer au selecteur complexe(selecteur et pseudoclasse) = https://flukeout.github.io/
+
+
+Firefox  responsive mode : shift + ctrl + m
+Chrome : same but only in dev mode
