@@ -2,7 +2,8 @@
 let monTxt = document.body.querySelector("textarea");
 let rendu = document.body.querySelector("div");
 monTxt.value = localStorage.getItem("monSuperText");
-if (monTxt.value == true){
+if (monTxt.value){
+    console.log("ca fonctionne");
     rendu.innerHTML = localStorage.getItem("monSuperText");
 }
 monTxt.addEventListener("keyup", function(){

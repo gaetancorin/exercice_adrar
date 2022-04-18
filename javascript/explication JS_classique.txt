@@ -1,0 +1,29 @@
+javascript= ";" a la fin de chaque ordre.
+Il vaut mieux utiliser " lorsqu'on ecrit du js pour etre en raccord avec format json.
+// commentaire //
+/**
+	commentaire
+*/
+let variable 	= créer variable
+var variable = anciennement créer variable
+variable			= appeller variable
+console.log("txt")=ecrire dans la console
+"str"+variable+"l\"eau" = concatenation 
+`str ${variable}` = concatenation (marche avec ``(altgr+7 X2), pas avec ' ' ni " ")
+.length=  compte le nombre de lettre dans un str et le transforme en int
+.push = 			ajouter a un tableau en dernier(str, int, tableau)
+.pop =				supprimer a un tableau le dernier
+
+
+function nomfonction(para1,para2){			(les () sont obligatoires)
+	a = para1+para2;
+	return a;
+}
+
+if(){;}		else if(){;} 		else{;}
+
+console.log(age > majorité ? "OK":"NON"); = opérateur ternaire
+
+"2" == 2 egalité simple
+2 === 2 egalité strict
+& ET  || OU(altgr+6)

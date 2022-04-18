@@ -3,7 +3,6 @@ console.log(leTitre);
 lesLiens = document.body.getElementsByTagName("a");
 console.log(lesLiens);
 
-
 lesLiens[0].addEventListener("click", myFunction);
 
 function myFunction() {
