@@ -1,0 +1,22 @@
+*installation virtualbox.
+
+*verifier que le pc acepte la virtualisation en faisant f2 en rallumant l ordi.
+(Voir les photos verif f2 1 et f2-2). "Intel virtualization technology" doit etre enable.
+ 
+*vérifier les "recommandation minimum windows 10" sur google
+(carte mere 4096mo et processeur 2coeur)
+
+*Créer une machine virtuel avec les recommandation minimum windows10
+
+*relier le IPO de windows10 a la machine virtuel(voir photos installation ISO)
+
+*démarrer la machine, installer windows 10
+
+*désistaller la connexion internet sur le hyperviseur(simulateur)
+lors de l installation de windoiws
+
+
+pour créer un nouveau disque dur:
+(voir photos creation_disquedur)
+aller sur le VM et touche windows+x , gestion des disques,
+clique droit sur le nouveau disque, ...

@@ -1,0 +1,11 @@
+/etc/hosts => nom domaine --@dresse IP =>résolution de nom en interne
+/etc/hostname => nom machine
+/etc/apt/sources.list => depots
+/etc/network/interfaces => réseau
+/etc/resolv.conf => @dresse de son DNS
+
+1 - /etc/hosts = nom domaine -@dresse IP = résolution nom interne
+2 - /etc/hostname = nom machine
+3 - /etc/apt/sources.list = dépôts
+4 - /etc/network/interfaces = réseaux 
+5 - /etc/resolv.conf = @dresse du serveur DNS

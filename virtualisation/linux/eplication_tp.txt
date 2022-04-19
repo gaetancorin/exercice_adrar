@@ -1,0 +1,3 @@
+installation machine 1.1 
+configuration reseau en reseau static 1.3
+SSH 1.3.2
