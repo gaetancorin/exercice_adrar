@@ -28,3 +28,4 @@ document.addEventListener("click", function(unEvent) {
           monImg.style.top = unEvent.y - taille /2 + "px";
           //On oubli pas de placer l'image dns la page
           document.body.appendChild(monImg);
+})

@@ -1,15 +1,30 @@
 let a = document.createElement("h1"); = crée un élement
 let variable= document.body.getElementsByTagName("p"); = prend tous les elements du tagname et met dans une variable
 document.body.querySelector("h1"); = retourne le premier element trouver
+document.body.append(monelement) = ajoute le ou les element a la fin du body
+document.body.appendChild(monelement) = ajout l element a la fin du body(uniquement objet Node)
+(peut être remplacé par append)
 
 a.innerText = "Text"; = ajoute du texte ( str,int,array)
 a.innerHTML= ajoute de l'html brut
 a.classList.add('nomdeclasse') = rajoute une classe a une balise html
-a.setAttribute("style", "display:block"); = ajoute un attribut dans la balise html
+a.setAttribute("style", "display:block"); = ajoute un attribut dans la balise html de a
 
 document.body.insertBefore(monp, monh1); = met la variable avant l'autre variable ciblé
 
 p.addEventListener("click", myFunction){} = voir exo 7
-click(exo7), mouseout(exo8), keypress(exo9), keyup(exo11)
+click(exo7), mouseout(exo8), keypress(exo9), keyup(exo11), load(exo15),
 
 p.value.length = retourne le nombre de caractere d une balise p
+
+setTimeout(mafonction, temps) = définit un temps donner avant de faire une action(voir exo12)
+setInterval(mafonction, temps) = fais la fonction et laisse le temps 
+									avant de recommencer en boucle(voir exo12)
+monformulaire.reset()= reinitialise le formulaire
+event.preventDefault()= lors d'un addEventListener avec un event, annule l'event si possible
+
+Array.from() = pas compris voir exo15
+.map = pas compris voir exo 15
+
+
+Pour faire quelque chose avec un element = console.log et chercher dedans

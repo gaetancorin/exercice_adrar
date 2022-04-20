@@ -11,7 +11,8 @@ monTitre.addEventListener("click", function(){
         else{
             monTitre.innerHTML = "GO GO GO !";
         }
-        timer -= 1
+        timer -= 1;
+        console.log(timer);
     }
 
 });
