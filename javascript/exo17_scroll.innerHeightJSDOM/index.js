@@ -1,9 +1,10 @@
 let monForm = document.body.querySelector(".bar");
 document.addEventListener("scroll", function(){
-  // console.log(document.body.scrollHeight);
-  // console.log(innerHeight);
-  // console.log(scrollY);
+
   let scrollMax = document.body.scrollHeight - innerHeight;
+  // console.log("scrollHeight=", document.body.scrollHeight);
+  // console.log("innerHeight=", innerHeight);
+  // console.log("scrolly=", scrollY);
   let  onEstOu = scrollY / scrollMax * 100;
   console.log(onEstOu);
   // monForm.setAttribute("style","width:"+onEstOu+"%;");

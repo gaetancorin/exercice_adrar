@@ -13,7 +13,7 @@ a.setAttribute("style", "display:block"); = ajoute un attribut dans la balise ht
 document.body.insertBefore(monp, monh1); = met la variable avant l'autre variable ciblé
 
 p.addEventListener("click", myFunction){} = voir exo 7
-click(exo7), mouseout(exo8), keypress(exo9), keyup(exo11), load(exo15),
+click(exo7), mouseout(exo8), keypress(exo9), keyup(exo11), load(exo15), scroll(exo17),
 
 p.value.length = retourne le nombre de caractere d une balise p
 
@@ -26,5 +26,8 @@ event.preventDefault()= lors d'un addEventListener avec un event, annule l'event
 Array.from() = pas compris voir exo15
 .map = pas compris voir exo 15
 
+scrollHeight = taille total du scroll d'un element en pixel (voir exo17)
+innerHeight = taille total de la hauteur de la fenetre
+scrollY = La ou le haut de page est sur le scroll en pixel
 
 Pour faire quelque chose avec un element = console.log et chercher dedans

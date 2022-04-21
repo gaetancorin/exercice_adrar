@@ -6,6 +6,7 @@ Il vaut mieux utiliser " lorsqu'on ecrit du js pour etre en raccord avec format 
 */
 let variable 	= créer variable
 var variable = anciennement créer variable
+const variable = comme variable mais qui ne sera jamais modifier
 variable			= appeller variable
 console.log("txt")=ecrire dans la console
 "str"+variable+"l\"eau" = concatenation 
@@ -13,6 +14,14 @@ console.log("txt")=ecrire dans la console
 .length=  compte le nombre de lettre dans un str et le transforme en int
 .push = 			ajouter a un tableau en dernier(str, int, tableau)
 .pop =				supprimer a un tableau le dernier
+a.includes(b) = si b est inclus dans a
+a.toFixed(2) = arrondis a 2 chiffres après la virgule
+a.join("-") = prend la liste a est en fait une chaine de caractère séparé de -
+a.test(b) = cherche a dans le str b, retourne True/false, utile sur les regex
+
+try{} = essayer de faire
+catch(error){} = si le code ne fini pas a cause d'une erreur, attraper l'erreur et faire ..
+throw msgerreur= arrete le programme, ou renvois a catch sur un try/catch gestion d erreur(voir exo23)
 
 
 function nomfonction(para1,para2){			(les () sont obligatoires)
@@ -20,10 +29,24 @@ function nomfonction(para1,para2){			(les () sont obligatoires)
 	return a;
 }
 
+(param1 , param2) => {		(fonction fléché, parenthèse pas obligatoire si 1 seul argument)
+   instructions
+}
+
 if(){;}		else if(){;} 		else{;}
 
 console.log(age > majorité ? "OK":"NON"); = opérateur ternaire
+a.forEach(nomquejeveut => function() )
+
+async = permet de faire une fonction qui tournera en asynchrone(attendra la reponse avant de passer a la suite)
+await = permet une action asynchrone dans une fonction avec async uniquement, 
+	le code s'arrete et reprend une fois une reponse obtenu(voir exo22)
+fetch= va chercher une données dans une url/ lance une requete et retourne une response
+response.json = transforme la response inexploitable en tableau associatif/objet utilisable
 
 "2" == 2 egalité simple
 2 === 2 egalité strict
 & ET  || OU(altgr+6)
+
+CLASS = voir exo 20,21,23
+regex(email)= exo 24

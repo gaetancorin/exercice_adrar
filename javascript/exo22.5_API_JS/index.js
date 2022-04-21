@@ -1,8 +1,8 @@
 let counter = document.body.querySelector("h2");
 const majCounter = async() => {
-    let data = await fetch('https://api.countapi.xyz/hit/sltcava/visites')
+    let data = await fetch('https://api.countapi.xyz/hit/sltcava/visites');
     // console.log(data)
-    let count = await data.json()
+    let count = await data.json();
     // console.log(count)
     counter.innerHTML = count.value;
     counter.style.filter = "blur(0)";
@@ -11,9 +11,9 @@ majCounter()
 
 let apiAdrar = document.body.querySelector("p");
 const majApiAdrar = async() => {
-    let dataAdrar = await fetch("https://adrardev.fr/task/api/task.php?cat")
+    let dataAdrar = await fetch("https://adrardev.fr/task/api/task.php?cat");
     // console.log(dataAdrar)
-    let countAdrar = await dataAdrar.json()
+    let countAdrar = await dataAdrar.json();
     // console.log(countAdrar)
 
     // for (i=0; i<countAdrar.length; i++){

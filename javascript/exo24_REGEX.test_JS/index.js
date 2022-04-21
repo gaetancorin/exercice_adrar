@@ -1,15 +1,3 @@
-// let email = document.body.querySelector("input");
-// console.log(email.value)
-
-// document.addEventListener("keyup", myFunction);
-
-// function myFunction() {
-//     console.log(email.value);
-// }
-// MARCHE PAS
-
-
-
 const login = document.querySelector("#login");
 const password = document.querySelector("#password");
 const resultatPassword = document.querySelector("#resultatPassword");

@@ -14,6 +14,7 @@ class CompteBancaire{
     retrait(somme){
         try {
             if (somme> this.montant) {
+                // throw sert a arreter le programme ou renvois un message d erreur a catch
                 throw this.nom + ", retrait de: " +  somme + " refusé avec solde: " + this.montant;           
             }
             this.montant -= somme;
