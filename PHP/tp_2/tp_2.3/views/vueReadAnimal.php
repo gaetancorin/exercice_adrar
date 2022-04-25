@@ -31,24 +31,18 @@
         
     </form>
     <?php
+
         if (isset($_POST['pets'])){
 
-            $allAnimaux = $animaux->readAll();
-            // var_dump($animaux);
-            // echo $animaux;
+            $animaux->setNom($_POST['pets']);
 
-            while($donnees = $allAnimaux->fetch()){
-                
-                if ($_POST['pets'] ==$donnees["nom"]){
-                    echo 'L\'animal que vous avez choisi est: </br>
-                '.$donnees["nom"].',</br> de couleur '.$donnees["couleur"].',</br> et de race '.$donnees["id_race"].'.';
-                }
-        
+            $oneanimal = $animaux->readSingle();
+
+            while($donnees = $oneanimal->fetch()){
+                echo 'L\'animal que vous avez choisi est: </br>'.$donnees["nom"].',</br> de couleur '.$donnees["couleur"].',</br> et de race '.$donnees["nom_race"].'.';
             }
-            
 
-        }
-     
+        }    
     ?>
 </body>
 </html>

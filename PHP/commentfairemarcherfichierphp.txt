@@ -1,4 +1,4 @@
 mettre fichier dans C: / xampp/ htdoc.
-ouvrir serveur xampp, activer apache pour avoir un serveur local
+ouvrir serveur xampp, activer apache pour avoir un serveur local et mysql si besoin
 aller chercher son dossier sur serveur local dans
 google chrome et http://localhost/exercice_adrar/php

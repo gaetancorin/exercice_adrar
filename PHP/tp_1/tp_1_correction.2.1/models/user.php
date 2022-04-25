@@ -21,8 +21,7 @@ class User
     }
 
     // méthode qui retourne 1 utilisateur selon son mail avec jointure
-    public function getSingleUser()
-    {
+    public function getSingleUser(){
         $req = $this->connect->prepare(
             'SELECT
                     *

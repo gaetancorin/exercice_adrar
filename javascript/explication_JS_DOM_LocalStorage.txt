@@ -1,10 +1,10 @@
 Le localStorage est disponible sur la navigateur internet.
-Il ressemble un peu au cookie et a la méthode POST d'un formulaire.
+Il ressemble un peu au cookie ou a la méthode POST d'un formulaire.
 On y accède sur le navigateur de la même facon.
 (voir exo 11 pour mise en condition)
 
 localStorage.getItem("monSuperText"); 
-== prend le contenu de la key "monSuperText" dans le localStorage
+== prend/lit le contenu de la key "monSuperText" dans le localStorage
 
 localStorage.setItem("monSuperText", monTxt.value); 
 ==prend monTxt.value et le met dans le localStorage avec la key "monSuperText"
