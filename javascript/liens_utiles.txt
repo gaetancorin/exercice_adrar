@@ -1,0 +1,25 @@
+https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer
+= colorier les parentheses et crochets sur VSCode
+
+https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow
+= colorier l' indentation sur VSCode ( j aime pas trop)
+
+https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+= ne pas avoir a f5 la page a chaque fois sur le navigateur sur VSCode
+
+https://jshint.com/
+= Pour aider a débugger, rentrer sur js dans le site web.
+
+
+
+https://www.w3schools.com/jsref/dom_obj_event.asp=
+liste des Event du DOM
+
+https://miro.medium.com/max/2000/1*HC1PWdue5ZofBEwOMEsBBA.png
+= difference cookie/localstorage/sessionstorage
+
+https://loremipsum.io/fr/21-of-the-best-placeholder-image-generators/
+= meilleur images random
+
+https://regexr.com/3e48o
+= explication d'un regex
