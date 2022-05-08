@@ -1,1 +1,0 @@
-# exo_django_election
