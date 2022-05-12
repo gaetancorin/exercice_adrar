@@ -1,0 +1,59 @@
+dockerfile = fichier qui décrit ce qu'on va faire dans l'image:
+le systeme d'exploitation,  installer python etc
+ou image plus avancé
+
+dockerfile permet de realiser des execution en dehors d'un conteneur(comme un ISO),
+puis crée des images, 
+met toutes les installations (ISO) dans le conteneur
+puis réalise les execution de "entry point" dans le conteneur plein
+
+
+FROM= (de quel image on se base ex:python3)
+RUN = ligne de commande linux.
+COPY = copie
+EXPOSE = permet de rendre disponible des ports pour faire tourner l image
+ENTRYPOINT = (execute des ordres dans le conteneur une fois le conteneur remplis du (ISO))
+
+
+////////////////////////////////////
+
+Si on a plusieurs images a demarrer: docker-compose.yml
+
+on va declarer nos services=
+services:
+	nom du service(container)
+		image = qui indique l image a utiliser
+		OU build = qui indique l'image a utiliser grace a un DOCKERFILE
+		ports a attribuer(port de la machine:port de l image)
+		volumes ( fait des liens comme le mapping de volumes ***)
+		volumes static_volume:/code/static = va chercher les dossiers de docker vers mon conteneur
+		volumes ./static_volume:/code/static = va chercher les dossiers de mon windows vers mon conteneur
+		Volumes crée des dossiers identiques, comme un pull github.
+		depends-on: -django = pour exister, django doit exister aussi. Il ne lis pas le contenu
+
+
+////////////////////////////////////
+
+docker run=
+-d = détaché pour faire autre chose en meme temps
+-p = pour attribuer des ports
+--name = donne un nom au conteneur
+-v = *** mapping de volume (permet de lié un fichier de windows a un fichier de mon conteneur, 
+			puis modifie les 2 en meme temps)
+--restart = definir la politique de redemarrage en cas de panne( --restart always)
+
+docker run -d --build/ enlever -d pour voir ou est l'erreur
+
+
+docker logs -f = voir les differents messages d'erreurs
+docker image
+docker rm
+docker ps = affiche les conteneur ps -a affiche tous
+docker stop
+docker start
+
+
+////////////////////////////
+
+une fois dans le conteneur on va pouvoir utiliser des ordres dans le conteneur:
+docker exec -it [nom du conteneur] bash (interactive terminal)

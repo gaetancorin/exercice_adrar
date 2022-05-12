@@ -1,6 +1,6 @@
 *installation virtualbox.
 
-*verifier que le pc acepte la virtualisation en faisant f2 en rallumant l ordi.
+*verifier que le pc accepte la virtualisation en faisant f2 en rallumant l ordi.
 (Voir les photos verif f2 1 et f2-2). "Intel virtualization technology" doit etre enable.
  
 *vérifier les "recommandation minimum windows 10" sur google
@@ -12,8 +12,8 @@
 
 *démarrer la machine, installer windows 10
 
-*désistaller la connexion internet sur le hyperviseur(simulateur)
-lors de l installation de windoiws
+*désinstaller la connexion internet sur le hyperviseur(simulateur)
+lors de l installation de windows
 
 
 pour créer un nouveau disque dur:
