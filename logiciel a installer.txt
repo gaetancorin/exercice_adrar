@@ -10,6 +10,10 @@ xampp = créer une serveur pour BDD local
 mysql workbench = logiciel pour écrire son mysql
 Git = télécharger pour créer des dépot git
 Github Desktop = Aide a gérer les git sans passer par le tableau de commande
+Gitlab = faire du CICD
+Oracle VM Virtualbox = créer des VM.
+MobaXterm = gerer VM en SSH
+Putty = gerer VM en SSH
 
 site sans téléchargement:
 Gloomaps = créer des arborescence
