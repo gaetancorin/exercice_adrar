@@ -1,4 +1,20 @@
 voir discord fin de maquettage
 et le repository github special wordpress
 
-https://www.youtube.com/watch?v=kKsR3T9dFUc
+INSTALLER WORDPRESS=
+télécharger xampp, activer apache et mysql
+télécharger le zip sur site de wordpress
+créer fichier dans htdoc et mettre le zip dedans
+créer une bdd vide avec phpmyadmin au MEME NOM du dossier dans htdoc
+lancer le site avec localhost/nomdudossier
+
+METTRE FICHIERS WORDPRESS dans un sousdossier=
+dabors indiquer l'url sur le wordpress(reglages, general, changer 
+Adresse web de WordPress (URL)   et  Adresse web du site (URL)  avec la meme url
+puis enregistrer,  le site crash.
+on déplace tous les fichiers dans le sousdossier qu'on a créer
+et voila !
+
+FAIRE DU MULTISITE= https://wpformation.com/multisite-wordpress/
+probleme(le site2 prend le l'url de site1+sousdomaine)
+les 2 sites utilise le meme theme mais pas le meme template
