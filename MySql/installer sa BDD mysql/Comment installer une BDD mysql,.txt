@@ -10,4 +10,5 @@ Comment installer une BDD avec Xampp, mysql workbench:
 
 Attention ! installer Mysql workbench 8.0.23 ou avant! 
 Car au dessus de cette version, workbench oblige de mettre un SSL, et xampp n'en a pas.
-	
+
+Pour ce connecter a PHPmyadmin= indiquer root et pas de mdp
