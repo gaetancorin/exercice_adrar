@@ -16,5 +16,8 @@ on déplace tous les fichiers dans le sousdossier qu'on a créer
 et voila !
 
 FAIRE DU MULTISITE= https://wpformation.com/multisite-wordpress/
-probleme(le site2 prend le l'url de site1+sousdomaine)
-les 2 sites utilise le meme theme mais pas le meme template
+probleme(le site2 prend l'url de site1+sousdomaine)
+le site prend des sous-repertoire a la place des sous-domaine 
+https://kinsta.com/fr/blog/multisite-wordpress/
+https://kinsta.com/fr/blog/sous-domaine-wordpress/
+les 2 sites utilise le meme theme mais pas les mêmes modèles
