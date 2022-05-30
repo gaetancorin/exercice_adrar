@@ -21,3 +21,8 @@ le site prend des sous-repertoire a la place des sous-domaine
 https://kinsta.com/fr/blog/multisite-wordpress/
 https://kinsta.com/fr/blog/sous-domaine-wordpress/
 les 2 sites utilise le meme theme mais pas les mêmes modèles
+
+installer avec duplicator=
+récupérer les 2 premiers fichier, mettre dans un dossier (ite)
+puis ouvrir le fichier php et suivre l'installation
+
