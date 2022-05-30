@@ -1,0 +1,9 @@
+body{
+    background:url("fond_blanc.jpg") fixed no-repeat;
+    background-size: 100% 100%;
+}
+#soleil{
+    background: url("soleil.png") fixed no-repeat top right;
+    background-size: 200px 200px;
+}
+

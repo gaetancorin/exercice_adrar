@@ -10,3 +10,30 @@ jeu s'entrainer au selecteur complexe(selecteur et pseudoclasse) = https://fluke
 
 Firefox  responsive mode : shift + ctrl + m
 Chrome : same but only in dev mode
+
+
+En général, nous retrouvons 4 breaking-points :
+(openclassroom)
+- Les très petits écrans (< 768 px : pour les écrans dont la largeur est comprise entre 0 px et 768 px)
+- Tablettes (768 px - 991 px)
+- Ordinateurs (992 px - 1199 px)
+- Grands écrans d'ordinateurs et télévisions
+
+ou plus détailler
+/*desktops - higher resolution*/
+@media (min-width: 1281px)
+
+/*laptops, desktops*/
+@media (min-width: 1025px) and (max-width: 1280px) 
+
+/*tablets, ipads (portrait)*/
+@media (min-width: 768px) and (max-width: 1024px)
+
+/*tablets, ipads (landscape)*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape)
+
+/*low resolution tablets, mobiles (landscape)*/
+@media (min-width: 481px) and (max-width: 767px)
+
+/*smartphones mobiles (portrait)*/
+@media (min-width: 320px) and (max-width: 480px)
