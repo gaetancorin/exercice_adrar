@@ -2,9 +2,9 @@ Harry Potter 1 ; J.K Rowling ; Francais ; Fantastique ; Roman ; HJ135203 ; True 
 Harry Potter 2 ; J.K Rowling ; Francais ; Fantastique ; Roman ; HJ135204 ; False ; 2022-03-01
 Harry Potter 3 ; J.K Rowling ; Francais ; Fantastique ; Roman ; HJ135205 ; False ; 2022-02-20
 Le Hobbit ; J. R. R. Tolkien ; Francais ; Fantastique ; Roman ; LJ158820 ; False ; 2022-02-20
-Assassin Royal 1 ; R Hobb ; Anglais ; Fantastique ; Roman ; AR1940289 ; False ; 2022-02-27
+Assassin Royal 1 ; R Hobb ; Anglais ; Fantastique ; Roman ; AR194028 ; False ; 2022-02-27
 Injustice 1 ; DC ; Francais ; Fantastique ; BD ; ID104382 ; True ; None ; True ; J Raapack
 The Art of War ; S. Tzu ; Anglais ; Traite ; Roman ; TS310000 ; True ; None
 La Jeunesse de Picsou ; D. Rosa ; Francais ; Comics ; BD ; LD779510 ; True ; None ; True ; C Barks
 L ane Trotro Tome 23 ; B. Guettier ; Francais ; Enfant ; BD ; LB549644 ; False ; 2022-03-03 ; False ; B. Guettier
-Asterix Tome 39 ; J. Y. Ferri ; Francais ; Comics ; BD ;  AJ012345 ; True ; None ; True ; D. Conrad
+Asterix Tome 39 ; J. Y. Ferri ; Francais ; Comics ; BD ; AJ012345 ; True ; None ; True ; D. Conrad

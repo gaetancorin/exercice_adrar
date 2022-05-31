@@ -1,6 +1,7 @@
-from fonction_enregistrement import adresse_email, categorie_age
-from enregistrement_csv import ecrire, lire
+from fonction_enregistrement import adresse_email, categorie_age, ecrire, lire
 from datetime import date
+# REALISE LA LISTE DES INSCRIPTIONS DU JOUR
+# fonctionne grace au fichier "fonction_enregistrer"
 
 # demander si connaissance du nombre de personne a inscrire et la quantité de personnes
 while True:
@@ -91,6 +92,7 @@ print("LA LISTE DE TOUT LES INSCRITS",liste_final)
 date_du_jour = str(date.today())
 ecrire("inscrits-"+ date_du_jour+".csv", liste_final)
 lire("inscrits-"+ date_du_jour+".csv")
+
 
 
 

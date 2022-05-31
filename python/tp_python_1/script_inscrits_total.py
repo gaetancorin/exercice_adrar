@@ -1,6 +1,7 @@
 import csv
 import os
 import re
+# CREER LA LISTE INSCRITS-TOTAL EN UTILISANT LA DONNEE DES LISTES DEJA EXISTANTES
 
 try:
     os.mkdir("inscrits_total")
@@ -41,6 +42,8 @@ for i in liste:
                         spamwriter.writerow(line)
 
 
+# PRINT LA LISTE INSCRITS-TOTAL PAR CATEGORIE DE MANIERE DECROISSANT
+
 classement = [["Non_admis"], ["Poussin"], ["Cadet"], ["Junior"], ["Semi_pro"], ["Pro"]]
 
 # Recuperer le fieldname categorie de chaque ligne de inscrits-total(csv)
@@ -66,9 +69,3 @@ for categorie in classement:
     for enregistrement in categorie:
         print(enregistrement)
 
-
-# with open("inscrits_total/inscrits_total.csv", "r", newline='') as f:
-#     fieldnames = ['nom', 'prenom', 'email', 'categorie']
-#     reader = csv.DictReader(f, fieldnames=fieldnames, delimiter=';')
-#     for line in reader:
-#         print(line['categorie'])
