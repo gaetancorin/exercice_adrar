@@ -38,8 +38,18 @@ a:link
     object-fit: cover;
 }
 
+img_carroussel{
+    width: 100%
+    height:300px;
+    object-fit: cover;
+}
+
 .page_title{
     margin: 40px;
+}
+
+infobox{
+    margin-top: 25px;
 }
 
 .btn_logout{

@@ -25,7 +25,7 @@
             <p>Type d'évenement : <span class="info">{{evenement.type_evenement.nom}}</span></p>
             <p>Réservation au nom de :<span class="info">{{evenement.reservation.utilisateur.username}}</span></p>
             <br><br>
-            {% if request.user.is_authenticated and evenement.place_restante > 0 %}
+            {% if request.user.is_authenticated and user.organisateur.organisateur == False and evenement.place_restante > 0 %}
             <div class="row mb-4">
                 <a href="{% url 'AppGestion:reservationBillet' evenement.id%}">
                     <button class="btn btn-success">Réservation de billet</button>
