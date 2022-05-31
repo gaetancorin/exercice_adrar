@@ -1,0 +1,3 @@
+créer bdd vide au nom de easymoney
+mettre le fichier easymoney.sql pour importer bdd existante.
+Se connecter en admin / admin
