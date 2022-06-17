@@ -1,6 +1,10 @@
 voir discord fin de maquettage
 et le repository github special wordpress
 
+EXTENSION INTERESSANTE=
+WPBakery Page Builder= bon page builder, permet de créer des jolies pages facilement (Elementor a essayer aussi)
+duplicator= permet de faire une copie du site(fait souvent des erreurs)
+
 INSTALLER WORDPRESS=
 télécharger xampp, activer apache et mysql
 télécharger le zip sur site de wordpress
@@ -23,6 +27,5 @@ https://kinsta.com/fr/blog/sous-domaine-wordpress/
 les 2 sites utilise le meme theme mais pas les mêmes modèles
 
 installer avec duplicator=
-récupérer les 2 premiers fichier, mettre dans un dossier (ite)
-puis ouvrir le fichier php et suivre l'installation
-
+copier lefichier php + le zip, le coller dans un dossier 
+puis ouvrir le fichier php dans chrome et suivre l'installation
