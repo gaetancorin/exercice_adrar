@@ -11,7 +11,7 @@
 // et le programme fonctionnel
 let message 
 function askHello(){
-    return fetch("https://mockbin.com/request?greetings=salut%22)
+    return fetch("https://mockbin.com/request?greetings=salut%22")
     .then(function (res){
         if (res.ok) {
             return res.json();
