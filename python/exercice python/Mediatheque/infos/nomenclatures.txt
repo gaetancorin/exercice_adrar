@@ -1,0 +1,40 @@
+Noms de variables :
+
+    Le PascalCase (La première lettre de chaque mot sera en majuscule) est utilisé pour les classes et les noms des fichiers
+    Le camelCase (La première lettre de chaque mot sera en majuscule sauf le premier mot qui sera lui en minuscule) est utilisé pour les fonctions, méthodes
+    Le snakecase (Les mots seront en minuscule et séparés par un underscore) pour les variables
+    le ALL_CAPS (Les mots seront en majuscule séparé par un underscore) pour les constantes
+    l'underscore + snakecase pour les attributs privés d'une classe
+
+
+    Dans le fichier MaClass
+
+        class LaClass :
+
+           MA_CONSTANTE = 0.25
+
+           def __init__(self, ma_variable):
+            self._mon_attribut = ma_variable
+
+           def maFonction(self, mon_param, mon_param2):
+            return True
+
+
+nom de fichiers de données :
+
+    pour la liste de bibliothèque = liste_bibliotheque.txt
+        nom de fichier invariable
+
+    pour chaque biliotheque = biblio_nomDeBiliotheque_element.txt
+        nomBibliotheque = nom de la biliotheque
+        element = element a charger (liste utilisateurs, liste livre, etc)
+        # exemple biblio_Livrons_utilisateurs.txt
+
+
+description des méthodes et des fonctions :
+
+"""
+    Argument :
+    retour :
+    description :
+"""

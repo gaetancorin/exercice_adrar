@@ -1,0 +1,2 @@
+False;Force;le Z;Français;roman;comedy;ZFORCE4;1;True;None
+True;Asterix;Uderzo;Français;Jeunesse;Jeunesse;AU395843;2;True;None;Goscinnyy;False
