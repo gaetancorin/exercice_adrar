@@ -58,13 +58,13 @@ for i in range(nbrNotes):
 for i in notes:
     print(i, notes[i], sep=" : ")
 
-# for i in notes:
-#     if notes[i] > maxi:
-#         maxi = notes[i]
-#         matMax = i
-#     if notes[i] < mini:
-#         mini = notes[i]
-#         matMin = i
+for i in notes:
+    if notes[i] > maxi:
+        maxi = notes[i]
+        matMax = i
+    if notes[i] < mini:
+        mini = notes[i]
+        matMin = i
 
 print("la note maximale est: {} et c'est la matiere {}. La note minimale est {} et c'est la matiere {}".format(maxi, matMax, mini, matMin))
 moyenne = sum(notes.values()) / nbrNotes

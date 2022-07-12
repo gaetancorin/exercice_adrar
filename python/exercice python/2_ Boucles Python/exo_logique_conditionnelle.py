@@ -11,7 +11,7 @@ else:
     print("nombre impair")
 
 # Réalisez un programme qui demandera à l’utilisateur son
-# jour, moi et année de naissance et qui indiquera si il est
+# jour, mois et année de naissance et qui indiquera si il est
 # majeur ou non.
 
 jour = int(input("indiquez votre jour de naissance (le chiffre)"))
