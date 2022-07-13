@@ -1,0 +1,14 @@
+Pour les livres :
+On souhaite sauvegarder sa taille (afin de mieux définir une date de fin d'emprunt).
+Pour cela le livre doit avoir un indice de taille allant de 1 à 4. Les délais seront les suivants :
+taille 1 : 1 semaine
+taille 2 : 2 semaines
+taille 3 : 3 semaines
+taille 4 : 4 semaines
+
+
+Pour les grades :
+on laisse a l'utilisateur le choix de son grade.
+grade A : prix bas, 3 emprunts simultanés
+grade B : prix moyens, 5 emprunts simultanés
+grade C : prix haut, 10 emprunts simultanés

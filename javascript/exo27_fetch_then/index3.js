@@ -8,7 +8,9 @@ function remplirVariable(){
         maVariable = value.queryString.greetings;
         console.log("remplirVariablePendant = "+ maVariable)
     })
-    .then( console.log("remplirVariableApres = "+ maVariable))
+    .then(function(){
+         console.log("remplirVariableApres = "+ maVariable)
+    })
 }
 
 document.getElementById("ask-hello")

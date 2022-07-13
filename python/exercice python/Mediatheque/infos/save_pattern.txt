@@ -1,0 +1,27 @@
+#########################
+#			#
+#      + filename	#
+#      - line		#
+#      - line		#
+#			#
+#########################
+
++liste_bibliotheque
+- nameofbibliotheque1
+- nameofbibliotheque2
+
++nameofbibliotheque_rayons.txt
+- rayons_a
+- rayons_b
+
++nameofbibliotheque_auteurs.txt
+- auteur_a
+- auteur_b
+
++nameofbibliotheque_livres.txt
+- est_bd;livre_a_titre;livre_a_auteur;livre_a_langue;livre_a_genre;livre_a_categorie;livre_a_ref;livre_a_taille;livre_a_dispo;livre_a_date_retour
+- est_bd;livre_b_titre;livre_b_auteur;livre_b_langue;livre_b_genre;livre_b_categorie;livre_b_ref;livre_b_taille;livre_b_dispo;livre_b_date_retour;livre_b_dessinateur;livre_b_couleur
+
++nameofbibliotheque_livres.txt
+- est_user;personne_a_id;personne_a_nom;personne_a_prenom;personne_a_mdp
+- est_user;personne_b_id;personne_b_nom;personne_b_prenom;personne_b_mdp;personne_b_grade
