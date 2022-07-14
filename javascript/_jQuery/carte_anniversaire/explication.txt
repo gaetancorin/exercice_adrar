@@ -1,0 +1,5 @@
+Le projet "carte_anniversaire" consiste a créer une carte interactive qui réagit au clique de la souris. 
+
+Chaque clique fera apparaître un nouveau block contenant du texte.
+
+Une fois les trois blocs de textes apparus, un clique supplémentaire ajoutera un gif en fond d'écran, changera le texte des paragraphes et rajoutera un bouton permettant de revenir au point de départ.  
