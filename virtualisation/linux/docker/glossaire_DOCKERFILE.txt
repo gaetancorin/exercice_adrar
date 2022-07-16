@@ -1,0 +1,31 @@
+docker ps -a = affiche les conteneur allumé / -a les affiche tous
+docker start
+docker stop
+docker rm
+
+docker image ls (ou rm) = affiche les images installé sur l'ordinateur
+docker logs -f = voir les differents messages d'erreurs
+
+docker exec <nom_container><commande> = execute commande bash
+docker exec -it <nom_container> bash = ouvre le bash du container
+docker search <image> = affiche toutes les images qui correspond sur internet
+/////////////////////////////////////////////DOCKERFILE
+FROM (de quel image on se base ex:python3)
+RUN  ligne de commande linux.
+ENV variable d'environnement
+COPY  copie entre host et conteneur
+VOLUME définition des volumes
+EXPOSE permet de rendre disponible les ports pour faire tourner l image
+ENTRYPOINT (execute des ordres dans le conteneur une fois le conteneur remplis du (ISO))
+/////////////////////////////////////DOCKER RUN
+docker run (uniquement pour la création du container)=
+-d = détaché pour faire autre chose en meme temps
+-p = pour attribuer des ports
+--name = donne un nom au conteneur
+-v = *** mapping de volume (permet de lié un fichier de windows a un fichier de mon conteneur, 
+			puis modifie les 2 en meme temps)
+--restart = definir la politique de redemarrage en cas de panne( --restart always)
+
+docker run -d --build/ enlever -d pour voir ou est l'erreur
+///////////////////VOLUME
+
