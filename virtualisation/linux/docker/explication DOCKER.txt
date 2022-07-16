@@ -3,9 +3,10 @@ Une image "python3" suffit pour créer un container faisant fonctionner python.
 On peut voir les image téléchargé sur notre ordinateur avec "docker image ls".
 Si on ne possède pas la bonne image, on peut la chercher avec "docker search <image>".
 Si un container utilise une image, on ne peut pas la supprimer.
+Dockerfile permet de construire une image personnalisé. 
 
 CONTAINER= c'est un environnement hermétique fonctionnant sous linux. 
-On peut le créer avec une image ou avec une image qui sera modifié grace a un Dockefile.
+On peut le créer avec une image ou avec une image qui aura été modifié grace à un Dockefile.
 
 VOLUME= c'est une connection de copie simultanée de fichiers entre le host et le container.
 Il permet de modifier facilement le contenu du container, mais aussi de 

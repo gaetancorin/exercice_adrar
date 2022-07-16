@@ -1,3 +1,4 @@
+//////////////FAIRE FONCTIONNER LES CONTAINERS
 docker ps -a = affiche les conteneur allumé / -a les affiche tous
 docker start
 docker stop
@@ -13,12 +14,17 @@ docker search <image> = affiche toutes les images qui correspond sur internet
 FROM (de quel image on se base ex:python3)
 RUN  ligne de commande linux.
 ENV variable d'environnement
+WORKDIR crée un dossier
 COPY  copie entre host et conteneur
+ADD comme copy?
 VOLUME définition des volumes
 EXPOSE permet de rendre disponible les ports pour faire tourner l image
-ENTRYPOINT (execute des ordres dans le conteneur une fois le conteneur remplis du (ISO))
+CMD ligne de commande linux final
+ENTRYPOINT (execute des ordres dans le conteneur une fois le conteneur remplis.
+/////////////////////////////////////DOCKER BUILD
+docker build -t <nomDeLImage> .   (ne pas oublier le point, construit l'image)
 /////////////////////////////////////DOCKER RUN
-docker run (uniquement pour la création du container)=
+docker run (pour la création du container avec une image)=
 -d = détaché pour faire autre chose en meme temps
 -p = pour attribuer des ports
 --name = donne un nom au conteneur
@@ -27,5 +33,6 @@ docker run (uniquement pour la création du container)=
 --restart = definir la politique de redemarrage en cas de panne( --restart always)
 
 docker run -d --build/ enlever -d pour voir ou est l'erreur
+EXEMPLE = docker run -d -p 3200:3200 --name <nomcontainer> <nomimage>
 ///////////////////VOLUME
 
