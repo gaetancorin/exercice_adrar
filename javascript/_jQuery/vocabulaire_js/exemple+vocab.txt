@@ -1,0 +1,11 @@
+class Uneclasse{
+	constructeur(parametre1,parametre2){
+		this.attribut = attribut
+		this.propriete = propriete
+	}
+	methodedinstance(parametre){
+		return 
+	}
+}
+
+let Instance = Uneclasse(argument1,argument2)

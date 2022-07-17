@@ -1,0 +1,45 @@
+variable=
+on initialise une variable
+on assigne une valeur a une variable
+avec un type(number,booleen, str etc)
+
+tableau=
+on déclare un tableau qui contient une liste d'éléments
+
+objet:
+il est possible de déclarer des objets sans classe.
+Une classe peut aussi être appellé un modèle pour l'objet
+lorsque plusieurs objets sont déclarer par une même classe, on appelle cela une "instance de la même classe" ou "une instance"
+instancier un objet=classe, déclarer un objet=sans classe,
+« Le  constructor d'une classe est la fonction qui est appelée quand on crée une nouvelle instance de cette classe avec le mot clé new » 
+On définit les emplacements pour  
+
+Dans chaque attribut, il y a une clé et une valeur associée. Ce sont des "paires clés valeurs"
+
+vocabulaire =
+objet
+classe
+constructeur possède des arguments
+attribut
+l'instance est l'objet créer par une classe
+méthode d'instance
+
+
+les types à passage par valeur et les types à passage par référence en JavaScript=
+https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0
+
+instruction ou conditions= if/else switch
+opérateur logique= ><= !=
+boucle for...in et for...of et while
+
+fonction=
+il faut donner des paramètres à la fonction que l'on crée.
+Ensuite, à l'appel de la fonction, on attribue des valeurs pour ses paramètres. Ces valeurs sont des arguments d'appel.
+EXEMPLE= Supposons que vous ayez une fonction qui compte le nombre de mots dans une chaîne :	
+	l'argument sera toute chaîne attribuée à votre fonction quand vous l'appelez ;(quand on crée l'instance ou appel la fonction)
+	le paramètre sera une chaîne dont vous allez compter les mots ;( avec le mot function)
+	la valeur de retour sera le nombre de mots.
+Refactoriser une fonction = modifie la structure d'un élément de code sans changer son comportement.
+
+La portée des variables
+

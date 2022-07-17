@@ -1,0 +1,8 @@
+Sur le DOM, on manipule un élément et on modifie son contenu.
+On peut modifier les attributs html et les propriétés css grace à style.
+On peut rajouter un enfant à un élément.
+On peut réagir à un évenement. Un évenement est une action émise par l'utilisateur.
+La fonction qui est déclencher après l'évenement s'appelle un callback.
+addEventListener(<event>, <callback>)
+
+

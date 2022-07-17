@@ -1,0 +1,29 @@
+lancer le front = 
+npm run start
+http://localhost:4200/
+
+lancer le back = 
+nodemon server
+http://localhost:3000/
+
+badd mongoDb=
+npm install mongoose
+
+(si nouveau front=
+dans la cmd=
+" git clone https://github.com/OpenClassrooms-Student-Center/go-fullstack-v3-fr.git frontend "
+" cd frontend  "
+" npm install "
+" npm run start ")
+
+(si nouveau back=
+dans le cmd=
+penser a faire le git init en premier
+" npm init " ! entry point: server.js
+" npm install -g nodemon "
+" npm install express "
+" npm install mongoose " pour se conecter à MongoDb
+
+Copier coller models, .gitignore, app.js, server.js
+" node server " 
+)
