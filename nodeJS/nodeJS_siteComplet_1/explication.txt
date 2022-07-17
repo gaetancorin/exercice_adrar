@@ -18,12 +18,12 @@ dans la cmd=
 
 (si nouveau back=
 dans le cmd=
-penser a faire le git init en premier
+" cd <mondossier> "
 " npm init " ! entry point: server.js
 " npm install -g nodemon "
 " npm install express "
 " npm install mongoose " pour se conecter à MongoDb
 
-Copier coller models, .gitignore, app.js, server.js
+Pour une copie: Copier coller models, .gitignore, app.js, server.js
 " node server " 
 )
