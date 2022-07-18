@@ -1,0 +1,27 @@
+lancer le front = 
+node node_modules/live-server/live-server --port=8081
+http://127.0.0.1:8081/
+
+lancer le back = 
+nodemon server
+http://localhost:3000/
+
+badd mongoDb=
+npm install mongoose
+
+(si nouveau front=
+dans la cmd=
+" git clone https://github.com/OpenClassrooms-Student-Center/fullstack-activity.git frontend "
+" cd frontend  "
+" npm install "
+" npm run start " mais leur truc marche pas donc c'est" node node_modules/live-server/live-server --port=8081 ")
+
+(si nouveau back=
+dans le cmd=
+" cd <mondossier> "
+" npm init " ! entry point: server.js
+" npm install -g nodemon "
+" npm install express "
+" npm install mongoose " pour se conecter à MongoDb
+" nodemon server " 
+)
