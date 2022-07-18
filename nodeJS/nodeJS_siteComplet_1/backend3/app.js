@@ -34,7 +34,7 @@ app.get('/api/stuff', (req, res, next) => {
     .catch(error => res.status(400).json({ error }));    
 });
 
-//recoit un thing par post que l'on insert dans MongoDb et rand une réponse. On évite les erreurs d'ID en supprimant ce paramètre puisque mongoDb le recrée par défault.
+//recoit un thing par post que l'on ajoute à MongoDb et rand une réponse. On supprime le paramètre ID puisque mongoDb le recrée par défault(risque d'erreur).
 app.post('/api/stuff', (req, res, next) => {
   delete req.body._id;
   const thing = new Thing({
@@ -45,7 +45,7 @@ app.post('/api/stuff', (req, res, next) => {
     .catch(error => res.status(400).json({ error }));
 });
 
-// recoit une requête put avec un ID en parametre dans l'url, cherche dans MongoDb un élément avec le même ID, puis le modifie avec les nouveaux éléments en vérifiant a nouveau l'ID. 
+// recoit une requête put avec un ID en parametre dans l'url, cherche dans MongoDb un élément avec le même ID, puis le modifie avec les nouveaux éléments en vérifiant à nouveau l'ID. 
 app.put('/api/stuff/:id', (req, res, next) => {
   Thing.updateOne({ _id: req.params.id }, 
   { ...req.body, _id: req.params.id })
@@ -62,7 +62,7 @@ app.delete('/api/stuff/:id', (req, res, next) => {
 
 // Si aucun endpoint n'est déclenché, envois une response d'un message par défault. 
 app.use((req, res) => {
-    res.json({ message: 'Aucun middleware ne correspond a votre url !' }); 
+    res.json({ message: 'Aucun middleware ne correspond à votre url !' }); 
  });
 
 module.exports = app;
