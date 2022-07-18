@@ -23,6 +23,8 @@ dans le cmd=
 " npm install -g nodemon "
 " npm install express "
 " npm install mongoose " pour se conecter à MongoDb
+" npm install mongoose-unique-validator " (5)avoir messages d'erreurs clairs lors de emails user en doublons dans mongoDb
+" npm install bcrypt " (5)chiffrer, déchiffrer et comparer les mots de passe de connection et mongoDb 
 
 Pour une copie: Copier coller models, .gitignore, app.js, server.js
 " node server " 
