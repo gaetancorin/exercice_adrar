@@ -2,7 +2,7 @@ font    = https://fonts.google.com/
 palettes de couleurs     = https://coolors.co/
 tester couleur font et background     = https://color.adobe.com/
 créer du texte facilement     = https://fr.lipsum.com/
-choper des images libres de droit facilement     = https://picsum.photos/
+choper des images libres de droit facilement     = https://picsum.photos/ ou pixabay
 
 
 jeu s'entrainer au selecteur complexe(selecteur et pseudoclasse) = https://flukeout.github.io/

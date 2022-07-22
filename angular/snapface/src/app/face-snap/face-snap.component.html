@@ -1,1 +1,10 @@
-<p>face-snap works!</p>
+<div class="face-snap-card">
+    <h2>{{ title }}</h2>
+    <p>{{ description }}</p>
+    <p>Mis en ligne le {{ createDate }}</p>
+    <p>{{ snaps }} ❤</p>
+    <!-- sans attribute binding -->
+    <img src= "{{ imageUrl }}" alt="{{ title }}" />
+    <!-- avec attribute binding -->
+    <img [src]="imageUrl" [alt]="title" />
+</div>
