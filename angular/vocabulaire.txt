@@ -1,0 +1,14 @@
+IDE = environnement de développement
+CLI d'angular = command line interface d'angular= c'est l'interface de commande angular
+un flag = cela correspond a un option de configuration passé a une commande en ligne de commande(--style=scss)
+SPA = single page application
+AppComponent = c'est le component principal à la racine de l'arborescence des components de notre application
+AppModule = c'est le module principal de notre application
+@quelquechose = quand on voit @quelquechose avant une déclaration de classe en typescript, on appelle ca un décorateur. Il vient apporter des modifications a une classe.
+fichier de style = fichiers scss d'un component
+fichier template = fichier html d'un component
+un comportement ts = fichier typescript 
+le sélecteur d'un component= c'est  la balise HTML personnalisée qu'on utilisera pour l'insérer dans l'application.( préfixe app- par défault)
+data-binding = liaison de données
+string-interpolation =
+attribute binding ou liaison par attribut = 

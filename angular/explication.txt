@@ -1,0 +1,12 @@
+installation Angular = 
+• installer nodejs  https://nodejs.org/fr/
+• " npm i -g @angular/cli " installer l'interface en ligne de commande(CLI) Angular(i=install, g=general)
+• " nv g " voir la version installé de angular
+
+• " ng new <nomappli> --style=scss --skip-tests=true " = installe le dossier angular(le flag --style pour choisir css ou scss et le flag --skip-test pour faire fonctionner angular sans test)
+
+• " ng serve " lance l'application angular sur  http://localhost:4200
+
+• " ng generate component <nom-du-composant> " crée un composant.
+    angular traduit le nom-du-component en NomDuComposantComponent dans appmodule)
+
