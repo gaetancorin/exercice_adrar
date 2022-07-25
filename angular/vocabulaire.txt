@@ -17,4 +17,4 @@
 • attribute binding ou liaison par attribut = ce sont des [attribut] = "nomPropriété" au lieu de attribut = "{{ nomPropriété}}". Cela permet de lier un attribut html à une propriété d'instance de component peut importe son type.
 • implémenter une interface = respecter les méthodes, implémente les méthodes que l'interface nécessite d'avoir
 
-• Event-biding = liaison par évenement, (autre direction du data-biding), c'est le fait de lier des méthodes typescripts à des évenements HTML
+• Event-biding = liaison par évenement, (autre direction du data-biding), c'est le fait de lier des méthodes typescripts à des évenements HTML(ex:click)
