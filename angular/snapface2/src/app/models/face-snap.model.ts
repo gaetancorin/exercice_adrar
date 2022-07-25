@@ -1,14 +1,14 @@
-export class Facesnap{
+export class FaceSnap{
     constructor(public title: string,
                 public description: string,
                 public createDate: Date,
                 public snaps: number,
                 public imageUrl: string,
-                public buttonText: string){
+                public buttonText?: string){
     }
 }
 // identique mais sans le raccourcis
-// export class Facesnap{
+// export class FaceSnap{
 
 //     title!: string;
 //     description!: string;

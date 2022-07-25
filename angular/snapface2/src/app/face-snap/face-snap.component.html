@@ -1,10 +1,10 @@
 <div class="face-snap-card">
-    <h2>{{ title }}</h2>
-    <p>{{ description }}</p>
-    <p>Mis en ligne le {{ createDate }}</p>
-    <p><button (click)="onSnap()">{{ buttonText }}</button> {{ snaps }} ❤</p>
+    <h2>{{ faceSnap.title }}</h2>
+    <p>{{ faceSnap.description }}</p>
+    <p>Mis en ligne le {{ faceSnap.createDate }}</p>
+    <p><button (click)="onSnap()">{{ buttonText }}</button> {{ faceSnap.snaps }} ❤</p>
     <!-- sans attribute binding -->
     <!-- <img src= "{{ imageUrl }}" alt="{{ title }}" /> -->
     <!-- avec attribute binding -->
-    <img [src]="imageUrl" [alt]="title" />
+    <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
 </div>
