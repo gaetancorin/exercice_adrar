@@ -1,0 +1,8 @@
+Live Server = recharge la page web du navigateur à chaque modification de code
+Materiel Icon Theme = Modifie les icones du Explorer déroulant pour les rendre plus visuel
+
+--- PHP --
+PHP intelephense = améliore l'autocomplétion PHP
+
+-- Angular --
+Angular Language Service = améliore l'autocomplétion Angular

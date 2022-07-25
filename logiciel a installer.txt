@@ -20,3 +20,4 @@ Gloomaps = créer des arborescence
 Figma = créer des maquettes(zoning, wireframe,mockups)
 pencil = Comme figma en moins bien
 Github = pour lier les git a github
+Postman = tester ses APIs

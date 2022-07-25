@@ -8,6 +8,7 @@
 • fichier de style = fichiers scss d'un component
 • fichier template = fichier html d'un component
 • un comportement ts = fichier typescript 
+• AppComponent = c'est le component à la racine de l'arborescence des components de l'application
 • le sélecteur d'un component = c'est  la balise HTML personnalisée qu'on utilisera pour insérer le component dans l'application.( préfixe app- par défault)
 • data-binding = liaison de données, le fait de faire voyager(lier) des attributs typescripts vers des templates html
 • méthode ngOninit = méthode appellé à la création d'une instance d'un component qui sert à initialiser les propriétés de cette instance avec des informations prédéfinis.
