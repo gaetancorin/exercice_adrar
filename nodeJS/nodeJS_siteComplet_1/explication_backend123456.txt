@@ -38,3 +38,5 @@ ouvrir le powershell administrateur et enlever la restriction de fichier .ps1=
 https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2
 • "Set-ExecutionPolicy RemoteSigned" enlever
 • "Set-ExecutionPolicy Restricted"   remettre
+
+backend6 ne marche pas avec postman car on ne peut pas envoyer d'image.
