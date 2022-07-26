@@ -31,3 +31,9 @@ dans le cmd=
 Pour une copie: Copier coller models, .gitignore, app.js, server.js
 " nodemon server " 
 )
+
+si problème de sécurité sur fichier.ps1:
+ouvrir le powershell administrateur et enlever la restriction de fichier .ps1=
+https://docs.microsoft.com/fr-fr/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.2
+• "Set-ExecutionPolicy RemoteSigned" enlever
+• "Set-ExecutionPolicy Restricted"   remettre
