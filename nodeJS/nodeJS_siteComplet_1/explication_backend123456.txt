@@ -25,8 +25,9 @@ dans le cmd=
 " npm install mongoose " pour se conecter à MongoDb
 " npm install mongoose-unique-validator " (5)avoir messages d'erreurs clairs lors de emails user en doublons dans mongoDb
 " npm install bcrypt " (5)chiffrer, déchiffrer et comparer les mots de passe de connection et mongoDb 
-" npm install --save jsonwebtoken " permet de créer un token pour connaitre de manière sécurisé l'utilisateur
+" npm install --save jsonwebtoken (5)" permet de créer un token pour connaitre de manière sécurisé l'utilisateur
                                      connecté qui fait des requêtes
+" npm install --save multer " (6)permet d'importer des fichiers avec la req http
 
 Pour une copie: Copier coller models, .gitignore, app.js, server.js
 " nodemon server " 
