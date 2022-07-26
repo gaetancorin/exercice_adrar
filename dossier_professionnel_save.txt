@@ -1,0 +1,57 @@
+FRONT
+
+Sous la supervision de mon responsable de stage chez Activus Group, j’ai eu l’opportunité d’intégrer une maquette en utilisant les technologies Html, Css et l’utilisation de Bootstrap uniquement pour le responsive. La maquette étant réalisé par un Webdesigner, la première mission a été de récupérer depuis un fichier Photoshop l’intégralité des éléments de la maquette nécessaire à son développement. (images, logos et Fonts)  
+
+Ayant uniquement la maquette en format grand Desktop, J’ai ensuite créé un Zoning pour chaque taille de responsive en respectant les breakpoints natifs de Bootstrap (format moyen Desktop, petit Desktop, tablette et téléphone). J’ai pour cela découpé la maquette en différentes sections afin de faciliter le zoning et la future intégration. 
+
+J’ai pu par la suite commencer le développement de l’interface graphique. Mon responsable m’a été d’une grande aide afin de mieux maitriser les Médias-queries ainsi que le fonctionnement des breakpoints Bootstrap me permettant de partir sur de bonnes bases durant tout le long de l’intégration.  
+
+Afin de respecter au maximum la maquette, l’importation de la librairie Font-Awesome a été nécessaire afin d’utiliser les mêmes éléments graphiques qui sont propre à cette librairie. Différents Fonts de Google-Fonts ont aussi été importé. 
+
+La première difficulté sur cette maquette a été les images en arrière-plan qui ne respecte pas le responsive Bootstrap et s’étendent sur l’intégralité de la largeur de l’écran de l’utilisateur. Ces images doivent contenir du texte par-dessus qui, eux en revanche, respectent ce responsive.   
+
+La seconde difficulté dans cette maquette a été le mini carrousel d’image et de textes qui a été créé en  “overflow-x: auto”. Cela permet à l’utilisateur de naviguer sur cette section de manière horizontal grâce à la scrollbar tout en dévoilant les différents éléments les uns après les autres. Cette fonctionnalité est surtout utile sur les petits responsives. 
+///////////////
+
+Afin de réaliser ce projet, l’utilisation de Photoshop a été nécessaire afin d’ouvrir et travailler sur la maquette qui est en fichier .psd.  
+
+L’utilisation de Google-Fonts et de la librairie FontAwesome m’ont permis de respecter au mieux la charte graphique de la maquette. 
+
+J’ai utilisé l’environnement de développement Vscode ainsi que Git et Github me permettant de stocker, gérer le code et contrôler les modifications qui lui sont apportées.  
+
+Ce travail a été réalisé sur l‘ordinateur fourni par l’entreprise Activus-Group. 
+
+///////////////
+
+J’ai travaillé seul sur cette intégration avec l’aide de mon responsable de stage.
+
+////////////////////
+BACK
+
+​Lors de mon stage chez Activus-Group, il m’a été demandé de réaliser un projet en Backend. 
+
+Le travail consiste en une application qui permet la création et connexion d’utilisateur, puis d’accéder à une page de vente ou sera afficher les objets à vendre des autres utilisateurs. Il sera possible pour l’utilisateur de mettre des objets à vendre, modifier ses objets et les supprimer. 
+
+Pour cela, j‘ ai réalisé une API Rest en méthode CRUD en utilisant les technologies Javascript, Nodejs et MongoDb.  Le Frontend a été fournis afin de s‘adapter à mes requêtes API.  
+
+Afin de réaliser ce projet, j’ai dû installer plusieurs dépendances de NodeJs en utilisant les lignes de commandes Npm. 
+
+J’ai utilisé l’extension Express de Nodejs me permettant de communiquer avec le front grâce aux APIs qui envoient principalement des fichiers Json. 
+
+J’ai connecté l’application avec la base de données MongoDb en utilisant l’extension Mongoose ainsi que mongoose-unique-validator qui fournis des messages explicites lors de problèmes avec la base de données. 
+
+J’ai par la suite créé un modèle d’utilisateur ainsi qu’un modèle d’objet afin de pouvoir transformer ses instances en enregistrements dans la base de données. Je me suis ensuite servi de ses modèles pour créer plusieurs Endpoints qui réalisent chacun une action de Création(C), lecture(R), modification(U) et suppression(D). Ces Endpoints sont accessibles par un routeur qui se sert de l’url et de la méthode HTTP pour connaître l’action à exécuter. 
+
+Les mots de passe des utilisateurs sont sécurisés en base de données avec l’extension bcrypt qui hash les mots de passe. Elle permet aussi de vérifier la connexion de l‘utilisateur en comparant son mot de passe fournis lors de la connexion ainsi que son hash dédié sur mongoDB, puis retourne simplement true ou false afin de valider la connexion de manière sécurisé. 
+
+Il est possible à l’utilisateur de rester connecté grâce à un Token fournis lors de sa connexion. Pour cela, l’extension jsonwebtoken sera utilisé. L’Id de l‘utilisateur sera crypté à l’intérieur du token, et ce token sera envoyé par le Front à chaque requête HTTP par le moyen de Header Authorization. Il est donc possible de savoir quel utilisateur est responsable de chaque requête HTTP en utilisant un middleware. 
+
+////////////////////
+
+Afin de réaliser ce projet, l’utilisation de Photoshop a été nécessaire afin d’ouvrir et travailler sur la maquette qui est en fichier .psd.  
+
+L’utilisation de Google-Fonts et de la librairie FontAwesome m’ont permis de respecter au mieux la charte graphique de la maquette. 
+
+J’ai utilisé l’environnement de développement Vscode ainsi que Git et Github qui me permettent de stocker, gérer le code et contrôler les modifications qui lui sont apportées.  
+
+L’ordinateur permettant de réaliser ce projet est celui fournis par Activus-Group durant mon stage de fin d’année. 
