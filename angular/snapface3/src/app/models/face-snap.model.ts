@@ -1,13 +1,25 @@
 export class FaceSnap{
-    constructor(public title: string,
-                public description: string,
-                public createDate: Date,
-                public snaps: number,
-                public imageUrl: string,
-                public buttonText?: string){
-    }
+    title!: string;
+    description!: string;
+    createDate!: Date;
+    snaps! : number;
+    imageUrl! : string;
+    location?: string;
 }
-// identique mais sans le raccourcis
+
+// 2 eme Version, meme chose que 1ere version mais avec le raccourcis
+// export class FaceSnap{
+//     constructor(public title: string,
+//                 public description: string,
+//                 public createDate: Date,
+//                 public snaps: number,
+//                 public imageUrl: string,
+//                 public location?: string
+//                 ){
+//     }
+// }
+
+// 1ere version sans le raccourcis mais sans le raccourcis
 // export class FaceSnap{
 
 //     title!: string;
