@@ -1,8 +1,8 @@
 <div class="face-snap-card" [ngClass]="{ snapped: buttonText === 'Je n\'apprécie plus' }">
     <!-- string-interpolation -->
-    <h2>{{ faceSnap.title }}</h2>
+    <h2>{{ faceSnap.title | titlecase}}</h2>
     <p>{{ faceSnap.description }}</p>
-    <p>Mis en ligne le {{ faceSnap.createDate }}</p>
+    <p>Mis en ligne le {{ faceSnap.createDate | date: 'HH:mm, le d MMMM yyyy' }}</p>
     <p><button (click)="onSnap()">{{ buttonText }}</button> <span [ngStyle]="{ color: 'rgb(0,'+ faceSnap.snaps +', 0)' }">{{ faceSnap.snaps }} ❤</span></p>
     <!-- sans attribute binding -->
     <!-- <img src= "{{ imageUrl }}" alt="{{ title }}" /> -->

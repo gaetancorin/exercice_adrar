@@ -20,3 +20,4 @@
 • Event-biding = liaison par évenement, (autre direction du data-biding), c'est le fait de lier des méthodes typescripts à des évenements HTML(ex:click)
 • *ngIf, *ngFor = les astérisque * sont pour les directives structurelles
 • [ngStyle], [ngClass] = ils s'agit d'une directive par attribut, car c'est un attribut que l'on ajoute a un élément html
+• {{ string-interpolation | uppercase}} = le pipe sert à changer le formatage affiché d'une donnée dans le html sans changer la variable sous-jacentes
