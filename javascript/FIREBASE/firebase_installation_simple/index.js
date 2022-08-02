@@ -14,7 +14,7 @@ firebase.initializeApp(firebaseConfig);
 
 // On stock dans une variable la reférence à notre BDD
 const dbRef = firebase.database().ref();
-//on va chercher les informations de "users" dans la BDD, on le les stocks dans la variable.(la bdd resemble a un json)
+//on va chercher les informations de la table "users" dans la BDD, on les stocks dans la variable sous forme d'objet database.
 const usersRef = dbRef.child('users');
 
 //".on" est le "addEventListener" en Jquery.
@@ -26,4 +26,5 @@ usersRef.on("value", snap => {
       
     })
 })
+// snap et childSnap sont des objets database. La fonction .val() propre à firebase permet de récupérer un format str ou bibliotheque
 

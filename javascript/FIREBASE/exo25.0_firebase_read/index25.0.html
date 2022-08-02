@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Firebase CRUD</title>
-    <link rel="stylesheet" href="./firebaseCrud.css">
+    <link rel="stylesheet" href="./style25.0.css">
 </head>
 <body>
     
     <h1>FB CRUD</h1>
   
     <!-- add user module -->
+    <!-- sert a ajouter un utilisateur -->
     <section id="add-user-module" >
         <button id="open-add-user-form-btn">+</button>
-        
+        <!-- leFormulaireAjout en display none jusqu'à hover du button -->
         <form id="leFormulaireAjout">
             <h2>Add User</h2>
             name:<br>
@@ -28,10 +29,11 @@
     </section>
 
     <!-- edit user module -->
+    <!-- en display none pour le moment -->
+    <!-- servira a update un utilisateur -->
     <section id="edit-user-module">
         <form>
             <h2>Edit user</h2>
-            <!-- ICI J'AI MON INPTU CACHé qui contiendra l'id de l'utilisateur -->
             <input type="text" class="edit-userid">
             name:<br>
             <input type='text' data-key='name' class='edit-user-input'><br>
@@ -48,15 +50,16 @@
         
     <!-- ON REMPLI à la lecture de la BDD -->
     </ul>
-        <!-- ON REMPLI quand on click sur un user -->
+
+    <!-- pour après lorsque l'on cliquera sur le nom de l'user -->
     <div id="user-detail">
 
     </div>
-        <!-- firebase sdk link goes here -->
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
+
+        <!-- installation Firebase, ne fonctionne plus en version 9 de firebase -->
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
-        <script src="firebaseCrud.js"></script>
+        <script src="firebase25.0.js"></script>
 </body>
 </html>
