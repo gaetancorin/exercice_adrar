@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="style25.3.css">
 </head>
 <body>
-    
+
     <h1>FIREBASE CRUD</h1>
   
-    <!-- add user module -->
+    <!------- ADD USER MODULE --------->
+    <!-- sert a ajouter un utilisateur -->
     <section id="add-user-module" >
         <button id="open-add-user-form-btn">+</button>
-        
+        <!--formulaire leFormulaireAjout en display none jusqu'à hover du button ci-dessus-->
         <form id="leFormulaireAjoutUser">
             <h2>Add User</h2>
             name:<br>
@@ -23,6 +24,7 @@
             <input type='text' data-key='age' class='user-input'><br>
             email:<br>
             <input type='text' data-key='email' class='user-input'><br>
+            <!-- Ajout description et image profil sur 25.3-->
             description:<br>
             <input type='text' data-key='description' class='user-input'><br>
             image-profil:<br>
@@ -31,11 +33,12 @@
         </form>
     </section>
 
-    <!-- edit user module -->
+    <!-------- EDIT USER MODULE --------->
+    <!-- en display none pour le moment -->
+    <!-- servira a update un utilisateur -->
     <section id="edit-user-module">
         <form>
             <h2>Edit user</h2>
-            <!-- ICI J'AI MON INPTU CACHé qui contiendra l'id de l'utilisateur -->
             <input type="text" class="edit-userid">
             name:<br>
             <input type='text' data-key='name' class='edit-user-input'><br>
@@ -43,6 +46,7 @@
             <input type='text' data-key='age' class='edit-user-input'><br>
             email:<br>
             <input type='text' data-key='email' class='edit-user-input'><br>
+            <!-- Ajout description et image profil sur 25.3-->
             description:<br>
             <input type='text' data-key='description' class='edit-user-input'><br>
             image-profil:<br>
@@ -51,20 +55,21 @@
         </form>
     </section>
 
-    <!-- show user module -->
-    <ul id="user-list">
-        
-    <!-- ON REMPLI à la lecture de la BDD -->
+    <!--------- SHOW USER MODULE --------->
+    <!-- sert a afficher les utilisateurs -->
+    <ul id="user-list">       
+         <!-- ON REMPLI de <li> à la lecture de la BDD -->
     </ul>
-        <!-- ON REMPLI quand on click sur un user -->
-    <div id="user-detail">
 
+    <div id="user-detail">
+         <!-- ON REMPLI la div quand on click sur un user -->
     </div>
   
-    <!-- add articles module -->
+    <!----------- ADD ARTICLE MODULE ----------->
+    <!-- sert a ajouter un article -->
     <section id="add-article-module" >
         <button id="open-add-article-form-btn">+</button>
-        
+        <!--formulaire leFormulaireAjout en display none jusqu'à hover du button ci-dessus-->
         <form id="leFormulaireAjoutArticle">
             <h2>Add article</h2>
             titre:<br>
@@ -81,7 +86,9 @@
         </form>
     </section>
 
-    <!-- edit articles module -->
+    <!-------- EDIT ARTICLE MODULE ------------>
+    <!-- en display none pour le moment -->
+    <!-- servira a update un utilisateur -->
     <section id="edit-article-module">
         <form>
             <h2>Edit articles</h2>
@@ -101,19 +108,18 @@
         </form>
     </section>
 
-    <!-- show articles module -->
-    <ul id="article-list">
-        
-    <!-- ON REMPLI à la lecture de la BDD -->
+    <!-------- SHOW ARTICLE MODULE --------->
+    <!-- sert a afficher les utilisateurs -->
+    <ul id="article-list">       
+        <!-- ON REMPLI de <li> par articles à la lecture de la BDD -->
     </ul>
-        <!-- ON REMPLI quand on click sur un articles -->
+
     <div id="article-detail">
-
-
+         <!-- ON REMPLI la div quand on click sur un article -->
     </div>
 
-        <!-- firebase sdk link goes here -->
-        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <!-- installation Firebase, ne fonctionne plus en version 9 de firebase -->
+        <!-- The core Firebase JS SDK(3 fichiers) is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>

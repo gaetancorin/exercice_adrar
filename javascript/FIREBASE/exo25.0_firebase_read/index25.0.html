@@ -8,14 +8,14 @@
     <link rel="stylesheet" href="./style25.0.css">
 </head>
 <body>
-    
+
     <h1>FB CRUD</h1>
   
-    <!-- add user module -->
+    <!------- ADD USER MODULE --------->
     <!-- sert a ajouter un utilisateur -->
     <section id="add-user-module" >
         <button id="open-add-user-form-btn">+</button>
-        <!-- leFormulaireAjout en display none jusqu'à hover du button -->
+        <!--formulaire leFormulaireAjout en display none jusqu'à hover du button ci-dessus-->
         <form id="leFormulaireAjout">
             <h2>Add User</h2>
             name:<br>
@@ -28,7 +28,7 @@
         </form>
     </section>
 
-    <!-- edit user module -->
+    <!-------- EDIT USER MODULE --------->
     <!-- en display none pour le moment -->
     <!-- servira a update un utilisateur -->
     <section id="edit-user-module">
@@ -45,18 +45,18 @@
         </form>
     </section>
 
-    <!-- show user module -->
-    <ul id="user-list">
-        
-    <!-- ON REMPLI à la lecture de la BDD -->
+    <!--------- SHOW USER MODULE --------->
+    <!-- sert a afficher les utilisateurs -->
+    <ul id="user-list">       
+         <!-- ON REMPLI de <li> à la lecture de la BDD -->
     </ul>
 
-    <!-- pour après lorsque l'on cliquera sur le nom de l'user -->
     <div id="user-detail">
-
+         <!-- ON REMPLI la div quand on click sur un user -->
     </div>
 
         <!-- installation Firebase, ne fonctionne plus en version 9 de firebase -->
+        <!-- The core Firebase JS SDK(3 fichiers) is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
