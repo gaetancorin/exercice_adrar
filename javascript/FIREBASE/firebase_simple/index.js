@@ -11,14 +11,15 @@ const firebaseConfig = {
   measurementId: "G-E0L3H7N29J"
 };
 firebase.initializeApp(firebaseConfig);
-// (je ne sais plus a quoi correspond firestore)
-// var db = firebase.firestore();
 
 // On stock dans une variable la reférence à notre BDD
 const dbRef = firebase.database().ref();
-//REF à USERS avec un S (ca nous ramène à l'adresse de tous les utilisateurs dans la BDD)
+//on va chercher les informations de "users" dans la BDD, on le les stocks dans la variable.(la bdd resemble a un json)
 const usersRef = dbRef.child('users');
 
+//".on" est le "addEventListener" en Jquery.
+// on écoute la variable jusqu'a ce qu'il y ai des valeurs ou un changement de valeur,
+//puis on fait un callback ou l'on itère ses valeurs pour les afficher en console.
 usersRef.on("value", snap => {
     snap.forEach(childSnap => {
       console.log(childSnap.val())
