@@ -25,11 +25,11 @@ function readUserData(){
   //".on" est comme un "addEventListener" en Jquery.
   // ici, c'est une méthode asynchrone du schéma 'usersRef' qui perdure dans le temps même si la fonction qui l'appelle est terminé
 
-  //Lorsqu'il y a un changement des valeurs du schéma "usersRef", un event s'active ou 'snap' est un nouveau schéma avec les nouvelles valeurs
+  //Lorsqu'il y a un changement des valeurs du schéma "usersRef", l'event s'active et crée un nouveau schéma 'snap' avec les nouvelles valeurs
   usersRef.on("value", snap =>{
     //On vide le contenu précédent de ul représentant la liste de nom des utilisateurs
     userList.innerHTML = "";
-    // On va parcourir le schéma 'snap'
+    // On va parcourir le nouveau schéma 'snap'
     // on sépare chaque élément du schéma 'snap'(qui est la table users)
     // en schéma 'childSnap' (qui est chaque user)
     snap.forEach(childSnap =>{ 
@@ -43,7 +43,7 @@ function readUserData(){
       $li.innerHTML = value.name;
       //On place un attribut user-key sur le <li> qui prend comme valeur la key de l'utilisateur sur lequel on est entrain d'itérer
       $li.setAttribute("user-key", key);
-      //on place dans la liste <ul>'user-list' le <li> créé pour cette itération
+      //on place dans la liste <ul>'user-list' le <li> que l'on vient de créer pour cette itération
       userList.append($li);})
 
   })

@@ -1,3 +1,5 @@
+//Un schéma est une class servant a récupérer les informations dans la BDD.
+//Sur firebase, le schéma se crée automatiquement en faisant la requête .child et retourne un objet "database"
 const firebaseConfig = {
     apiKey: "AIzaSyC_AK135jh7eGsNtwWyZ3RpAQeVehYZLaQ",
     authDomain: "projettestadrar.firebaseapp.com",
@@ -12,126 +14,135 @@ firebase.initializeApp(firebaseConfig);
 // On va créer une référence à notre BDD
 const dbRef = firebase.database().ref();
 
-
+// --------------------------
 //CREATION DE LA LISTE D UTILISATEURS
+// --------------------------
 readUserData();
 
 function readUserData(){
   //récupération de l'élément ul 'user-list' (vide pour le moment)
   const userListUI = document.getElementById("user-list");
-  //on va chercher les informations de la table "users" dans la BDD, on les stocks dans la variable sous forme d'objet "database".
+  // Grace à la fonction .child de firebase, on va créer un schéma qui récupère les informations de la table "users" dans la BDD.
   const usersRef = dbRef.child("users");
-  //".on" est un "addEventListener" en Jquery.
-  // on écoute la variable "usersRef" jusqu'a ce qu'il y ai des valeurs ou un changement de valeur,
-  //puis on fait un callback ou snap représente ses nouvelles valeurs.
-  usersRef.on("value", snap =>{
-    //On vide le contenu précédent
-    userListUI.innerHTML = "";
-    // snap est encore un objet database.
-    // On va parcourir snap (qui est la table users)
-    // on sépare chaque snap en childSnap qui représente chaque user sous forme d'objet database
-    snap.forEach(childSnap =>{
-        //On stock les key pour chaque user
-        let key = childSnap.key;
-        //On stock les valeur correspondantes (email, name, age) sous forme de dictionnaire
-        let value = childSnap.val();
-        //creation de la <li></li>
-        let $li = document.createElement('li');
+  //".on" est comme un "addEventListener" en Jquery.
+  // ici, c'est une méthode asynchrone du schéma 'usersRef' qui perdure dans le temps même si la fonction qui l'appelle est terminé
 
-        // création de l'icone DELETE en élément <span> et ajout du addEventListener avec un callback d'une fonction 'deleteButtonClicked' durant la création de span et AVANT DE LE PLACER DANS LE DOM.
-        // le callback déclenche la supression en bdd
-        let deleIconUi = document.createElement("span");
-        deleIconUi.class = "delete-user";
-        deleIconUi.innerText = "  X";
-        deleIconUi.style.color = "red";
-        deleIconUi.setAttribute("userid",key);
-        deleIconUi.addEventListener("click", deleteButtonClicked);
-        //remplissage de la <li></li> avec le name
-        $li.innerHTML = value.name;
-        //On place un attribut user-key sur chaque <li></li>(qui prend comme valeur la key de l'utilisateur dans la BDD)
-        $li.setAttribute('user-key', key);
-        //On place le <span> DELETE à la fin du <li> de l'utilisateur que l'on est entrain de créer
-        $li.append(deleIconUi);
-        // ajout du addEventListener de <li> avec un callback d'une fonction 'userClicked' durant la création de li et AVANT DE LE PLACER DANS LE DOM.
-        //Le callback déclenche l'affichage des informations
-        $li.addEventListener("click", userClicked);
-        //on place dans la liste <ul></ul>'user-list' le <li></li> créé
-        userListUI.append($li)
+  //Lorsqu'il y a un changement des valeurs du schéma "usersRef", l'event s'active et crée un nouveau schéma 'snap' avec les nouvelles valeurs
+  usersRef.on("value", snap =>{
+    //On vide le contenu précédent de ul représentant la liste de nom des utilisateurs
+    userListUI.innerHTML = "";
+    // On va parcourir le nouveau schéma 'snap'
+    // on sépare chaque élément du schéma 'snap'(qui est la table users)
+    // en schéma 'childSnap' (qui est chaque user)
+    snap.forEach(childSnap =>{
+      //On récupère la valeur key pour chaque user en utilisant la méthode .key du schéma ChildSnap
+      let key = childSnap.key;
+      //On récupère les valeurs(email, name, age) sous forme de dictionnaire pour chaque user en utilisant la méthode .val() du schéma ChildSnap
+      let value = childSnap.val();
+      //creation d'un <li>
+      let $li = document.createElement('li');
+      //remplissage du <li> avec le name
+      $li.innerHTML = value.name;
+      //On place un attribut user-key sur le <li> qui prend comme valeur la key de l'utilisateur sur lequel on est entrain d'itérer
+      $li.setAttribute('user-key', key);
+
+      // création de l'élément <span>
+      let deleIconUi = document.createElement("span");
+      deleIconUi.class = "delete-user";
+      deleIconUi.innerText = "  X";
+      deleIconUi.style.color = "red";
+      //on crée un attribut à <span> qui prend comme valeur la key de l'utilisateur sur lequel on est entrain d'itérer
+      deleIconUi.setAttribute("userid",key);
+      // <span> aura un addEventListener avec comme callback la fonction 'deleteButtonClicked' qui déclenche la suppression en BDD de l'utilisateur ciblé.
+      //Il est important de créer le addEventListener AVANT de le placer dans le DOM, sinon il n'est pas écouté.
+      deleIconUi.addEventListener("click", deleteButtonClicked);
+
+      //On place le <span> à la fin du <li> que l'on est entrain de créer
+      $li.append(deleIconUi);
+      // le <li> aura un addEventListener avec comme callback la fonction 'userClicked' qui déclenche l'affichage des informations de l'utilisateur.
+      //Il est important de créer le addEventListener AVANT de le placer dans le DOM, sinon il n'est pas écouté.
+      $li.addEventListener("click", userClicked);
+      //on place dans la liste <ul>'user-list' le <li> que l'on vient de créer pour cette itération
+      userListUI.append($li)
         
     })
   })
 }
 
-// FONCTION QUI REMPLIS LA DIV 'user-detail' QUI AFFICHE LES DETAILS DE L UTILISATEUR CLIQUÉ
+// --------------------------
+// FONCTION QUI AFFICHE LES INFORMATIONS DE L'UTILISATEUR EN REMPLISSANT LA DIV 'user-detail'
+// --------------------------
 function userClicked(event){
-  // Une fonction déclenché sous forme de callback prend comme event plusieurs parametres natif au callback
-  // on récupère l'attribut 'user-key' sur l"élément ou le addeventlistener a été déclenché(la ou on clique)
+  // Une fonction déclenché sous forme de callback prend comme event plusieurs parametres natifs au callback
+  //On va récupérer sur l'élément ou le addEventListener a été déclenché(par un click) l'attribut 'user-key' qui réprésente la key de l'utilisateur ciblé.
   let userId = event.target.getAttribute("user-key");
-  //grace à la key de l'user ciblé, on va chercher les informations de l'user sur la table "users" dans la BDD, on les stocks dans la variable sous forme d'objet "database".
+  //grace à cette key, on va créer un schéma qui récupère les informations de l'utilisateur ciblé dans la table "users" dans la BDD.
   const userRef = dbRef.child("users/"+userId);
-  //on recupere la div ou l'on va afficher les infos de l'user
+  //on récupere la div ou l'on va afficher les informations de l'utilisateur.
   let userDetailUI = document.getElementById("user-detail");
-  //".on" est un "addEventListener" en Jquery.
-  // on écoute la variable "usersRef" jusqu'a ce qu'il y ai des valeurs ou un changement de valeur,
-  //puis on fait un callback ou snap représente ses nouvelles valeurs sous forme de database
+  //".on" est comme un "addEventListener" en Jquery.
+  // ici, c'est une méthode asynchrone du schéma 'userRef' qui perdure dans le temps même si la fonction qui l'appelle est terminé
+
+  //Lorsqu'il y a un changement des valeurs du schéma "userRef", l'event s'active et crée un nouveau schéma 'snap' avec les nouvelles valeurs représentant l'utilisateur
   userRef.on("value", snap =>{
-    // console.log(snap.val());
-    //On vide le contenu précédent
+    //On vide la div du contenu précédent 
     userDetailUI.innerHTML="";
-    //pour chaque info de l'utilisateur sous forme de database:
+    // On va parcourir le nouveau schéma 'snap'
+    // on sépare chaque élément du schéma 'snap'(qui représente l'utilisateur)
+    // en schéma 'childSnap' (qui est une information précise de l'utilisateur)
     snap.forEach(childSnap =>{
-      //on crée paragraphe, on met la key grace a .key propre à firebase et la value grace a .val() propre à firebase
+      //on crée un élément <p>
       let $p = document.createElement('p');
+      //On récupère la key de l'information ciblé en utilisant la méthode .key du schéma ChildSnap
+      //On récupère la valeur de l'information en utilisant la méthode .val() du schéma ChildSnap. Comme il n'y a qu'une valeur, on récupère un str et pas un dictionnaire.
       $p.innerHTML = `${childSnap.key} : ${childSnap.val()}`;
-      //on place dans la <div>'user-detail' le <p> créé
+      //on place dans la <div>'user-detail' le <p> que l'on vient de créer
       userDetailUI.append($p);
      })
   })
 }
 
-// FONCTION QUI SUPPRIME UN USER LORS DU CLICK SUR L'ICONE DELETE
+// --------------------------
+// FONCTION QUI SUPPRIME UN USER LORS DU CLICK SUR L'ICONE DELETE(le <span> dans le <li>)
+// --------------------------
 function deleteButtonClicked(event){
-  // Une fonction déclenché sous forme de callback prend comme event plusieurs parametres natif au callback
-  // on récupère l'attribut 'userid' sur l"élément ou le addeventlistener a été déclenché(la ou on clique)
+  // Une fonction déclenché sous forme de callback prend comme event plusieurs parametres natifs au callback
+  //On va récupérer sur l'élément ou le addEventListener a été déclenché(par un click) l'attribut 'user-key' qui réprésente la key de l'utilisateur ciblé.
   let userID = event.target.getAttribute("userid");
-  //grace à la key de l'user ciblé, on va chercher les informations de l'user sur la table "users" dans la BDD, on les stocks dans la variable sous forme d'objet "database".
+  //grace à cette key, on va créer un schéma qui récupère les informations de l'utilisateur ciblé dans la table "users" dans la BDD.
   const userRef = dbRef.child("users/"+userID);
-  //On supprime l'user grace a la fonction remove
+  //On utilise la methode .remove() du schéma 'userRef' pour supprimer l'utilisateur ciblé. 
   userRef.remove();
 }
 
 
 // --------------------------
-// CREATE CORRECTION MAIS LE MIEN FONCTIONNE
+// FONCTION QUI CRÉE UN NOUVEL UTILISATEUR
 // --------------------------
+// récupération du bouton 'add-user-btn' (le bouton qui valide l'envois du formulaire d'ajout d'un utilisateur )
 const addUserBtnUI = document.getElementById("add-user-btn");
+//lors du click de ce bouton, crée un callback qui déclenche la fonction addUserBtnClicked
 addUserBtnUI.addEventListener("click", addUserBtnClicked);
 
 function addUserBtnClicked() {
-    //une reférence à notre table users
-    // const usersRef = dbRef.child('users');
-    // Récup des 3 inputs
-    // const addUserInputsUI = document.getElementsByClassName("user-input");
-    const addUserInputsUI = document.querySelectorAll(".user-input");
+  //On récupère tous les éléments inputs du formulaire qui ont tous l'attribut 'user-imput'
+  const addUserInputsUI = document.querySelectorAll(".user-input");
 
-    console.log(addUserInputsUI);
-     // Cet objet va stocker les infos du nouvel utilisateur
-    let newUser = {};
-    // On fait une boucle pour récupérer les valeurs de chaque input dans le formulaire
-    for(let i = 0; i < addUserInputsUI.length; i++){
-    // Ci dessous on récupère les key et value
-        let key = addUserInputsUI[i].getAttribute('data-key');
-    // Valeur qu'on récup dans les inputs.    
-        let value = addUserInputsUI[i].value;
-    // Pour chaque CLé (age, name, et email on les associe à notre nouvel utilisateur)
-        newUser[key] = value;
-    }
-    //on va chercher les informations de la table "users" dans la BDD, on les stocks dans la variable sous forme d'objet "database".
-    const usersRef = dbRef.child("users");
-    // on ajoute notre nouvel utilisateur dans la BDD
-    usersRef.push(newUser);
-    console.log("New User SAVED");
-    console.log(`${newUser.name} il a ${newUser.age} ans`);
-    document.getElementById('leFormulaireAjout').reset();
+  // On crée un dictionnaire vide qui servira a stocker les informations de notre nouvel utilisateur
+  let newUser = {};
+  // On fait une boucle du nombre d'inputs que l'on a récupéré
+  for(let i = 0; i < addUserInputsUI.length; i++){
+    // pour chaque Input, on récupère l'attribut data-key qui a une valeur identique à la key utilisé pour stocker une information d'un utilisateur dans la bdd
+    let key = addUserInputsUI[i].getAttribute('data-key');
+    // pour chaque Input, on récupère la valeur donnée dans l'input    
+    let value = addUserInputsUI[i].value;
+    // On stocke les informations en relation key:valeur dans notre dictionnaire
+      newUser[key] = value;
+  }
+  // Grace à la fonction .child de firebase, on va créer un schéma qui récupère les informations de la table "users" dans la BDD.
+  const usersRef = dbRef.child("users");
+  // En utilisant le méthode .push() de notre schéma, on ajoute notre nouvel utilisateur dans la BDD en utilisant le dictionnaire qui contient les informations
+  usersRef.push(newUser);
+ // On vide les inputs de leur valeur pour un prochain ajout d'utilisateur grace à la fonction .reset() du formulaire
+  document.getElementById('leFormulaireAjout').reset();
 }
-
