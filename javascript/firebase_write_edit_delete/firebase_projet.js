@@ -1,12 +1,13 @@
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 //La config de firebase
 const firebaseConfig = {
-	apiKey: "AIzaSyB2n03qxoP7bZ13wQFPmSEjUZrIWTa0yeA",
-    authDomain: "tp-firebase-737f3.firebaseapp.com",
-    projectId: "tp-firebase-737f3",
-    storageBucket: "tp-firebase-737f3.appspot.com",
-    messagingSenderId: "387771298298",
-    appId: "1:387771298298:web:8b8691d7ba62d242897443"
+	apiKey: "AIzaSyC_AK135jh7eGsNtwWyZ3RpAQeVehYZLaQ",
+	authDomain: "projettestadrar.firebaseapp.com",
+	databaseURL: "https://projettestadrar-default-rtdb.firebaseio.com",
+	projectId: "projettestadrar",
+	storageBucket: "projettestadrar.appspot.com",
+	messagingSenderId: "99208050807",
+	appId: "1:99208050807:web:b7bfbd2d4a2cd52fc66e72"
   };
   //ensuite avec cette config on initialise l'appli
   firebase.initializeApp(firebaseConfig);
