@@ -11,49 +11,12 @@
 
     <h1>FB CRUD</h1>
   
-    <!------- ADD USER MODULE --------->
-    <!-- sert a ajouter un utilisateur -->
-    <section id="add-user-module" >
-        <button id="open-add-user-form-btn">+</button>
-        <!--formulaire leFormulaireAjout en display none jusqu'à hover du button ci-dessus-->
-        <form id="leFormulaireAjout">
-            <h2>Add User</h2>
-            name:<br>
-            <input type='text' data-key='name' class='user-input'><br>
-            age:<br>
-            <input type='text' data-key='age' class='user-input'><br>
-            email:<br>
-            <input type='text' data-key='email' class='user-input'><br>
-            <button type='button' id="add-user-btn">add user</button>
-        </form>
-    </section>
-
-    <!-------- EDIT USER MODULE --------->
-    <!-- en display none pour le moment -->
-    <!-- servira a update un utilisateur -->
-    <section id="edit-user-module">
-        <form>
-            <h2>Edit user</h2>
-            <input type="text" class="edit-userid">
-            name:<br>
-            <input type='text' data-key='name' class='edit-user-input'><br>
-            age:<br>
-            <input type='text' data-key='age' class='edit-user-input'><br>
-            email:<br>
-            <input type='text' data-key='email' class='edit-user-input'><br>
-            <button type='button' id="edit-user-btn">save</button>
-        </form>
-    </section>
-
     <!--------- SHOW USER MODULE --------->
     <!-- sert a afficher les utilisateurs -->
     <ul id="user-list">       
-         <!-- ON REMPLI de <li> à la lecture de la BDD -->
+         <!-- on rempli de <li> du name de l'utilisateur à la lecture de la BDD -->
     </ul>
 
-    <div id="user-detail">
-         <!-- ON REMPLI la div quand on click sur un user -->
-    </div>
 
         <!-- installation Firebase, ne fonctionne plus en version 9 de firebase -->
         <!-- The core Firebase JS SDK(3 fichiers) is always required and must be listed first -->
