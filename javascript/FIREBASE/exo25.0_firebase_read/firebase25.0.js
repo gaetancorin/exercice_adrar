@@ -35,7 +35,7 @@ function readUserData(){
     snap.forEach(childSnap =>{ 
       //On récupère la valeur key pour chaque user en utilisant la méthode .key du schéma ChildSnap
       let key = childSnap.key;
-      //On récupère les valeurs(email, name, age) sous forme de dictionnaire pour chaque user en utilisant la méthode .val() du schéma ChildSnap
+      //On récupère les valeurs(email, name, age) sous forme de dictionnaire pour chaque user en utilisant la méthode .val() du schéma childSnap
       let value =childSnap.val();
       //creation d'un <li>
       let $li = document.createElement("li");

@@ -12,19 +12,20 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-// On stock dans une variable la reférence à notre BDD
+// On va créer une référence à notre BDD
 const dbRef = firebase.database().ref();
-//on va chercher les informations de la table "users" dans la BDD, on les stocks dans la variable sous forme d'objet database.
+// Grace à la fonction .child de firebase, on va créer un schéma qui récupère les informations de la table "users" dans la BDD.
 const usersRef = dbRef.child('users');
 
-//".on" est le "addEventListener" en Jquery.
-// on écoute la variable jusqu'a ce qu'il y ai des valeurs ou un changement de valeur,
-//puis on fait un callback ou l'on itère ses valeurs pour les afficher en console.
+//".on" est comme un "addEventListener" en Jquery.
+// ici, c'est une méthode asynchrone du schéma 'usersRef' qui perdure dans le temps même si la fonction qui l'appelle est terminé
+
+//Lorsqu'il y a un changement des valeurs du schéma "usersRef", l'event s'active et crée un nouveau schéma 'snap' avec les nouvelles valeurs
 usersRef.on("value", snap => {
     snap.forEach(childSnap => {
+      //On récupère les valeurs(email, name, age) sous forme de dictionnaire pour chaque user en utilisant la méthode .val() du schéma childSnap
       console.log(childSnap.val())
       
     })
 })
-// snap et childSnap sont des objets database. La fonction .val() propre à firebase permet de récupérer un format str ou bibliotheque
 
