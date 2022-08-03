@@ -43,7 +43,8 @@ function readUserData(){
       $li.innerHTML = value.name;
       //On place un attribut user-key sur le <li> qui prend comme valeur la key de l'utilisateur sur lequel on est entrain d'itérer
       $li.setAttribute("user-key", key);
-      //on place dans la liste <ul>'user-list' le <li> que l'on vient de créer pour cette itération
+      //On place le <li> que l'on vient de créer dans le <ul>'user-list'
+      //On a fini pour l'itération de cet utilisateur, on passe au suivant.
       userList.append($li);})
 
   })
