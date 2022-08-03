@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firebase EDIT</title>
-    <link rel="stylesheet" href="style25.3.css">
-</head>
-<body>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>firebase CRUD</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet"> 
+  <link rel="stylesheet" href="style25.3.css">
+  </head>
+  <body>
 
     <h1>FIREBASE CRUD</h1>
   
@@ -34,11 +35,12 @@
     </section>
 
     <!-------- EDIT USER MODULE --------->
-    <!-- en display none pour le moment -->
-    <!-- servira a update un utilisateur -->
+    <!-- en display none pour le moment, apparait lors du click sur le bouton de modification -->
+    <!-- sert a update un utilisateur -->
     <section id="edit-user-module">
         <form>
             <h2>Edit user</h2>
+            id:<br>
             <input type="text" class="edit-userid">
             name:<br>
             <input type='text' data-key='name' class='edit-user-input'><br>
@@ -58,7 +60,7 @@
     <!--------- SHOW USER MODULE --------->
     <!-- sert a afficher les utilisateurs -->
     <ul id="user-list">       
-         <!-- ON REMPLI de <li> à la lecture de la BDD -->
+         <!-- ON REMPLI de <li> du name de l'utilisateur à la lecture de la BDD -->
     </ul>
 
     <div id="user-detail">
@@ -87,12 +89,12 @@
     </section>
 
     <!-------- EDIT ARTICLE MODULE ------------>
-    <!-- en display none pour le moment -->
-    <!-- servira a update un utilisateur -->
+    <!-- en display none pour le moment, apparait lors du click sur le bouton de modification -->
+    <!-- sert a update un article -->
     <section id="edit-article-module">
         <form>
             <h2>Edit articles</h2>
-            <!-- ICI J'AI MON INPTU CACHé qui contiendra l'id de l'utilisateur -->
+            id:<br>
             <input type="text" class="edit-articleid">
             titre:<br>
             <input type='text' data-key='titre' class='edit-article-input'><br>
@@ -111,7 +113,7 @@
     <!-------- SHOW ARTICLE MODULE --------->
     <!-- sert a afficher les utilisateurs -->
     <ul id="article-list">       
-        <!-- ON REMPLI de <li> par articles à la lecture de la BDD -->
+        <!-- ON REMPLI de <li> du titre de l'article à la lecture de la BDD -->
     </ul>
 
     <div id="article-detail">
@@ -124,6 +126,5 @@
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-analytics.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.4.2/firebase-database.js"></script>
         <script src="firebase25.3.js"></script>
-        <!--<script src="firebase_show_user_correction.js"></script> -->
 </body>
 </html>

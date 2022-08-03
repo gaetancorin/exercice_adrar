@@ -1,7 +1,3 @@
-#email {
-    border-radius: 0;
-} 
-
 body, h1, h2 {
     margin:0;
     padding:0;
@@ -29,13 +25,7 @@ body, h1, h2 {
     margin:10px;
     border:1px solid #4fc3fc;
    }
-   
-   #user-list h2 {
-    padding:10px;
-    margin:0;
-    color:white;
-   }
-   
+
    #user-list li {
     padding:5px 10px;
     border-top:1px solid #4fc3fc;
@@ -114,11 +104,6 @@ body, h1, h2 {
        width: 150px;
    }
    
-   #user-list li:hover~#edit-user-module {
-       display: none;
-   }
-   
-   
    #edit-user-module form button {
        background: #54bb7d;
        font-size: 1em;
@@ -141,12 +126,6 @@ body, h1, h2 {
     float:left;
     margin:10px;
     border:1px solid #4fc3fc;
-   }
-   
-   #article-list h2 {
-    padding:10px;
-    margin:0;
-    color:white;
    }
    
    #article-list li {
@@ -225,11 +204,6 @@ body, h1, h2 {
     padding: 10px;
     width: 150px;
 }
-
-#article-list li:hover~#edit-article-module {
-    display: none;
-}
-
 
 #edit-article-module form button {
     background: #54bb7d;
