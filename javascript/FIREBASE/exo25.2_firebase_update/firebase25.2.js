@@ -182,7 +182,7 @@ function editButtonClicked(event) {
 		const editUserInputsUI = document.querySelectorAll(".edit-user-input");
 		//On va créer une boucle du nombre de ses inputs permettant de sélectionner chaque input les un après les autres.
 		for(var i = 0; i < editUserInputsUI.length; i++) {
-			// on va récupérer l'attribut "data-key" de cet input qui est identique à la key du schéma qui possède la valeur que l'on veut mettre dans cette input.
+			// pour chaque input, on récupère l'attribut "data-key"  qui est identique à la key du schéma qui possède la valeur que l'on veut mettre dans cette input.
 			var key = editUserInputsUI[i].getAttribute("data-key");
 			//et on donne comme valeur à l'input la valeur que l'on a ciblé dans le schéma.
         	editUserInputsUI[i].value = snap.val()[key];
@@ -199,7 +199,7 @@ function editButtonClicked(event) {
 }
 
 // --------------------------
-// FONCTION QUI ENREGISTRE EN BDD LES MODIFICATIONS DU FORMULAIRE DE MODIFICATIONS
+// FONCTION QUI ENREGISTRE EN BDD LES MODIFICATIONS DE L UTILISATEUR CIBLÉ PAR LE FORMULAIRE DE MODIFICATIONS
 // --------------------------
 function saveUserBtnClicked() {
 	//On récupère l'id de l'utilisateur que lon veut modifier
@@ -211,16 +211,13 @@ function saveUserBtnClicked() {
 	//On récupère TOUS les inputs du formulaire
 	const editUserInputsUI = document.querySelectorAll(".edit-user-input");
 	//Ensuite on fait un système de boucle pour remplir l'objet vide avec les value des inputs
-	editUserInputsUI.forEach(function(textField) {
+	editUserInputsUI.forEach(function(oneInput) {
 		//Pour chaque input on récupère les key (data-key) (input du mail, ou du name ou age)
-		let key = textField.getAttribute("data-key");
-		// let value = textField.value;
-  		// editedUserObject[textField.getAttribute("data-key")] = textField.value
+		let key = oneInput.getAttribute("data-key");
 		//On rempli notre objet avec les value des inputs (pour chaque key)
-  		editedUserObject[key] = textField.value;
+  		editedUserObject[key] = oneInput.value;
 	});
 	userRef.update(editedUserObject);
-    console.log("USER UPDATED");
 	//Ensuite on reMasque le formulaire de modif.
 	document.getElementById('edit-user-module').style.display = "none";
 }
