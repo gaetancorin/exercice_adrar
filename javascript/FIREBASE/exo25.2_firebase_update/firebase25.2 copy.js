@@ -162,44 +162,35 @@ function addUserBtnClicked() {
 
 
 // --------------------------
-//FONCTION QUI OUVRE LE FORMULAIRE DE MODIFICATION ET REMPLIS LES INPUTS
+// EDIT : on click sur le bouton de modification ✎ d'un utilisateur et ca ouvre un formulaire pré rempli pour modifier par la suite cet utilisateur
 // --------------------------
-function editButtonClicked(event) {
-	//On récupère le formulaire de modification d'utilisateur (en display none actuellement).
-	let EditUserInputs = document.getElementById('edit-user-module');
-	//et on le fait apparaître
-	EditUserInputs.style.display = "block";
+function editButtonClicked(e) {
+//On récupère le formulaire de modification en display none et on le fait apparaître.
+document.getElementById('edit-user-module').style.display = "block";
+//setup du userID sur le input caché hidden
+document.querySelector(".edit-userid").value = e.target.getAttribute("userid");
+// on vise le bon Ga dans la BDD via son ID 
+const userRef = dbRef.child('users/' + e.target.getAttribute("userid"));
+// setup  des données sur les champs utilisateurs pré remplir les input du formulaire
+const editUserInputsUI = document.querySelectorAll(".edit-user-input");
+console.log(editUserInputsUI);
 
-	// Une fonction déclenché sous forme de callback prend comme event plusieurs parametres natifs au callback
-	//On va récupérer l'attribut 'userid'(la key de l'utilisateur ciblé) sur l'élément ou le addEventListener a été déclenché par un click.
-	let userId = event.target.getAttribute("userid");
-	//grace à cette key, on va créer un schéma qui récupère les informations de l'utilisateur ciblé dans la BDD.
-	const userRef = dbRef.child("users/"+userId);
-
-	//Lorsqu'il y a un changement des valeurs de ce schéma, l'event s'active et crée un nouveau schéma 'snap' avec les nouvelles valeurs. 
-	userRef.on("value", snap => {
-		// On va récupérer tous les inputs dans le formulaire de modification(sauf celui de l'Id)
-		const editUserInputsUI = document.querySelectorAll(".edit-user-input");
-		//On va créer une boucle du nombre de ses inputs permettant de sélectionner chaque input les un après les autres.
-		for(var i = 0; i < editUserInputsUI.length; i++) {
-			// on va récupérer l'attribut "data-key" de cet input qui est identique à la key du schéma qui possède la valeur que l'on veut mettre dans cette input.
-			var key = editUserInputsUI[i].getAttribute("data-key");
-			//et on donne comme valeur à l'input la valeur que l'on a ciblé dans le schéma.
-        	editUserInputsUI[i].value = snap.val()[key];
-    	}
-		//Dans firebase, le schéma de l'utilisateur a toutes les informations de l'utilisateur mais pas l'id.
-		//On récupère donc l'input id et on lui assigne la valeur de la variable 'userId' défini plus haut représentant l'id de l'utilisateur ciblé
-		document.querySelector(".edit-userid").value = userId;
-	});
-
-	//On récupère le bouton à la fin du formulaire de modification
+// On pré rempli le formulaire pour editer (en récupérant les key et valeurs)
+userRef.on("value", snap => {
+    for(var i = 0, len = editUserInputsUI.length; i < len; i++) {
+		//On récupère les KEY (name, mail,age)
+        var key = editUserInputsUI[i].getAttribute("data-key");
+		//Pour chaque value des inputs, on lui assigne la valeur de la key
+                editUserInputsUI[i].value = snap.val()[key];
+    }
+});
+	//Dans le form on récupère le bouton save et on place un addEventListener dessus
+	//Qui executera la fonction pour sauvegarder les modifications.
 	const saveBtn = document.querySelector("#edit-user-btn");
-	//Et à chaque clique sur le bouton, on déclenche la fonction 'saveUserBtnClicked' qui sauvegarde en bdd l'intégralité des informations des inputs contenant les modifications de valeur de l'utilisateur ciblé.
 	saveBtn.addEventListener("click", saveUserBtnClicked);
 }
-
 // --------------------------
-// FONCTION QUI ENREGISTRE EN BDD LES MODIFICATIONS DU FORMULAIRE DE MODIFICATIONS
+// EDIT - SAVE - UPDATE
 // --------------------------
 function saveUserBtnClicked() {
 	//On récupère l'id de l'utilisateur que lon veut modifier
