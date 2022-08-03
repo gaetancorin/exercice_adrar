@@ -47,18 +47,18 @@ function readUserData(){
       $li.setAttribute('user-key', key);
 
       // création de l'élément <span> qui sera notre bouton de suppression d'utilisateur
-      let deleIconUi = document.createElement("span");
-      deleIconUi.class = "delete-user";
-      deleIconUi.innerText = "  X";
-      deleIconUi.style.color = "red";
+      let deleteIconUi = document.createElement("span");
+      deleteIconUi.class = "delete-user";
+      deleteIconUi.innerText = "  X";
+      deleteIconUi.style.color = "red";
       //on crée un attribut à <span> qui prend comme valeur la key de l'utilisateur sur lequel on est entrain d'itérer
-      deleIconUi.setAttribute("userid",key);
+      deleteIconUi.setAttribute("userid",key);
       // <span> aura un addEventListener avec comme callback la fonction 'deleteButtonClicked' qui déclenche la suppression en BDD de l'utilisateur ciblé.
       //Il est important de créer le addEventListener AVANT de le placer dans le DOM, sinon il n'est pas écouté.
-      deleIconUi.addEventListener("click", deleteButtonClicked);
+      deleteIconUi.addEventListener("click", deleteButtonClicked);
 
       //On place le <span> à la fin du <li> que l'on est entrain de créer
-      $li.append(deleIconUi);
+      $li.append(deleteIconUi);
       // On rajout un addEventListener au <li> avec comme callback la fonction 'userClicked' qui déclenche l'affichage des informations de l'utilisateur.
       //Il est important de créer le addEventListener AVANT de le placer dans le DOM, sinon il n'est pas écouté.
       $li.addEventListener("click", userClicked);
