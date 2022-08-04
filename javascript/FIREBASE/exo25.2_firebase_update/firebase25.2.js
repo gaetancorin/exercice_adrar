@@ -11,7 +11,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-// On va créer une référence à notre BDD
+// On stock dans une variable la référence à notre BDD
 const dbRef = firebase.database().ref();
 
 // --------------------------

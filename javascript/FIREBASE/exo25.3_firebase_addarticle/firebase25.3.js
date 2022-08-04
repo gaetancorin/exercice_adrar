@@ -1,5 +1,5 @@
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-//La config de firebase
+//Un schéma est une class servant a récupérer les informations dans la BDD.
+//Sur firebase, le schéma se crée automatiquement en faisant la requête .child et retourne un objet "database"
 const firebaseConfig = {
 	apiKey: "AIzaSyC_AK135jh7eGsNtwWyZ3RpAQeVehYZLaQ",
 	authDomain: "projettestadrar.firebaseapp.com",
@@ -9,175 +9,212 @@ const firebaseConfig = {
 	messagingSenderId: "99208050807",
 	appId: "1:99208050807:web:b7bfbd2d4a2cd52fc66e72"
   };
-  //ensuite avec cette config on initialise l'appli
-  firebase.initializeApp(firebaseConfig);
+//Avec cette config on initialise l'appli
+firebase.initializeApp(firebaseConfig);
 // On stock dans une variable la reférence à notre BDD
 const dbRef = firebase.database().ref();
-//REF à USERS avec un S (ca nous ramène à l'adresse de tous les utilisateurs dans la BDD)
-const usersRef = dbRef.child('users');
 
 
-
-
+// --------------------------
+//CREATION DE LA LISTE D UTILISATEURS
+// --------------------------
 readUserData();
-// --------------------------
-// READ : il va falloir un système de boucle pour afficherles données de la base.
-//On va afficher 1 donnée, et répeter ce système d'affichage TANT que on a des données dans la BDD.
-// --------------------------
+
 function readUserData() {
-//On va stocker la liste vide en html que l'on remplira avec les données
+	//récupération de l'élément ul 'user-list' (vide pour le moment)
 	const userListUI = document.getElementById("user-list");
-//On surveille la BDD QUE si ya des changments de value dans notre objet users.
-//On enregistre dans une variable snap ou snapshot (convention)
+	// Grace à la fonction .child de firebase, on va créer un schéma qui récupère les informations de la table "users" dans la BDD.
+	const usersRef = dbRef.child("users");
+	//".on" est comme un "addEventListener" en Jquery.
+	// ici, c'est une méthode asynchrone du schéma 'usersRef' qui perdure dans le temps même si la fonction qui l'appelle est terminé
+  
+	//Lorsqu'il y a un changement des valeurs du schéma "usersRef", l'event s'active et crée un nouveau schéma 'snap' avec les nouvelles valeurs
 	usersRef.on("value", snap => {
+		//On vide le contenu précédent de ul représentant la liste de nom des utilisateurs
 		userListUI.innerHTML = "";
-//snap = Photo de la BDD à ce moment là 
+		// On va parcourir le nouveau schéma 'snap'
+	  	// on sépare chaque élément du schéma 'snap'(qui est la table users)
+	  	// en schéma 'childSnap' (qui est chaque user)
 		snap.forEach(childSnap => {
-			//on Stock les clé et valeurs
-			let key = childSnap.key,
-				value = childSnap.val();
-
+			//On récupère la valeur key pour chaque user en utilisant la méthode .key du schéma ChildSnap
+			let key = childSnap.key;
+			//On récupère les valeurs(email, name, age) sous forme de dictionnaire pour chaque user en utilisant la méthode .val() du schéma ChildSnap
+			let value = childSnap.val();
+			//creation d'un <li>
 			let $li = document.createElement("li");
+			//remplissage du <li> avec le name
+			$li.innerHTML = value.name;
+			//On place un attribut user-key sur le <li> qui prend comme valeur la key de l'utilisateur sur lequel on est entrain d'itérer
+			$li.setAttribute("user-key", key);
 
-			// edit icon
+      		// création de l'élément <span> qui sera notre bouton de MODIFICATION d'utilisateur
 			let editIconUI = document.createElement("span");
 			editIconUI.class = "edit-user";
 			editIconUI.innerHTML = " ✎";
+			//on crée un attribut à <span> qui prend comme valeur la key de l'utilisateur sur lequel on est entrain d'itérer
 			editIconUI.setAttribute("userid", key);
+			// <span> aura un addEventListener avec comme callback la fonction 'editButtonClicked' qui fait apparaître le formulaire pour modifier en BDD l'utilisateur ciblé.
+			//Il est important de créer le addEventListener AVANT de le placer dans le DOM, sinon il n'est pas écouté.
             editIconUI.addEventListener("click", editButtonClicked)
             
-            // delete icon
+            // création de l'élément <span> qui sera notre bouton de SUPPRESSION d'utilisateur
 			let deleteIconUI = document.createElement("span");
 			deleteIconUI.class = "delete-user";
 			deleteIconUI.innerHTML = " ☓";
+			deleteIconUI.style.color = "red";
+			//on crée un attribut à <span> qui prend comme valeur la key de l'utilisateur sur lequel on est entrain d'itérer
 			deleteIconUI.setAttribute("userid", key);
+			// <span> aura un addEventListener avec comme callback la fonction 'deleteButtonClicked' qui déclenche la suppression en BDD de l'utilisateur ciblé.
+			//Il est important de créer le addEventListener AVANT de le placer dans le DOM, sinon il n'est pas écouté.
 			deleteIconUI.addEventListener("click", deleteButtonClicked)
 
 			
-			$li.innerHTML = value.name;
+   			//On place nos deux <span> à la fin du <li> que l'on est entrain de créer
 			$li.append(editIconUI);
 			$li.append(deleteIconUI);
 
-			$li.setAttribute("user-key", key);
+      		// On rajout un addEventListener au <li> avec comme callback la fonction 'userClicked' qui déclenche l'affichage des informations de l'utilisateur.
+      		//Il est important de créer le addEventListener AVANT de le placer dans le DOM, sinon il n'est pas écouté.
 			$li.addEventListener("click", userClicked)
+			//On place le <li> que l'on vient de créer dans le <ul>'user-list'
+      		//On a fini pour l'itération de cet utilisateur, on passe au suivant.
 			userListUI.append($li);
 
-});
+		});
 	})
 }
 
 // --------------------------
-// DISPLAY USER INFO
+// FONCTION QUI AFFICHE LES INFORMATIONS DE L'UTILISATEUR CIBLÉ EN REMPLISSANT LA DIV 'user-detail'
 // --------------------------
-// La fonction va prendre en param un event
 function userClicked(event) {
-    // console.log(event)
-    // Pour identifier sur quel utilisateur on a cliqué
-    // récuperer l'id des USERS via getAttribute
-    let userID = event.target.getAttribute("user-key");
-    console.log(userID);
-
-    // on vise 1 utilisateur précis dans la BDD via son id
-    const userRef = dbRef.child('users/' + userID);
-    // On récup la DIV avec l'id user-detail
-    const userDetailUI = document.getElementById("user-detail");
-
+	// Une fonction déclenché sous forme de callback prend comme event plusieurs parametres natifs au callback
+	//On va récupérer l'attribut 'user-key'(la key de l'utilisateur ciblé) sur l'élément ou le addEventListener a été déclenché par un click.
+    let userId = event.target.getAttribute("user-key");
+	//grace à cette key, on va créer un schéma qui récupère les informations de l'utilisateur ciblé dans la BDD.
+    const userRef = dbRef.child('users/' + userId);
+	//on récupere la div ou l'on va afficher les informations de l'utilisateur.
+    let userDetailUI = document.getElementById("user-detail");
+	//".on" est comme un "addEventListener" en Jquery.
+	// ici, c'est une méthode asynchrone du schéma 'userRef' qui perdure dans le temps même si la fonction qui l'appelle est terminé
+  
+	//Lorsqu'il y a un changement des valeurs du schéma "userRef"(réprésentant l'utilisateur), l'event s'active et crée un nouveau schéma 'snap' avec les nouvelles valeurs.
     userRef.on("value", snap =>{
+		//On vide la div du contenu précédent 
         userDetailUI.innerHTML = "";
-//on va faire une boucle pour afficher  à côté du nom utilisateur 
-//Les paires clé valeur (la boucle affiche autant de paragraphe qu'il ya des key-value)
+	  	// On va parcourir le nouveau schéma 'snap'
+	  	// on sépare chaque élément du schéma 'snap'(qui représente l'utilisateur)
+	  	// en schéma 'childSnap' (qui est une information précise de l'utilisateur)
+		//On trie ensuite si c'est une image ou un paragraphe
         snap.forEach(childSnap =>{
 
             if (childSnap.key == "image-profil"){
                 let $img = document.createElement("img");
+				// .val() est une méthode du schéma 'childsnap' qui retourne toutes ses valeurs en format dictionnaire, ou str si il en a qu'une seule
                 $img.src = childSnap.val();
+				$img.style ="width: 75px";
+				//on place dans la <div>'user-detail' le <img> que l'on vient de créer
                 userDetailUI.append($img);
             }
             else{
             let $p = document.createElement("p");
+			// .key est une méthode du schéma 'childsnap' qui retourne la key
             $p.innerHTML = childSnap.key + " : " + childSnap.val();
+			//on place dans la <div>'user-detail' le <p> que l'on vient de créer
             userDetailUI.append($p);}
         })
     })
 }
+
 // --------------------------
-// ADD
+// FONCTION QUI SUPPRIME UN USER LORS DU CLICK SUR L'ICONE DELETE(le <span> dans le <li>)
 // --------------------------
-//On récup le button, on place un adeventListener au click dessus 
+function deleteButtonClicked(event) {
+	// Une fonction déclenché sous forme de callback prend comme event plusieurs parametres natifs au callback
+	//On va récupérer sur l'élément ou le addEventListener a été déclenché(par un click) l'attribut 'user-key' qui réprésente la key de l'utilisateur ciblé.
+	let userID = event.target.getAttribute("userid");
+	//grace à cette key, on va créer un schéma qui récupère les informations de l'utilisateur ciblé" dans la BDD.
+	const userRef = dbRef.child('users/' + userID);
+	//On utilise la methode .remove() du schéma 'userRef' pour supprimer l'utilisateur ciblé.
+	userRef.remove();
+}
+
+// --------------------------
+// FONCTION QUI CRÉE UN NOUVEL UTILISATEUR
+// --------------------------
+// récupération du bouton 'add-user-btn' (le bouton qui valide l'ajout d'un utilisateur après avoir remplis le formulaire)
 const addUserBtnUI = document.getElementById("add-user-btn");
+//lors du click de ce bouton, crée un callback qui déclenche la fonction addUserBtnClicked
 addUserBtnUI.addEventListener("click", addUserBtnClicked);
 
 function addUserBtnClicked() {
-	//une reférence à notre table users
-	const usersRef = dbRef.child('users');
-	// Récup des 3 inputs
+	//On récupère tous les <input> du formulaire d'ajout d'un utilisateur car ils ont tous l'attribut 'user-imput
 	const addUserInputsUI = document.getElementsByClassName("user-input");
-	console.log(addUserInputsUI);
- 	// Cet objet va stocker les infos du nouvel utilisateur
+
+	// On crée un dictionnaire vide qui servira a stocker les informations de notre nouvel utilisateur
     let newUser = {};
-    // On fait une boucle pour récupérer les valeurs de chaque input dans le formulaire,
-	// Et remplir le newUser
-    for (let i = 0, len = addUserInputsUI.length; i < len; i++) {
-	// Ci dessous on récupère les key et value
+	// On fait une boucle du nombre d'inputs que l'on a récupéré
+	for(let i = 0; i < addUserInputsUI.length; i++){
+	  	// pour chaque Input, on récupère l'attribut data-key qui a une valeur identique à la key utilisé pour stocker une information d'utilisateur dans la bdd
         let key = addUserInputsUI[i].getAttribute('data-key');
-	// Valeur qu'on récup dans les inputs.	
+	  	// pour chaque Input, on récupère la valeur de l'input 	
 		let value = addUserInputsUI[i].value;
-	// Pour chaque CLé (age, name, et email on les associe à notre nouvel utilisateur)
+	  // On stocke les informations en relation key:valeur dans notre dictionnaire
+	  // Une fois tous les inputs itérés, on aura toutes les informations de l"utilisateur dans notre dictionnaire.
         newUser[key] = value;
 	}
-	// on ajoute notre nouvel utilisateur dans la BDD
+	// Grace à la fonction .child de firebase, on va créer un schéma qui récupère tous les utilisateurs de la table "users" dans la BDD.
+	const usersRef = dbRef.child("users");
+	// En utilisant le méthode .push() de notre schéma, on ajoute notre nouvel utilisateur dans la BDD en utilisant le dictionnaire qui contient les informations
 	usersRef.push(newUser);
-	console.log("New User SAVED");
-	console.log(`${newUser.name} il a ${newUser.age} ans ,son mail :${newUser.email}`);
-	// Pour etre userFriendly une fois le new user ajouté on reset les champs du formulaire
+
+   // On vide les inputs de leur valeur pour un prochain ajout d'utilisateur grace à la fonction .reset() du formulaire
 	document.getElementById('leFormulaireAjoutUser').reset();
 }
 
-// --------------------------
-// DELETE
-// --------------------------
-function deleteButtonClicked(event) {
-		// event.stopPropagation();
-		let userID = event.target.getAttribute("userid");
-		// on vise 1 user en particulier
-		const userRef = dbRef.child('users/' + userID);
-		console.log(event);
-		console.log(`ADIOS ${event.path[1].innerText}`);
-		userRef.remove();
-}
-// --------------------------
-// EDIT : on click sur un user et ca ouvre un formulaire pré rempli pour modifier par la suite ce user
-// --------------------------
-function editButtonClicked(e) {
-//On va afficher le formulaire quand on click sur ✎ icon crayon d'un user
-document.getElementById('edit-user-module').style.display = "block";
-//setup du userID sur le input caché hidden
-document.querySelector(".edit-userid").value = e.target.getAttribute("userid");
-// on vise le bon Ga dans la BDD via son ID 
-const userRef = dbRef.child('users/' + e.target.getAttribute("userid"));
-// setup  des données sur les champs utilisateurs pré remplir les input du formulaire
-const editUserInputsUI = document.querySelectorAll(".edit-user-input");
-console.log(editUserInputsUI);
 
-// On pré rempli le formulaire pour editer (en récupérant les key et valeurs)
-userRef.on("value", snap => {
-    for(var i = 0, len = editUserInputsUI.length; i < len; i++) {
-		//On récupère les KEY (name, mail,age)
-        var key = editUserInputsUI[i].getAttribute("data-key");
-		//Pour chaque value des inputs, on lui assigne la valeur de la key
-                editUserInputsUI[i].value = snap.val()[key];
-    }
-});
-	//Dans le form on récupère le bouton save et on place un addEventListener dessus
-	//Qui executera la fonction pour sauvegarder les modifications.
+// --------------------------
+//FONCTION QUI OUVRE LE FORMULAIRE DE MODIFICATION D'UTILISATEUR ET PRÉREMPLIS LES INPUTS
+// --------------------------
+function editButtonClicked(event) {
+	//On récupère le formulaire de modification d'utilisateur (en display none actuellement).
+	let EditUserInputs = document.getElementById('edit-user-module');
+	//et on le fait apparaître
+	EditUserInputs.style.display = "block";
+
+	// Une fonction déclenché sous forme de callback prend comme event plusieurs parametres natifs au callback
+	//On va récupérer l'attribut 'userid'(la key de l'utilisateur ciblé) sur l'élément ou le addEventListener a été déclenché par un click.
+	let userId = event.target.getAttribute("userid");
+	//grace à cette key, on va créer un schéma qui récupère les informations de l'utilisateur ciblé dans la BDD.
+	const userRef = dbRef.child("users/"+userId);
+
+	//Lorsqu'il y a un changement des valeurs de ce schéma, l'event s'active et crée un nouveau schéma 'snap' avec les nouvelles valeurs. 
+	userRef.on("value", snap => {
+		// On va récupérer tous les inputs dans le formulaire de modification(sauf celui de l'Id)
+		const editUserInputsUI = document.querySelectorAll(".edit-user-input");
+		//On va créer une boucle du nombre de ses inputs permettant de sélectionner chaque input les un après les autres.
+		for(var i = 0; i < editUserInputsUI.length; i++) {
+			// pour chaque input, on récupère l'attribut "data-key"  qui est identique à la key du schéma qui possède la valeur que l'on veut mettre dans cette input.
+			var key = editUserInputsUI[i].getAttribute("data-key");
+			//et on donne comme valeur à l'input la valeur que l'on a ciblé dans le schéma.
+        	editUserInputsUI[i].value = snap.val()[key];
+    	}
+		//Dans firebase, la méthode .val() du schéma de l'utilisateur a toutes les informations de l'utilisateur mais pas l'id.
+		//On récupère donc l'input id et on lui assigne la valeur de la variable 'userId' défini plus haut représentant l'id de l'utilisateur ciblé
+		document.querySelector(".edit-userid").value = userId;
+	});
+
+	//On récupère le bouton à la fin du formulaire de modification
 	const saveBtn = document.querySelector("#edit-user-btn");
+	//Et à chaque clique sur le bouton, on déclenche la fonction 'saveUserBtnClicked' qui sauvegarde en bdd l'intégralité des informations des inputs contenant les modifications de valeur de l'utilisateur ciblé.
 	saveBtn.addEventListener("click", saveUserBtnClicked);
 }
+
 // --------------------------
-// EDIT - SAVE - UPDATE
+// FONCTION QUI ENREGISTRE EN BDD LES MODIFICATIONS DE L UTILISATEUR CIBLÉ PAR LE FORMULAIRE DE MODIFICATIONS
 // --------------------------
 function saveUserBtnClicked() {
-	//On récupère l'id de l'utilisateur que lon veut modifier
+	//On récupère l'id de l'utilisateur que lon veut modifier dans l'input id
 	const userID = document.querySelector(".edit-userid").value;
 	//Avec l'id on va pouvoir viser le bon user dans la BDD
 	const userRef = dbRef.child('users/' + userID);
@@ -186,23 +223,20 @@ function saveUserBtnClicked() {
 	//On récupère TOUS les inputs du formulaire
 	const editUserInputsUI = document.querySelectorAll(".edit-user-input");
 	//Ensuite on fait un système de boucle pour remplir l'objet vide avec les value des inputs
-	editUserInputsUI.forEach(function(textField) {
+	editUserInputsUI.forEach(function(oneInput) {
 		//Pour chaque input on récupère les key (data-key) (input du mail, ou du name ou age)
-		let key = textField.getAttribute("data-key");
-		// let value = textField.value;
-  		// editedUserObject[textField.getAttribute("data-key")] = textField.value
+		let key = oneInput.getAttribute("data-key");
 		//On rempli notre objet avec les value des inputs (pour chaque key)
-  		editedUserObject[key] = textField.value;
+  		editedUserObject[key] = oneInput.value;
 	});
 	userRef.update(editedUserObject);
-    console.log("USER UPDATED");
 	//Ensuite on reMasque le formulaire de modif.
 	document.getElementById('edit-user-module').style.display = "none";
 }
 
 
-// -----------------------------------------------------------------------------
-// -----------------------------------------------------------------------------
+// -------------------------------------------------------------------------------------------------
+// --------------------------------------------------------------------------------------------------
 
 // --------------------
 // --------------------
@@ -210,153 +244,149 @@ function saveUserBtnClicked() {
 // --------------------
 // --------------------
 
-const articlesRef = dbRef.child('articles');
 
 
-
-
+// --------------------------
+//CREATION DE LA LISTE D ARTICLES
+// --------------------------
 readArticleData();
-// --------------------------
-// READ : il va falloir un système de boucle pour afficherles données de la base.
-//On va afficher 1 donnée, et répeter ce système d'affichage TANT que on a des données dans la BDD.
-// --------------------------
+
 function readArticleData() {
-//On va stocker la liste vide en html que l'on remplira avec les données
+	//récupération du <ul>
 	const articleListUI = document.getElementById("article-list");
-//On surveille la BDD QUE si ya des changments de value dans notre objet articles.
-//On enregistre dans une variable snap ou snapshot (convention)
+	const articlesRef = dbRef.child('articles');
+	//snap représente une ref des articles a chaque modif de valeurs
 	articlesRef.on("value", snap => {
 		articleListUI.innerHTML = "";
-//snap = Photo de la BDD à ce moment là 
+		//childsnap représente un article
 		snap.forEach(childSnap => {
-			//on Stock les clé et valeurs
-			let key = childSnap.key,
-				value = childSnap.val();
-
+			let key = childSnap.key;
+			let value = childSnap.val();
 			let $li = document.createElement("li");
+			$li.innerHTML = value.titre;
+			$li.setAttribute("article-key", key);
 
 			// edit icon
 			let editIconUI = document.createElement("span");
 			editIconUI.class = "edit-article";
 			editIconUI.innerHTML = " ✎";
 			editIconUI.setAttribute("articleid", key);
-            editIconUI.addEventListener("click", editButtonClicked)
+            editIconUI.addEventListener("click", editArticleButtonClicked)
             
             // delete icon
 			let deleteIconUI = document.createElement("span");
 			deleteIconUI.class = "delete-article";
 			deleteIconUI.innerHTML = " ☓";
+			deleteIconUI.style.color = "red";
 			deleteIconUI.setAttribute("articleid", key);
-			deleteIconUI.addEventListener("click", deleteButtonClicked)
+			deleteIconUI.addEventListener("click", deleteArticleButtonClicked)
 
 			
-			$li.innerHTML = value.titre;
 			$li.append(editIconUI);
 			$li.append(deleteIconUI);
 
-			$li.setAttribute("article-key", key);
 			$li.addEventListener("click", articleClicked)
 			articleListUI.append($li);
 
-});
+		});
 	})
 }
 
 // --------------------------
-// DISPLAY article INFO
+// FONCTION QUI AFFICHE LES INFORMATIONS DE L'ARTICLE CIBLÉ EN REMPLISSANT LA DIV 'article-detail'
 // --------------------------
-// La fonction va prendre en param un event
 function articleClicked(event) {
-	console.log(event)
-	// Pour identifier sur quel article on a cliqué
-	// récuperer l'id des articleS via getAttribute
-	let articleID = event.target.getAttribute("article-key");
-	console.log(articleID);
-
-	// on vise 1 article précis dans la BDD via son id
-	const articleRef = dbRef.child('articles/' + articleID);
-	// On récup la DIV avec l'id article-detail
+	//récupère l'attribut de l element qui a déclencher le callback
+	let articleId = event.target.getAttribute("article-key");
+	//On crée une ref de l 'article ciblé
+	const articleRef = dbRef.child('articles/' + articleId);
+	// On récup la DIV ou on va afficher les informations
 	const articleDetailUI = document.getElementById("article-detail");
-
+	//"snap" représente un article
 	articleRef.on("value", snap =>{
 		articleDetailUI.innerHTML = "";
-//on va faire une boucle pour afficher  à côté du nom article 
-//Les paires clé valeur (la boucle affiche autant de paragraphe qu'il ya des key-value)
+		//Childsnap représente une information de l' article
 		snap.forEach(childSnap =>{
-			let $p = document.createElement("p");
-			$p.innerHTML = childSnap.key + " : " + childSnap.val();
-			articleDetailUI.append($p);
+			//Si la key match avec un regex(qui commence par img)
+			if (childSnap.key.match(/^img/)){
+                let $img = document.createElement("img");
+                $img.src = childSnap.val();
+				$img.style ="width: 90px";
+                articleDetailUI.append($img);
+            }
+            else{
+            let $p = document.createElement("p");
+            $p.innerHTML = childSnap.key + " : " + childSnap.val();
+            articleDetailUI.append($p);}
 		})
 	})
 }
 
 // --------------------------
-// ADD
+// FONCTION QUI SUPPRIME UN ARTICLE LORS DU CLICK SUR L'ICONE DELETE(le <span> dans le <li>)
 // --------------------------
-//On récup le button, on place un adeventListener au click dessus 
+function deleteArticleButtonClicked(event) {
+	let articleID = event.target.getAttribute("articleid");
+	let articleRef = dbRef.child('articles/' + articleID);
+	articleRef.remove();
+}
+
+// --------------------------
+// FONCTION QUI CRÉE UN NOUVEL ARTICLE
+// --------------------------
+//On récup le button à la fin du formulaire, on place un adeventListener au click dessus 
 const addArticleBtnUI = document.getElementById("add-article-btn");
 addArticleBtnUI.addEventListener("click", addArticleBtnClicked);
 
 function addArticleBtnClicked() {
-	//une reférence à notre table articles
-	const articlesRef = dbRef.child('articles');
-	// Récup des 3 inputs
+	// Récup des inputs
 	const addArticleInputsUI = document.getElementsByClassName("article-input");
-	console.log(addArticleInputsUI);
- 	// Cet objet va stocker les infos du nouvel article
+
+ 	// Cet objet va stocker les toutes les informations du nouvel article
     let newArticle = {};
-    // On fait une boucle pour récupérer les valeurs de chaque input dans le formulaire,
+    // On fait une boucle pour récupérer les attributs et valeurs de chaque input du formulaire,
 	// Et remplir le newArticle
-    for (let i = 0, len = addArticleInputsUI.length; i < len; i++) {
-	// Ci dessous on récupère les key et value
-        let key = addArticleInputsUI[i].getAttribute('data-key');
-	// Valeur qu'on récup dans les inputs.	
+    for (let i = 0; i < addArticleInputsUI.length; i++) {
+        let key = addArticleInputsUI[i].getAttribute('data-key');	
 		let value = addArticleInputsUI[i].value;
-	// Pour chaque CLé (titre, contenu et url images on les associe à notre nouvel article)
+	//l'attribut de l input sert pour créer la key de l'article et la valeur pour la valeur
         newArticle[key] = value;
 	}
+	//une reférence à notre table articles
+	const articlesRef = dbRef.child('articles');
 	// on ajoute notre nouvel article dans la BDD
 	articlesRef.push(newArticle);
-	console.log("New article SAVED");
-	console.log(`${newArticle.titre} : ${newArticle.contenu} url img1 : ${newArticle.img1} url img2 : ${newArticle.img2} url img3 : ${newArticle.img3}`);
-	// Pour etre articleFriendly une fois le new article ajouté on reset les champs du formulaire
+   // On vide les inputs de leur valeur pour un prochain ajout d'article.
 	document.getElementById('leFormulaireAjoutArticle').reset();
 }
 
-// --------------------------
-// DELETE
-// --------------------------
-function deleteButtonClicked(event) {
-		// event.stopPropagation();
-		let articleID = event.target.getAttribute("articleid");
-		// on vise 1 article en particulier
-		const articleRef = dbRef.child('articles/' + articleID);
-		console.log(event);
-		console.log(`ADIOS ${event.path[1].innerText}`);
-		articleRef.remove();
-}
-// --------------------------
-// EDIT : on click sur un article et ca ouvre un formulaire pré rempli pour modifier par la suite ce article
-// --------------------------
-function editButtonClicked(e) {
-//On va afficher le formulaire quand on click sur ✎ icon crayon d'un article
-document.getElementById('edit-article-module').style.display = "block";
-//setup du articleID sur le input caché hidden
-document.querySelector(".edit-articleid").value = e.target.getAttribute("articleid");
-// on vise le bon Ga dans la BDD via son ID 
-const articleRef = dbRef.child('articles/' + e.target.getAttribute("articleid"));
-// setup  des données sur les champs articles pré remplir les input du formulaire
-const editArticleInputsUI = document.querySelectorAll(".edit-article-input");
-console.log(editArticleInputsUI);
 
-// On pré rempli le formulaire pour editer (en récupérant les key et valeurs)
+// --------------------------
+//FONCTION QUI OUVRE LE FORMULAIRE DE MODIFICATION D'UTILISATEUR ET PRÉREMPLIS LES INPUTS
+// --------------------------
+function editArticleButtonClicked(event) {
+//affiche le formulaire de modification
+let EditArticlesInputs = document.getElementById('edit-article-module');
+EditArticlesInputs.style.display = "block"
+
+let articleId = event.target.getAttribute("articleid");
+//Ref de l'article ciblé
+const articleRef = dbRef.child("articles/"+articleId);
+
+// à la modif de l'article ciblé
 articleRef.on("value", snap => {
-    for(var i = 0, len = editArticleInputsUI.length; i < len; i++) {
-		//On récupère les KEY (titre, contenu)
+	// on récupère les inputs
+	const editArticleInputsUI = document.querySelectorAll(".edit-article-input");
+	//boucle de chaque input
+    for(var i = 0; i < editArticleInputsUI.length; i++) {
+		//On récupère l'attribut de l'input
         var key = editArticleInputsUI[i].getAttribute("data-key");
-		//Pour chaque value des inputs, on lui assigne la valeur de la key
-                editArticleInputsUI[i].value = snap.val()[key];
+		//cet attribut est identique a une key de l'article.
+		//On peut donc se servir de l'attribut pour trouver une valeur dans l'article.
+        editArticleInputsUI[i].value = snap.val()[key];
     }
+	//on remplis l'input id de l'id de l'article
+	document.querySelector(".edit-articleid").value = articleId;
 });
 	//Dans le form on récupère le bouton save et on place un addEventListener dessus
 	//Qui executera la fonction pour sauvegarder les modifications.
@@ -364,10 +394,10 @@ articleRef.on("value", snap => {
 	saveBtn.addEventListener("click", saveArticleBtnClicked);
 }
 // --------------------------
-// EDIT - SAVE - UPDATE
+// FONCTION QUI ENREGISTRE EN BDD LES MODIFICATIONS DE L'ARTICLE CIBLÉ PAR LE FORMULAIRE DE MODIFICATIONS
 // --------------------------
 function saveArticleBtnClicked() {
-	//On récupère l'id de l'article que lon veut modifier
+	//On récupère l'id de l'article que lon veut modifier dans l'input id
 	const articleID = document.querySelector(".edit-articleid").value;
 	//Avec l'id on va pouvoir viser le bon article dans la BDD
 	const articleRef = dbRef.child('articles/' + articleID);
@@ -376,16 +406,13 @@ function saveArticleBtnClicked() {
 	//On récupère TOUS les inputs du formulaire
 	const editArticleInputsUI = document.querySelectorAll(".edit-article-input");
 	//Ensuite on fait un système de boucle pour remplir l'objet vide avec les value des inputs
-	editArticleInputsUI.forEach(function(textField) {
+	editArticleInputsUI.forEach(function(oneInput) {
 		//Pour chaque input on récupère les key (data-key) (input du titre ou contenu ou image(1, 2 ou 3))
-		let key = textField.getAttribute("data-key");
-		// let value = textField.value;
-  		// editedArticleObject[textField.getAttribute("data-key")] = textField.value
+		let key = oneInput.getAttribute("data-key");
 		//On rempli notre objet avec les value des inputs (pour chaque key)
-  		editedArticleObject[key] = textField.value;
+  		editedArticleObject[key] = oneInput.value;
 	});
 	articleRef.update(editedArticleObject);
-    console.log("ARTICLE UPDATED");
 	//Ensuite on reMasque le formulaire de modif.
 	document.getElementById('edit-article-module').style.display = "none";
 }
