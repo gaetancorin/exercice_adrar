@@ -1,0 +1,13 @@
+• logique métier=
+• code métier=
+demande métier=
+
+
+• notion métier =
+partie du code compris et souvent demandé par le client(ex: afficher les articles)
+• notion technique = 
+partie de code qui n'est pas compris par le client (ex: connexion à une bdd)
+
+Chaque notion métier est bien souvent supportée par plusieurs notions techniques.
+
+les sites sont en général segmenter selon des sections du métier(ex: partie front utilisateur/ partie administrateur)

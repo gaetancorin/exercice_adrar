@@ -1,3 +1,7 @@
+• include(path) récupère le fichier, continue le programme si il n'y arrive pas
+• require(path) récupère le fichier, arrête le programme si il n'y arrive pas
+• require_once(path) récupère le fichier si il n'a pas était récupérer auparavant.
+
 V1=
 (
 • TEXT dans la bdd qui permet de faire un gros texte supérieur a 255 caractères;
@@ -20,3 +24,4 @@ V4=
 • ob_start() indique le début de ob | template/homepage.php
 • ob_get_clean() Il récupère tout le html entre lui et ob_start() situé avant lui(get).l'html n'est plus visible par l'utilisateur(clean). Si il est assigné à une variable, la variable récupère tout le html. | template/homepage.php
 )
+v5= rien
