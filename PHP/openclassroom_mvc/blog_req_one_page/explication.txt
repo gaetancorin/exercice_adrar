@@ -1,0 +1,13 @@
+sur la même page=
+requete sql, boucle de récupération de données qui crée des objets dans un tableau.
+
+On itère ce tableau dans le html pour récupérer les variables
+
+(
+• utilisation de TEXT dans la bdd qui permet de faire un gros texte supérieur a 255 caractères;
+• utilisation de \r\n dans la bdd pour créer des retour à la ligne
+
+• utilisation de htmlspecialchars(variable) dans le template index pour transformer proprement une variable php en html
+• utilisation de nl2br(htmlspecialchars(variable)) pour transformer les \r\n dans la  bdd en balise <br> dans le template
+(Attention! En cas de test avec un str, nl2br fonctionne uniquement un "doubleparentheses")
+)

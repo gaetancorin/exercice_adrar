@@ -1,0 +1,22 @@
+V1=
+(
+• TEXT dans la bdd qui permet de faire un gros texte supérieur a 255 caractères;
+• \r\n dans la bdd pour créer des retour à la ligne
+
+• htmlspecialchars(variable) transformer proprement une variable php en html | index.php
+• nl2br(htmlspecialchars(variable)) transformer les \r\n dans la bdd en balise <br> dans le template | index.php
+(Attention! En cas de test avec un str, nl2br fonctionne uniquement un "doubleparentheses")
+)
+V2=rien
+
+v3=
+(
+• urlencode(VARIABLE) transforme une variable en partie d'url | template/homepage.php
+• <a href="post.php?id=<?= urlencode(variable) ?> requête http GET qui prend une variable en paramètre | template/homepage.php
+)
+
+V4=
+(
+• ob_start() indique le début de ob | template/homepage.php
+• ob_get_clean() Il récupère tout le html entre lui et ob_start() situé avant lui(get).l'html n'est plus visible par l'utilisateur(clean). Si il est assigné à une variable, la variable récupère tout le html. | template/homepage.php
+)

@@ -1,0 +1,25 @@
+VARCHAR
+utile pour des inputs et petit textes=
+ varchar(1)  varchar(255)
+Permet d'insérer 1 a maximum 255 octet(255 caractère ou lettres)
+
+INT
+tinyint(1) int(20) bigint()
+
+DECIMAL
+decimal(9,2)
+DATE
+
+DATETIME
+
+TIME
+
+TEXT
+
+
+PRIMARY KEY
+NOT NULL
+DEFAULT NULL
+auto_increment
+
+ajouter \r\n directement dans le texte pour un retour à la ligne

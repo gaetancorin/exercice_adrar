@@ -1,0 +1,18 @@
+création fonctionnement MVC avec
+index.php est le controller
+model.php dans le dossier src est le modèle
+homepage.php dans le dossier template est la vue
+
+---- On crée un controller qui affiche les différents articles--- 
+Le controller index.php appelle une fonction dans le modèle.
+(cette fonction va chercher les articles dans la bdd et les retourne en format tableau)
+Le résultat est stocker dans une variable dans le controller
+On fournis la variable au template qui itère les articles et les affiche.
+
+(
+• retrait des balise php fermante quand le fichier ne contient que du php
+
+• utilisation des short echo tags <?= htmlspecialchars(variable); ?> qui est un raccourcis syntaxique de <?=php echo ...?>. Ce raccourcis sert a passer les variables dans le template.
+
+• tout passé en anglais dans l'app et la bdd
+)

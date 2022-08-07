@@ -1,0 +1,23 @@
+V2=
+création fonctionnement MVC avec
+index.php est le controller
+model.php dans le dossier src est le modèle
+homepage.php dans le dossier template est la vue
+
+---- On crée un controller index.php qui affiche les différents articles--- 
+Le controller index.php appelle une fonction dans le modèle.
+(cette fonction va chercher les articles dans la bdd et les retourne en format tableau)
+Le résultat est stocker dans une variable dans le controller
+On fournis la variable au template qui itère les articles et les affiche.
+
+V3=
+(le controller index.php récupère désormais l'id des articles et le transmet à son template.
+Le template crée un bouton commentaire sous chaque article. Ce bouton fait une requête vers le nouveau controller post.php avec l'id en paramètre dans l'url )
+
+---- On crée un controller post.php qui affiche les commentaires de 1 article ----
+Ce controller récupère le paramètre id passé dans l"url.
+Il appelle la fonction getPost() qui récupère les informations de l'article ayant le même id que celui passé en paramètre. 
+Il appelle la fonction getComments() qui récupère les informations des commentaires ayant une clé étrangère avec le même id que celui passé en paramètre.
+
+Il appelle son template post.php qui affiche l'article et les commentaires de cet article
+
