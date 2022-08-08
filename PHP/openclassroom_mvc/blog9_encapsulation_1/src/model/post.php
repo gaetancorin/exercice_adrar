@@ -9,7 +9,7 @@ class Post
 }
 
 class PostRepository
-{
+{	// Le ? signifie que c'est un type PDO mais la valeur null est autorisé(nullable)
 	public ?PDO $database = null;
 }
 

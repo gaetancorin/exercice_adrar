@@ -79,3 +79,40 @@ Puis dans chaque fonction de notre modèle:
 Dans chaque controller utilisant le modèle post.php, il faut penser à instancier 'PostRepository', et à la donner en argument sur chaque fonction que l'on appelle de ce modèle.
 
 //////// v9 = ENCAPSULATION_2
+Sur le modèle post.php, toutes les fonctions prennent comme argument la class 'PostRepository' qui correspond à la connection à notre bdd. On dit qu'ils utilisent le même contexte.
+On va donc pouvoir encapsuler ses fonctions avec la class 'PostRepository'.
+Autrement dit, on déplace tous nos fonctions dans notre class 'PostRepository' pour qu'ils deviennent des méthodes de cette class et hérite donc de son attribut(la connection bdd) 
+
+Toutes nos fonctions dans le modèle post.php sont maintenant devenu des méthodes de l'encapsulation 'PostRepository'.
+La syntaxe pour utiliser la méthode 'dbConnect' dans nos autres méthodes de 'PostRepository' changent car l'encapsulation doit désormais s'appeller elle-même pour accéder à ses autres méthodes(this->dbConnect)
+Il faut aussi changer la syntaxe dans les controllers. On n'appelle plus une fonction avec la class 'PostRepository' en argument mais bien une méthode de 'PostRepository'.
+
+EXPLICATION DIRECT ENCAPSULATION_2= 
+Si un controller appelle plusieurs fonctions du modèle post.php, la bdd sera appelé à chaque fonction. C'est une tache longue que l'on va essayer d'éviter de répéter.
+
+On va donc créer une class 'PostRepository' qui prend en attribut la connection de la bdd. Cette attribut aura une valeur null lorsque on l'instancie.
+
+On déplace l'intégralité des fonctions de post.php dans la class pour qu'ils deviennent des méthodes de cette class et puissent hériter de son attribut.(la connection à la bdd).
+On crée dans la class une méthode 'dbConnect' qui assigne la connection à la bdd dans l'attribut de son encapsulation uniquement si cette attribut a une valeur null.
+
+On modifie les fonctions des controllers utilisant le modèle post.php.
+On commence par instancier notre encapsulation, puis on appelle la méthode de cette encapsulation(au lieu d'appeller directement une fonction).
+
+Félicitation ! Désormais, la connection à la bdd se fera à l'appelle de la première méthode de l'encapsulation, puis la gardera dans son attribut pour les méthodes suivantes de cette encapsulation!
+
+//////// v9 = ENCAPSULATION_3
+Lorsque on appelle différentes encapsulations dans un même controller, la connection à la bdd se fait à chaque encapsulation. On veut que la connection ne se fasse qu'une fois par controller.
+Pour cela, on va externaliser la méthode 'dbConnect' du modèle post.php pour en faire un objet séparer. 
+Le but étant qu'elle garde en mémoire la connection de la bdd et qu'elle puisse être accessible dans les différentes encapsulations.
+On crée donc une class qui aura comme attribut la connection de la bdd. Cette attribut aura une valeur null lorsque on l'instancie. 
+On crée dans cette class une méthode 'getConnection' qui assigne la connection de la bdd dans son attribut uniquement si cette attribut a une valeur null, puis retourne l'attribut. 
+Cette nouvelle class, que l'on va nommer 'DatabaseConnection' et ranger dans le dossier src/lib/, devra être instancié dans le controller. 
+Cette instance sera ensuite fournis aux différentes encapsulations du controller en étant assigné à un attribut sur chacune de ses encapsulations utile au controller.
+Le but étant que toutes les encapsulations puissent accéder à la bdd en utilisant la même instance de 'DatabaseConnection' qui est assigné à leur attribut.
+A chaque requete bdd dans une encapsulation, il faudra penser à réucupérer dans son attribut l'instance 'DatabaseConnection' et déclencher la méthode d'instance 'getConnection' qui crée la connection si elle ne l'as encore jamais faite, puis la retourne.
+($this->connection->getConnection())
+Il faut aussi penser à require le fichier database.php sur chaque modèle qui utilise cette bdd.
+
+
+
+
