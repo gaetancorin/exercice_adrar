@@ -15,7 +15,8 @@ function addComment(string $post, array $input)
 	}
 
 	$commentRepository = new CommentRepository();
-	$commentRepository->connection = new DatabaseConnection();
+	$databaseConnection = new DatabaseConnection();
+	$commentRepository->connection = $databaseConnection;
 
 	$success = $commentRepository->createComment($post, $author, $comment);
 	if (!$success) {
