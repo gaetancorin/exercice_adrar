@@ -1,0 +1,81 @@
+///// V2= UN CONTROLLER + +model+views
+création fonctionnement MVC avec
+index.php est le controller
+model.php dans le dossier src est le modèle
+homepage.php dans le dossier template est la vue
+
+---- On crée un controller index.php qui affiche les différents articles--- 
+Le controller index.php appelle une fonction dans le modèle.
+(cette fonction va chercher les articles dans la bdd et les retourne en format tableau)
+Le résultat est stocker dans une variable dans le controller
+On fournis la variable au template qui itère les articles et les affiche.
+
+
+/////// V3= UN 2EME CONTROLLER AVEC PARAMETRE PASSÉ DANS SON URL
+(le controller index.php récupère désormais l'id des articles et le transmet à son template.
+Le template crée un bouton commentaire sous chaque article. Ce bouton fait une requête vers le nouveau controller post.php avec l'id en paramètre dans l'url )
+
+---- On crée un controller post.php qui affiche les commentaires de 1 article ----
+Ce controller récupère le paramètre id passé dans l"url.
+Il appelle la fonction getPost() qui récupère les informations de l'article ayant le même id que celui passé en paramètre. 
+Il appelle la fonction getComments() qui récupère les informations des commentaires ayant une clé étrangère avec le même id que celui passé en paramètre.
+
+Il appelle son template post.php qui affiche l'article et les commentaires de cet article
+
+////// V4= TEMPLATE UTILISANT UN LAYOUT
+(le layout est un template avec des variable vide. Il est relié à un autre template qui lui donne les valeurs de variable)
+
+on crée un layout layout.php qui a deux variables vide($title et $content)
+la template homepage.php va lui fournir la variable $title, puis va récupérer l'ensemble de son html et va le mettre dans la variable $content.
+puis il va require le layout qui affichera son contenu avec les variables fournis
+
+/////// V5= INSTALLATION DU ROUTEUR
+La page index.php sera notre routeur.
+Les controllers sont désormais rangé dans src/controllers .
+Les fichiers controllers ne font plus aucune action. Ils sont désormais des points d'accès afin que le routeur puisse accéder à leur fonction.
+L'intégralité des actions qu'ils faissaient avant sont désormais dans leur fonction.
+Les require() dans les controllers deviennent des require_once() pour éviter les doublons.
+Si un controller nécessite un ID, il faut lui fournir dans le paramètre de sa fonction
+
+Pour passer d'une page à l'autre, on intègre le paramètre 'action' dans l'url en méthode get. Tous les urls seront donc 'index?action=(CONTROLLER)' ou 'index?action=(CONTROLLER)&id=(ID)'.
+Le routeur va require toutes les pages controllers, vérifier l'action et l'id passé en paramètre dans l'url et démarrer la fonction du bon controller avec des principes de if/else.
+!Attention! Il ne faut pas mettre de point dans le nom des pages
+
+//////// v6 = AJOUT DU CONTROLLER ADDCOMMENT (correction)
+(la fonction getComments à été déplacé de models.php à comment.php pour des raisons de logique métier)
+On ajoute un formulaire au template post.php pour laisser à l'utilisateur la posibilité d'ajouter un commentaire sur un article. Il prend en méthode get l'action addComment et l'id de l'article, et en méthode post le contenu du formulaire.
+On crée un routeur qui vérifie l'action et l'id et renvois sur le controller addComment.
+Ce controller vérifie les données du formulaire et appelle la fonction createComment du modèle comment pour créer la nouvelle table.
+Le controller vérifie que la création a bien été effectué, puis renvois vers le controller post.php ou l'utilisateur pourra voir son commentaire.
+
+//////// v7 = Attraper les Exception grace au routeur
+Lorsque le routeur appelle un controller, il appelle sa fonction, l'action reste donc dans le routeur.
+Lorsque le controller appelle un modèle, il appelle une fonction, l'action se passe donc encore dans le routeur
+En placant un try/catch sur tout le routeur de index.php, on a donc la possibilité de récupérer toutes les exceptions des controllers et des modèles.
+Les problèmes de connection en bdd renvoyant des exceptions, on peut même enlever le try catch de l'appel à la bdd, puisqu'il peut être capturer par le routeur.
+
+On crée le template error.php et on l'affiche lorsque l'on catch une erreur. 
+
+//////// v8 = modèle en POO
+Il y a désormais une déclaration de class 'Comment' dans le modèle comment.php.
+La fonction getComments() est modifié pour retourner un tableau d'instances 'Comment' au lieu d'un tableau de dictionnaire comme précédemment. Mais ce n'est pas encore une méthode d'instance.
+Le template post.php est modifié pour que lorsqu'il parcours le tableau de commentaires, il récupère les attributs d'instances.
+
+Le fichier de modèle modele.php est rangé dans le dossier modèle et s'appelle désormais post.php car il ne contient que des logiques métiers de post. Les require de ce fichier sont donc changé dans les controllers.
+
+Même opération que dans v8 mais pour le modèle post.php(ajout de la class post et adaptation des fonction de son controller et templates en adéquation à ce changement)
+
+//////// v9 = ENCAPSULATION_1
+Si un controller appelle plusieurs fonctions du modèle post.php, la bdd sera appelé à chaque fonction. C'est une tache longue que l'on va essayer d'éviter de répéter.
+
+Dans le modèle post.php, on crée donc une class 'PostRepository' qui prend en attribut la connection de la bdd. Cette attribut aura une valeur null lorsque on l'instancie.
+On crée une fonction 'dbConnect' qui prend en paramètre la class PostRepository et qui assigne la connection à la bdd dans sa variable uniquement si elle à une valeur null.
+
+Puis dans chaque fonction de notre modèle:
+- On donne en paramètre la class 'PostRepository'.
+- On exécute la fonction dbConnect avec 'PostRepository' en argument pour vérifier/créer la connection à la bdd.
+- On se sert enfin de l'attribut de 'PostRepository' pour faire nos requête en bdd.
+
+Dans chaque controller utilisant le modèle post.php, il faut penser à instancier 'PostRepository', et à la donner en argument sur chaque fonction que l'on appelle de ce modèle.
+
+//////// v9 = ENCAPSULATION_2
