@@ -11,3 +11,31 @@ partie de code qui n'est pas compris par le client (ex: connexion à une bdd)
 Chaque notion métier est bien souvent supportée par plusieurs notions techniques.
 
 les sites sont en général segmenter selon des sections du métier(ex: partie front utilisateur/ partie administrateur)
+
+
+Analyse architecture sur le projet Openclassroom :
+•l'index, le dossier template contenant l'html, le dossier src contenant=
+•le lib (les fonction techniques)
+•le model (les modèles) 
+•le controllers (controllers)
+Si plusieurs controllers utilise le même modèle, on peut ranger dans un dossier
+(ex: dossier comment aura fichier add et update)
+
+Analyse de la convention typographique sur le projet de Openclassroom :
+
+• dossier camelCase ou snake_case?)
+• nom_de_fichier (snakecase)
+
+• bdd
+- table(camelCase ou snake_case?) écrit au pluriel
+- champ_de_table (snake_case)
+
+• modèle
+- LaClass (PascalCase) écrit au singulier
+- laFonction (camelCase)
+
+• controller
+- LaClass (PascalCase) écrit au singulier
+- laFonction (camelCase)
+
+
