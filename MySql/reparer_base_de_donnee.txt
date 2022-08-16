@@ -1,0 +1,15 @@
+arrêter xamp sql.
+aller dans le dossier xampp/mysql
+changer le dossier data en data_old.
+créer un dossier data et copier coller les fichiers de backup à l'intérieur.
+supprimer le fichier ibdata1 du dossier data
+copier collé le fichier ibdata1 de data_old sur data.
+lancer le xamp apache et sql(en normal ou en admin je sais plus)
+vider les données de session+ rafraichir la page.
+arrêter xampp
+copier coller un dossier de  bdd de data_old à data.
+relancer xampp et vérifier que tout marche.
+eteindre xampp
+copier coller tous les dossiers bdd de data_old sur data(sauf celle deja copier)
+attention à ne pas copier les dossiers mysql, oerformance_schema, phpmyadmin.
+Vérifier que tout marche. Normalement c'est bon.

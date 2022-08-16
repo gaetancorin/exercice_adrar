@@ -14,12 +14,16 @@ les sites sont en général segmenter selon des sections du métier(ex: partie f
 
 
 Analyse architecture sur le projet Openclassroom :
-•l'index, le dossier template contenant l'html, le dossier src contenant=
-•le lib (les fonction techniques)
-•le model (les modèles) 
-•le controllers (controllers)
-Si plusieurs controllers utilise le même modèle, on peut ranger dans un dossier
-(ex: dossier comment aura fichier add et update)
+• index (le routeur)
+• template (template html), 
+• src = 
+    - models (les modèles) 
+    - controllers (controllers)
+    - lib =
+        * img (images)
+        * les fonction techniques(database)
+Si plusieurs controllers utilise le même modèle, on peut les ranger dans un dossier
+(ex: dossier 'comment' contient fichier add et update)
 
 Analyse de la convention typographique sur le projet de Openclassroom :
 
