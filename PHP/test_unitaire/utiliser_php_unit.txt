@@ -1,0 +1,136 @@
+https://www.youtube.com/watch?v=kkU43JdJQBE&t=151s
+LECON_PHP_UNIT_1
+créer un dossier
+taper la commande "composer require --dev phpunit/phpunit" pour installer le framework de test unitaire sur le dossier
+
+créer un dossier tests avec un fichier exemple.php à l'intérieur.
+remplissons le fichier avec un test vide
+<?php
+
+class exemple extends \PHPUnit\Framework\TestCase{
+    public function testThatStringsMatch(){
+        
+    }
+}
+puis dans le terminal, on lance le test avec "php vendor/bin/phpunit tests/exemple.php"
+"php vendor/bin/phpunit" sert à atteindre les fichiers interne de php unit
+"tests/exemple.php" sert à atteindre la classe 'exemple' du fichier exemple.php. 
+(Visiblement le nom de la classe doit être identique au nom du fichier.)
+Le test est un test "risky" car vide. remplissons le avec un véritable test.
+<?php
+
+class exemple extends \PHPUnit\Framework\TestCase{
+    public function testThatStringsMatch(){
+        $string1 = 'testing';
+        $string2 = 'testing';
+
+        $this->assertSame($string1, $string2);
+    }
+}
+!ATTENTION! Le nom de la fonction test doit toujours commencé test, sinon il n'est pas prit en compte
+le test fonctionne. Rajoutons un autre test dans la class et lancons les 2 tests en même temps.
+Les 2 tests fonctionnent.
+
+///////////////////////////////////////////////////////////////
+LECON_PHP_UNIT_2
+On crée une class d'objet 'Cart.php' en dehors du dossier 'tests'
+Puis on crée son fichier de test dans le dossier test 'CartTest.php'. On crée un test.
+chaque test créer dans ce fichier doit 'require' le fichier 'Cart.php' pour instancier un objet et effectué les tests
+Pour effectuer les tests de ce nouvel objet, on utilise la commande 
+"php vendor/bin/phpunit tests/CartTest.php --colors"
+
+on crée un deuxième test pour Cart.
+On va faire fonctionner uniquement le second test grace à la ligne de commande:
+"vendor/bin/phpunit tests/CartTest.php --colors --filter nomdemafonction"
+(on peut commenter le test en utilisant     /** commentaire **/ au dessus du test.)
+
+désormais, créons le fichier phpunit.xml
+C'est le fichier qui sert à créer la configuration par défaut des tests.
+Dans la balise <phpunit>, On indique que l'on active la couleur pour tous les tests avec l'attribut colors="true"
+Dans les balises <directory>, on donne le nom de notre répertoire 'tests' dans lequel il y a nos tests 
+pour que lorsque l'on fasse tourner nos tests, ils activent la configuration préalablement choisie
+
+Lorsque l'on fait fonctionner des tests, un fichier '.phpunit.result.cache' se crée et répertorie tous les échecs de tests.
+On va éviter qu'il soit créer en ajoutant la propriété cacheResult="false" dans la balise <phpunit>
+//////////////////////////////////////////////
+LECON_PHP_UNIT_3
+Nous allons créer une manière d'éviter de require tous nos modèles dans chacun de nos tests.
+Dans phpunit.xml, sur la balise <phpunit>, nous ajoutons l'attribut bootstrap="vendor/autoload.php"
+Ensuite on crée un dossier src dans lequel on place toutes nos classes d'objets.
+
+On rajout le namespace App au dessus de la classe d'objet "Cart", puis dans 'composer.json' je rajout à "require-dev"
+une virgule , puis on crée le mapping entre App et le dossier src : 
+"autoload":{
+    "psr-4":{
+        "App\\": "src"
+    }
+}
+je rajoute "use App\Cart;" au dessus de mes tests unitaires utilisant le modèle 'Cart' afin d'appeler ce modèle
+directement sur toute la page par le Namespace. 	
+Je peut désormais enlever les requires qui ont été ajouté à l'intérieur des fonctions car maintenant, elles utilisent le Namespace.
+Puis dans le terminal, je lance "composer dump-autoload -o" qui génère les autochargement de fichiers
+Si je lance mes tests sans require, cela marche à nouveau.
+//////////////////////////////////////
+LECON_PHP_UNIT_4
+Dans nos fonctions de tests, on répète souvent la création d'instance "$cart = new Cart();"
+Afin d'éviter cela, nous créons un attribut à la classe des tests qui sera disponible sur toutes les méthodes de cette classe.
+Nous créons ensuite une fonction setUp() qui assignera dans cette attribut de classe une instance de Cart.
+
+Nous pouvons donc retirer toutes les créations d'instances dans les fonctions, et changer les variables "$cart" par "$this->cart"
+
+Si nous mettons le test qui modifie la taxe de l'attribut Cart avant les autres tests, alors la taxe sera aussi modifié pour tous les
+autres tests car ils utilisent tous la même instance d'objet dans l'attribut de classe qui a été modifié par le premier test.
+Ils faut donc créer une fonction qui réinitialise la taxe à sa valeur d'origine pour les tests suivantes.
+/////////////////////////////////////
+LECON_PHP_UNIT_5
+Nous allons désormais créer une erreur.
+on rajoute donc une méthode au modèle d'objet "Cart"
+Cette méthode prend en paramètre un typage strict Integer qui devra être additionner a un attribut de l'abjet qui a un
+typage strict en Float. Cette méthode va donc retourner une exception TypeError sur une classe
+On crée ensuite un nouveau test qui fait fonctionné cette nouvelle méthode, puis le test vérifie que la méthode 
+testé renvois bien l'exception.
+
+17min40 il est possible de tester le contenu de l'exception pour tester la string d'erreur en utilisant
+"composer require symfony/var_dumper". N'en ayant aucune utilité, je laisse cela de côté.
+En revanche, je télécharge composer require symfony/var_dumper pour continuer le tuto.
+////////////////////////////////
+LECON_PHP_UNIT_6
+On crée un nouveau modèle, "productRepository.php", qui se connecte à une base de donnée sql et qui possède une méthode
+'fetchProducts' pour récupérer tous les éléments de la bdd dans un tableau.
+
+Puis nous créons sa page de tests, "MockProductsTest.php"
+nous créons le test "testMockProductsAreReturned" qui récupère la classe de "ProductRepository " que l'on vient de créer et 
+l'assigne dans une variable. Ce test utilise la méthode de cette classe fetchRepository pour récupérer les infos de la bdd.
+Enfin, on var_dump le tout(ou dd). Etant donné que cette bdd n'existe pas et ne contient aucune infos, nous récupérons 
+un tableau vide.
+
+Nous créons à présent une sortie de BDD fictif dans un tableau qui sera assigné dans une variable, puis nous transformons
+ le résultat par défaut de la méthode 'fetchProducts', afin qu'elle nous renvois les données fictifs pour les tests 
+grace a la syntaxe suivante: 
+$mockRepo->method('fetchProducts')->willReturn($mockProductsArray);
+(le 'method' est en rouge sur Vscode mais tout fonctionne)
+On test ensuite que ses données fictifs ressortent bien en utilisant une comparaison de string.
+////////////////////////////////////
+LECON_PHP_UNIT_7
+On crée un fichier inventory.php dans src qui sera un une class objet.
+Cette nouvelle class Inventory a un attribut $products en typage strict array.
+On ajoute un constructeur qui prend en paramètre un typage strict d'objet ProductRepository.
+On crée aussi une methode "setProduct" qui récupère l'instance ProductRepository passé en constructeur, utilise la méthode
+de ce constructeur "fetchProducts" et assigne le résultat(array) obtenue dans l'attribut $products.
+On crée une seconde méthode 'getProduct'qui retourne la valeur de cette attribut
+
+On crée la page de test InventoryTest
+Cette page a une fonction qui crée un objet Mock de ProductRepository(la class de connection à la bdd).
+Elle instancie la class Inventory avec le mock en argument.
+Elle crée un faux tableau de données. 
+Puis elle transforme la méthode "fetchProducts" de "ProductRepository" qui est un objet mock afin qu'il retourne le tableau 
+lors de l'exécution de sa méthode.
+
+Puis dans inventory, on fait la méthode setProducts qui récupère l'instance ProductRepository du constructeur
+(qui est notre mock modifé), et déclenche la méthode fetchProduct de cette instance ProductRepository pour récupérer 
+le resultat de cette méthode(qui est censé être une requete bdd mais qui est modifié pour avoir le faux tableau)
+ Le résultat est assigné dans l'attribut de inventory.
+Puis on déclenche la méthode getProducts pour comparé les valeurs de l'attribut avec le faux tableau. 
+
+
+Puis on utilise la méthode getProducts de inventory pour tester les informations;

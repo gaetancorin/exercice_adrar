@@ -1,0 +1,31 @@
+https://www.youtube.com/watch?v=kkU43JdJQBE&t=151s
+créer un dossier avec un fichier php
+taper la commande "composer require --dev phpunit/phpunit" pour installer le framework de test unitaire sur le dossier
+
+créer un dossier tests avec un fichier exemple.php à l'intérieur.
+remplir le fichier avec ce code
+<?php
+
+class exemple extends \PHPUnit\Framework\TestCase{
+    public function testThatStringsMatch(){
+        
+    }
+}
+puis dans le terminal, écrire "php vendor/bin/phpunit tests/exemple.php"
+"php vendor/bin/phpunit" sert à atteindre les fichiers interne de php unit
+"tests/exemple.php" sert à atteindre la classe 'exemple' du fichier exemple.php. 
+(Visiblement le nom de la classe doit être identique au nom du fichier.)
+Le test est un test "risky" car vide. Remplissons le.
+<?php
+
+class exemple extends \PHPUnit\Framework\TestCase{
+    public function testThatStringsMatch(){
+        $string1 = 'testing';
+        $string2 = 'testing';
+
+        $this->assertSame($string1, $string2);
+    }
+}
+le test fonctionne. Rajoutons une autre fonction dans la class et lancons le test.
+Les 2 tests fonctionnent.
+

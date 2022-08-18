@@ -1,0 +1,55 @@
+https://www.youtube.com/watch?v=kkU43JdJQBE&t=151s
+lecon_php_unit_1
+créer un dossier
+taper la commande "composer require --dev phpunit/phpunit" pour installer le framework de test unitaire sur le dossier
+
+créer un dossier tests avec un fichier exemple.php à l'intérieur.
+remplir le fichier avec ce code
+<?php
+
+class exemple extends \PHPUnit\Framework\TestCase{
+    public function testThatStringsMatch(){
+        
+    }
+}
+puis dans le terminal, écrire "php vendor/bin/phpunit tests/exemple.php"
+"php vendor/bin/phpunit" sert à atteindre les fichiers interne de php unit
+"tests/exemple.php" sert à atteindre la classe 'exemple' du fichier exemple.php. 
+(Visiblement le nom de la classe doit être identique au nom du fichier.)
+Le test est un test "risky" car vide. Remplissons le.
+<?php
+
+class exemple extends \PHPUnit\Framework\TestCase{
+    public function testThatStringsMatch(){
+        $string1 = 'testing';
+        $string2 = 'testing';
+
+        $this->assertSame($string1, $string2);
+    }
+}
+!ATTENTION! Le nom de la fonction test doit toujours commencé test, sinon il n'est pas prit en compte
+le test fonctionne. Rajoutons une autre fonction dans la class et lancons le test.
+Les 2 tests fonctionnent.
+
+///////////////////////////////////////////////////////////////
+On crée un fichier 'Cart.php' en dehors du dossier 'tests' avec une class d'objet
+Un crée un nouveau fichier de test 'CartTest.php' dans le dossier test.
+le test va require le fichier de l'objet pour le tester
+Pour effectuer le test on utilise la commande 
+"php vendor/bin/phpunit tests/CartTest.php --colors"
+
+on crée une deuxième fonction de test pour Cart.
+on peut commenter le test en utilisant     /** commentaire **/ au dessus du test.
+il est possible de ne selectionner qu'un seul test en faissant:
+"vendor/bin/phpunit tests/CartTest.php --colors --filter nomdemafonction"
+
+désormais, créons le fichier phpunit.xml
+C'est le fichier qui sert à créer la configuration par défaut des tests.
+On indique dans ce fichier que l'on active la couleur pour tous les tests
+on donne le nom du répertoire 'tests' dans lequel il y a nos tests pour activer la configuration choisie
+
+Lorsque l'on lance des tests, un fichier '.phpunit.result.cache' se crée et répertorie tous les échecs de tests.
+On veut éviter qu'il soit créer en ajoutant cacheResult="false"
+
+
+

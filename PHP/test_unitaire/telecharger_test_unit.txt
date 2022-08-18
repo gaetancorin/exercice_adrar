@@ -1,0 +1,24 @@
+Allumer Xampp (Apache) et vscode
+
+Verifier la version de xamp avec le bouton Apache/admin, et sur navigateur cliquer sur bouton PHPinfo (il faut avoir PHP7.4 minimum)
+
+Aller sur https://getcomposer.org/download/ et cliquer sur "Download and run Composer-Setup.exe "
+(en haut de la page)
+developer mode décocher(de base decocher)
+utiliser add this php de xamp(de base)
+use proxy server décocher(de base décocher)
+
+Lors de l'installation, mettre php.exe
+
+Une fois l'installation fini, aller sur Vscode
+
+Aller dans le disque local C:/  Xampp / htdocs, et créer un dossier, ainsi qu'un fichier.
+
+Ouvrir le terminal de commande
+
+taper la commande "php -v" pour voir la version de php (qui doit être a 8.0 minimum)
+
+taper la commande "composer require --dev phpunit/phpunit" pour installer le framework de test unitaire sur un dossier
+
+taper la commande "composer require symfony/var-dumper" pour installer la coloration vert rouge des tests unitaires(pas obligatoire)
+
