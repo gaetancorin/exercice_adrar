@@ -1,7 +1,8 @@
 https://www.youtube.com/watch?v=kkU43JdJQBE&t=151s
 LECON_PHP_UNIT_1
 créer un dossier
-taper la commande "composer require --dev phpunit/phpunit" pour installer le framework de test unitaire sur le dossier
+taper la commande "composer require --dev phpunit/phpunit" pour installer le framework de test unitaire sur le dossier.
+Il est conseiller de eteindre et rallumer Vscode.
 
 créer un dossier tests avec un fichier exemple.php à l'intérieur.
 remplissons le fichier avec un test vide
@@ -134,3 +135,11 @@ Puis on déclenche la méthode getProducts pour comparé les valeurs de l'attrib
 
 
 Puis on utilise la méthode getProducts de inventory pour tester les informations;
+
+/////////////////
+ASTUCES SUPPLEMENTAIRES
+bon tuto = https://www.youtube.com/watch?v=9-X_b_fxmRM&t=227s
+Si on utilise le commentaire /** @test **/ avant le test, nous ne sommes plus obligé
+de nommé la fonction de test par le mot "test..."
+assertEquals ne prend pas en compte le typage, et considère que null et 0 est identique
+il faut mieux utilisé assertSame qui est strict sur le typage 
