@@ -1,15 +1,17 @@
+Problème SQL(ne repare pas les problème apache)=
 arrêter xamp sql.
 aller dans le dossier xampp/mysql
 changer le dossier data en data_old.
 créer un dossier data et copier coller les fichiers de backup à l'intérieur.
 supprimer le fichier ibdata1 du dossier data
 copier collé le fichier ibdata1 de data_old sur data.
-lancer le xamp apache et sql(en normal ou en admin je sais plus)
-vider les données de session+ rafraichir la page.
-arrêter xampp
-copier coller un dossier de  bdd de data_old à data.
-relancer xampp et vérifier que tout marche.
+lancer le xamp apache et sql
+sur phpmyadmin, vider les données de session+ rafraichir la page(icones au dessus des bdds)
+ARRETER XAMPP
+copier coller un dossier representant une bdd de data_old vers data.
+relancer xampp et vérifier que tout marche. Il doit être possible de créer un enregistrement sur la bdd copié
 eteindre xampp
-copier coller tous les dossiers bdd de data_old sur data(sauf celle deja copier)
-attention à ne pas copier les dossiers mysql, oerformance_schema, phpmyadmin.
-Vérifier que tout marche. Normalement c'est bon.
+copier coller tous les dossiers représentant les bdds de data_old sur data(sauf celui deja copier)
+attention à ne pas copier les dossiers mysql, performance_schema, phpmyadmin.
+Relancer xampp, Vérifier que tout marche. Normalement c'est bon.
+Une erreur de manipulation? effacer le dossier data que l'on vient de créer et recommencé
